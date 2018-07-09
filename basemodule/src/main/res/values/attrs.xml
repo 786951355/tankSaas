@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MineItem">
+        <attr name="itemIcon" format="reference" />
+        <attr name="itemText" format="string" />
+        <attr name="itemLeftSrc" format="reference" />
+        <attr name="itemRightIcon" format="reference" />
+        <attr name="itemRightText" format="string" />
+        <attr name="itemRightTextColor" format="color" />
+        <attr name="itemRightTextSize" format="dimension" />
+        <attr name="password" format="boolean" />
+        <attr name="phoneNum" format="boolean" />
+        <attr name="maxLength" format="integer" />
+        <attr name="hasLine" format="boolean" />
+        <attr name="itemTextEditable" format="boolean" />
+        <attr name="itemIconMargin" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="PieChart">
+        <attr name="autoCenterPointerInSlice" format="boolean" />
+        <attr name="highlightStrength" format="float" />
+        <attr name="labelColor" format="color" />
+        <attr name="labelHeight" format="dimension" />
+        <attr name="labelPosition" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="labelWidth" format="dimension" />
+        <attr name="labelY" format="dimension" />
+        <attr name="pieRotation" format="integer" />
+        <attr name="pointerRadius" format="dimension" />
+        <!--<attr name="showText" format="boolean"/>-->
+    </declare-styleable>
+
+
+    <!-- ImageTextButton attrs-->
+
+
+    <declare-styleable name="ImageTextButton">
+        <attr name="leftDrawable" format="reference" />
+        <attr name="drawableWidth" format="dimension" />
+        <attr name="drawableHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableGridView">
+        <attr name="group_clickable" format="boolean" />
+        <attr name="overwrite_measure" format="boolean" />
+        <attr name="vertical_spacing" format="dimension" />
+        <attr name="horizontal_spacing" format="dimension" />
+        <attr name="group_text_size" format="dimension" />
+        <attr name="group_text_color" format="color" />
+        <attr name="group_height" format="dimension" />
+        <attr name="child_background" format="reference" />
+        <attr name="column" format="integer" />
+    </declare-styleable>
+</resources>

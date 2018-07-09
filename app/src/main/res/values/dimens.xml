@@ -1,0 +1,45 @@
+<resources>
+
+    <!--边距-->
+
+
+    <!-- 文字-->
+    <!-- Default screen margins, per the Android Developer guidelines. -->
+
+
+    <!-- Default screen margins, per the Android Developer guidelines. -->
+
+
+    <!-- Default screen margins, per the Android Developer guidelines. -->
+
+
+    <!--大小-->
+    <!--h1-->
+    <!--h2-->
+    <!--h3-->
+    <!--h4-->
+    <!--h5-->
+    <!--h6-->
+    <!--h7-->
+    <!--h8-->
+    <!--h9-->
+    <!--h10-->
+    <!--h11-->
+
+
+    <!--<dimen name="Line_1">1</dimen>-->
+    <!--<dimen name="Line_2">2.0</dimen>-->
+    <!--<dimen name="Line_3">3</dimen>-->
+
+
+    <!-- 飘星 -->
+
+
+    <!-- AVSDK *******************************************************************************************************************************-->
+
+    <!-- 视频聊天中小窗口移动时的阈值 -->
+
+    <!-- AVSDK *******************************************************************************************************************************-->
+
+
+</resources>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_parent"
+    android:layout_width="282dp"
+    android:layout_height="296dp"
+    android:elevation="4dp"
+    android:layout_gravity="center"
+    android:background="@drawable/select_photo_shape"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ll_image_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_btns"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/id_iv_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/warning" />
+
+        <TextView
+            android:id="@+id/id_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/text_dialog"
+            android:textSize="16sp"
+            tools:text="确认退出当前账号吗?\n客服会在30分钟内完成认证！" />
+
+        <TextView
+            android:id="@+id/id_tv_second_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/text_dialog"
+            android:textSize="12sp"
+            tools:text="工作时间：周一至周五早9:00-晚8:00\n客服联系方式：021-34534543" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_phone_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_btns"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/pd_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:text="工作时间：早9:00-晚8:00"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/pd_tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/pd_tv_title"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/text_dialog"
+            android:textSize="14sp"
+            tools:text="您的专属运能  张萌萌\n1234567890" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_edit_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_btns"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/ed_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorAccent"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:text="承载吨位"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/ed_ed_content"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_bg_4rd_line_normal_green"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textColor="@color/text_dialog"
+                android:textSize="16sp"
+                tools:hint="请输入承载吨位" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_cancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:src="@drawable/close" />
+
+    <LinearLayout
+        android:id="@+id/ll_btns"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_marginBottom="16dp"
+            android:id="@+id/btn_confirm"
+            android:layout_width="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_confirm_btn_bg"
+            android:text="确认"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/dialog_confirm_btn_bg"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+    </LinearLayout>
+</RelativeLayout>

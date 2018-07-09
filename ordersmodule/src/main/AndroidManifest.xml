@@ -1,0 +1,35 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tanker.orders">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name="com.tanker.orders.debug.TestTankerGraborderActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".view.DispatcherCarActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".view.TankerGrabOrderDetailActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:theme="@style/Transparent"
+            android:name=".widget.ReportPricesDialogActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:launchMode="singleTop" />
+        <activity android:name=".view.CompleteDispatchInfoActivity" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,1 @@
+include ':app', ':basemodule', ':resmodule', ':loginmodule' , ':workbenchmodule', ':ordersmodule', ':homemodule', ':settingmodule'

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/i_title"
+        layout="@layout/common_top_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_retrieve_pwd_comfire"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="96dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/btn_radius_bg"
+        android:gravity="center"
+        android:text="@string/et_retrieve_comfire_pwd"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp_20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_retrieve_pwd_comfire"
+        android:layout_marginBottom="27dp"
+        android:orientation="vertical">
+
+        <com.tanker.loginmodule.widget.XmTankerEditText
+            android:id="@+id/et_retrieve_phone_num"
+            style="@style/et_login_register_style"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="@string/et_register_phone_num"
+            android:inputType="number"
+            android:maxLength="11"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingTop="@dimen/dp_8" />
+
+        <com.tanker.loginmodule.widget.XmTankerEditText
+            style="@style/et_login_register_style"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="@string/et_retrieve_code"
+            android:inputType="number"
+            android:maxLength="6"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingTop="@dimen/dp_8"
+            android:visibility="gone" />
+
+        <include
+            layout="@layout/common_login_send_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:visibility="visible" />
+
+        <com.tanker.loginmodule.widget.PasswordToggleEditText
+            android:id="@+id/et_retrieve_pwd"
+            style="@style/et_login_register_style"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="@string/et_retrieve_input_pwd"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingTop="@dimen/dp_8" />
+
+        <com.tanker.loginmodule.widget.PasswordToggleEditText
+            android:id="@+id/et_retrieve_comfire_pwd"
+            style="@style/et_register_style"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="@string/et_retrieve_comfire_pwd"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingTop="@dimen/dp_8" />
+    </LinearLayout>
+
+</RelativeLayout>

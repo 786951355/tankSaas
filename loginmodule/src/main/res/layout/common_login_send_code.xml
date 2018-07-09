@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_login_send_code"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_70"
+    android:layout_gravity="center_vertical"
+    android:layout_weight="1.0"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/et_bottom_border_bg"
+    android:visibility="gone">
+
+    <com.tanker.loginmodule.widget.XmTankerEditText
+        android:id="@+id/et_login_verifi_code"
+        android:layout_weight="1.0"
+        style="@style/et_register_style"
+        android:drawablePadding="@dimen/dp_4"
+        android:layout_gravity="center_vertical"
+        android:hint="@string/et_input_code_hide"
+        android:drawableLeft="@drawable/icon_login_pwd"
+        android:maxLength="6"
+        android:inputType="number"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingLeft="@dimen/dp_4"
+        android:paddingTop="@dimen/dp_8" />
+
+    <View
+        android:layout_width="@dimen/dp_1"
+        android:layout_height="@dimen/dp_25"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/dp_4"
+        android:background="@color/colorWhite" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tv_login_send_code"
+        android:layout_width="@dimen/dp_96"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="@string/tv_login_send_code"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textSize="@dimen/sp_16" />
+</LinearLayout>

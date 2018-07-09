@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root_view"
+    android:background="@android:color/transparent">
+
+    <View
+        android:id="@+id/status_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/bg_gray" />
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:id="@+id/toolbar"
+        android:elevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:paddingTop="24dp">
+
+        <ImageView
+            android:id="@+id/left_action"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:src="@drawable/back_arrow" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_message_num"
+            android:text="99+"
+            android:textSize="10sp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:layout_marginLeft="24dp"
+            android:background="@drawable/message_num_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="@android:color/transparent"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="@color/text_green"
+            android:textSize="20sp"
+            tools:text="Title" />
+
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/right_action"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            tools:src="@drawable/leak_canary_icon" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/right_action"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            tools:text="退出" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_container"
+        android:background="@color/bg_gray"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar" />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/iv_error_data"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/no_data_img"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

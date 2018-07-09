@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">LoginModule</string>
+    <!--登录-->
+    <string name="tv_tranker_login_title">找罐车</string>
+    <string name="tv_tranker_login_title_py">zhaoguanche.com</string>
+    <string name="tv_login_send_code">获取验证码</string>
+    <string name="tv_login_resend_code">重新获取</string>
+    <string name="et_input_pwd_hide">请输入密码</string>
+    <string name="et_input_code_hide">请输入验证码</string>
+    <string name="tv_login_phone_pwd">用手机号密码登录</string>
+    <string name="tv_login_phone_code">用手机号验证码登录</string>
+    <string name="tv_read_agreement">阅读并同意找罐车《用户协议》</string>
+    <string name="tv_register">车主注册</string>
+    <string name="tv_retrieve_pwd">找回密码</string>
+    <string name="register_title">车主注册</string>
+    <string name="toast_input_phonenum_str">手机号或密码错误</string>
+    <string name="input_correct_phonenum">请输入正确的手机号码</string>
+    <string name="tv_input_phone_num_str">请输入您的手机号码</string>
+    <string name="et_input_pwd_hint_str">请输入您的密码</string>
+    <string name="toast_input_pwd_str">手机号或者密码错误</string>
+    <string name="input_error_pwd">请输入6-20个字符的密码，中文字符除外</string>
+    <string name="toast_input_code_str">验证码错误</string>
+    <string name="code_empty">验证码不能为空</string>
+    <string name="toast_please_read_check_useragreement">请阅读用户协议并勾选</string>
+    <string name="toast_input_phonenum_empty_str">手机号不能为空</string>
+    <string name="toast_input_pwd_empty_str">密码不能为空</string>
+    <string name="phoneorpwd_error">手机号或密码错误</string>
+
+    <!--注册-->
+    <string name="et_register_company">请填写真实公司名字</string>
+    <string name="et_register_username">请填写真实姓名</string>
+    <string name="et_register_phone_num">请输入11位手机号码</string>
+    <string name="et_register_pwd">请输入6-20位字符密码</string>
+    <string name="tv_register_next">注册</string>
+    <string name="et_register_comfire_pwd">请确保与密码保持一致</string>
+    <string name="tv_register_existing_account">已有账号?</string>
+    <string name="tv_register_to_login">去登录</string>
+    <string name="tv_register_success">恭喜你，注册成功!</string>
+    <string name="tv_register_success_authen">请去认证企业资质与个人资质，以免影响您的抢单功能。</string>
+    <string name="to_qualification">去认证资质</string>
+    <string name="tv_register_wait_authen">稍后去认证资质</string>
+    <string name="if_to_qualification_later">稍后资质认证会影响您的抢单功能，确认稍后维护资质？</string>
+    <string name="to_edit_qualification">去维护</string>
+    <string name="to_edit_qualification_later">稍后维护</string>
+
+    <!--找回密码-->
+    <string name="et_retrieve_phone_num">请填写手机号码</string>
+    <string name="et_retrieve_code">请输入验证码</string>
+    <string name="et_retrieve_input_pwd">请填写密码</string>
+    <string name="et_retrieve_comfire_pwd">请确认密码</string>
+    <string name="et_retrieve_pwd">找回密码</string>
+    <string name="tv_retrieve_pwd_comfire">确定</string>
+    <string name="toast_retrieve_pwd_success">修改密码成功</string>
+
+    <!--注册-->
+    <string name="toast_company_name_empty_str">请输入公司名称</string>
+    <string name="toast_company_name_format_str">请输入正确的公司名称</string>
+    <string name="toast_name_empty_str">姓名不能为空</string>
+    <string name="toast_name_format_str">请输入正确的姓名</string>
+    <string name="toast_comfire_pwd_str">输入的密码不一致，请重新输入</string>
+    <string name="tv_abort_str">退出</string>
+    <string name="tips_old_user">您还未维护密码，可以去找回密码</string>
+    <string name="tips_get_msg_success">验证码已发送！</string>
+    <string name="open_notification_tip">请打开应用的通知权限，以方便接收到通知消息</string>
+    <string name="btn_login">登录</string>
+</resources>

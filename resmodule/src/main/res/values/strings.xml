@@ -1,0 +1,10 @@
+<resources>
+    <!--登录-->
+    <!--注册-->
+    <!--找回密码-->
+    <!--注册-->
+    <string name="login_toast_company_name_empty_str">请输入公司名称</string>
+    <string name="login_toast_company_name_format_str">请输入正确的公司名称</string>
+    <string name="settingmodule_version_info">当前版本</string>
+    <string name="settingmodule_exit">退出</string>
+</resources>

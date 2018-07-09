@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="guide_texts">
+        <item>海量货源，一键抢单</item>
+        <item>接单报价，随时随地</item>
+        <item>在线沟通，轻松便捷</item>
+        <item>车辆司机，高效管理</item>
+    </string-array>
+</resources>
