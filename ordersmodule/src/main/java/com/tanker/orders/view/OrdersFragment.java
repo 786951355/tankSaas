@@ -34,6 +34,7 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
     protected OrderListFragment quotedGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.QUOTED);
     protected OrderListFragment biddingSuccessGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.SUCCESS);
     protected OrderListFragment biddingFailGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.FAILED);
+    protected OrderListFragment accountBookFragment = new OrderListFragment().newInstance(OrderStateType.ACCOUNT_BOOK);
     private ViewPager viewPager;
     private SlidingTabLayout stb;
     private Disposable disposable;
@@ -49,6 +50,7 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
         mFragments.add(quotedGrabOrderFragment);
         mFragments.add(biddingSuccessGrabOrderFragment);
         mFragments.add(biddingFailGrabOrderFragment);
+        mFragments.add(accountBookFragment);
         stb = parent.findViewById(R.id.stb);
         viewPager = parent.findViewById(R.id.vp_grab_order);
         OrdersPagerAdapter grabViewPagerAdapter = new OrdersPagerAdapter(getChildFragmentManager(), mTitles, mFragments);

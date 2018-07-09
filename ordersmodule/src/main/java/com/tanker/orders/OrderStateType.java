@@ -5,4 +5,5 @@ public interface OrderStateType {
     String QUOTED = "2";
     String SUCCESS = "3";
     String FAILED = "4";
+    String ACCOUNT_BOOK = "5";
 }

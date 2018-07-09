@@ -1,21 +1,4 @@
 <resources>
     <string name="app_name">MineModule</string>
-    <string name="exit">退出</string>
-    <string name="qualification">资质认证</string>
-    <string name="about_tanker">关于找罐车</string>
-    <string name="line">线路</string>
-    <string name="car_num">车辆</string>
-    <string name="mine_item_driver">司机/押车员</string>
-    <string name="address_info">地址信息</string>
-    <string name="invoice_info">开票资料</string>
-    <string name="setting">设置</string>
-    <!--<string name="title_line_search_result">线路搜索结果</string>-->
-    <!--<string name="title_car_search_result">车辆搜索结果</string>-->
-    <!--<string name="title_driver_search_result">司机搜索结果</string>-->
 
-    <!-- 关联车主 -->
-    <string name="minemodule_carriers_title">关联车主</string>
-
-    <string name="add_carrier_role">添加车主角色</string>
-    <string name="switch_to_driver">切换为司机</string>
 </resources>
