@@ -21,7 +21,7 @@ import com.zhaoguanche.setting.presenter.SettingPresenter;
  * Created by ronny on 2018/3/23.
  */
 
-public class SettingActivity extends BaseActivity<SettingPresenter> implements View.OnClickListener,SettingContract.View {
+public class SettingActivity extends BaseActivity<SettingPresenter> implements View.OnClickListener, SettingContract.View {
 
     private TextView mTvVersionNum;
     private TextView mTvPhoneNum;

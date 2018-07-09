@@ -36,5 +36,4 @@ public class OrdersPagerAdapter extends FragmentStatePagerAdapter {
     }
 
 
-
 }

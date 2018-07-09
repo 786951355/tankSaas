@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
@@ -36,8 +37,10 @@ import com.tanker.loginmodule.contract.LoginContract;
 import com.tanker.loginmodule.presenter.LoginPresenter;
 import com.tencent.bugly.beta.Beta;
 import com.umeng.analytics.MobclickAgent;
+
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

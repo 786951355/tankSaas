@@ -17,7 +17,7 @@ import com.tanker.loginmodule.R;
 import com.umeng.analytics.MobclickAgent;
 
 public class TankerRegisterSuccessActivity extends BaseActivity implements View.OnClickListener {
-   
+
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
@@ -51,7 +51,7 @@ public class TankerRegisterSuccessActivity extends BaseActivity implements View.
         if (viewId == R.id.btn_register_authen) {
             //友盟事件监听
             MobclickAgent.onEvent(mContext, "1119", "立即维护资质按键");
-            ReflectUtils.startActivityWithName( this, RouterConstants.BASIC_CERTIFICATION_EDIT);
+            ReflectUtils.startActivityWithName(this, RouterConstants.BASIC_CERTIFICATION_EDIT);
             //稍后资质认证
         } else if (viewId == R.id.btn_register_wait_authen) {
             //友盟事件监听
@@ -61,12 +61,12 @@ public class TankerRegisterSuccessActivity extends BaseActivity implements View.
                     getResources().getString(R.string.to_edit_qualification_later), new TankerTwoButtonDialog.OptionListener() {
                         @Override
                         public void onConfirm(TankerTwoButtonDialog obDialog) {
-                            ReflectUtils.startActivityWithName( TankerRegisterSuccessActivity.this, RouterConstants.BASIC_CERTIFICATION_EDIT);
+                            ReflectUtils.startActivityWithName(TankerRegisterSuccessActivity.this, RouterConstants.BASIC_CERTIFICATION_EDIT);
                         }
 
                         @Override
                         public void onCancel(TankerTwoButtonDialog obDialog) {
-                            ReflectUtils.navigationToHome(mContext,0);
+                            ReflectUtils.navigationToHome(mContext, 0);
                             mContext.finish();
                         }
                     });
@@ -81,7 +81,7 @@ public class TankerRegisterSuccessActivity extends BaseActivity implements View.
 
     private void showTwoButtonDialog(String msg, String leftText,
                                      String rightText, TankerTwoButtonDialog.OptionListener optionListener) {
-        TankerTwoButtonDialog dialog = new TankerTwoButtonDialog( this);
+        TankerTwoButtonDialog dialog = new TankerTwoButtonDialog(this);
         Bundle bundle = new Bundle();
         bundle.putString(DialogConst.DIALOG_CONFIRM_TEXT, leftText);
         bundle.putString(DialogConst.DIALOG_CANCEL_TEXT, rightText);

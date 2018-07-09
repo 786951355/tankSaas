@@ -231,7 +231,7 @@ public class DriverModel implements Parcelable {
         return enabled.equals("1") ? "开工" : "休业";
     }
 
-    public void initInvitation(){
+    public void initInvitation() {
         if (invitationState == null) {
             invitationText = "";
             invitationBg = 0;
@@ -318,7 +318,9 @@ public class DriverModel implements Parcelable {
         return "1".equals(enabled);
     }
 
-    public boolean getFollowerEnabled(){return "1".equals(escortEnabled);}
+    public boolean getFollowerEnabled() {
+        return "1".equals(escortEnabled);
+    }
 
     public void switchEnabled() {
         if ("1".equals(enabled)) {
@@ -327,7 +329,6 @@ public class DriverModel implements Parcelable {
             enabled = "1";
         }
     }
-
 
 
     public boolean isAllowDelete() {

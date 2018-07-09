@@ -32,7 +32,6 @@ public class TankerRetrieveActivity extends BaseActivity<RetrievePresenter> impl
         TimeUtils.ItimeTaskListener, RetrieveContract.View, RetrievePresenter.IretrieveCallBack, View.OnClickListener {
 
 
-
     @Override
     public int getContentView() {
         return R.layout.fragment_tanker_retrieve;
@@ -163,9 +162,6 @@ public class TankerRetrieveActivity extends BaseActivity<RetrievePresenter> impl
     protected TextView mTvTitle, mTvRetrieveComfire, mTvRetrieveSendCode;
     protected ImageView mIvBack;
     protected EditText mEtRetrievePhoneNum, mEtRetrieveVerifyCode, mEtRetrievePwd, mEtRetrieveComfirePwd;
-
-
-
 
 
     /**

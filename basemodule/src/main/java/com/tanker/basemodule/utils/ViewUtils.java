@@ -5,8 +5,8 @@ import android.text.method.DigitsKeyListener;
 import android.widget.EditText;
 
 public class ViewUtils {
-    public static void moveToEndSelection(EditText view){
-        view.setSelection(view.getText()!=null?view.getText().length():0);
+    public static void moveToEndSelection(EditText view) {
+        view.setSelection(view.getText() != null ? view.getText().length() : 0);
     }
 
     /**

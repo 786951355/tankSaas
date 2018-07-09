@@ -3,11 +3,8 @@ package com.tanker.basemodule.http;
 import com.orhanobut.hawk.Hawk;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
-import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -28,13 +25,13 @@ public class RetrofitCache {
                                          boolean isSave, boolean forceRefresh) {
         Observable<T> fromCache = Observable
                 .create((ObservableOnSubscribe<T>) e -> {
-                    T cache = Hawk.get(cacheKey);
-                    if (cache != null) {
-                        e.onNext(cache);
-                    } else {
-                        e.onComplete();
-                    }
-                }
+                            T cache = Hawk.get(cacheKey);
+                            if (cache != null) {
+                                e.onNext(cache);
+                            } else {
+                                e.onComplete();
+                            }
+                        }
                 ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
         //是否缓存
         if (isSave) {

@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class PictureUtils {
 
-    public static PictureInfo getPicInfo(String filePath){
-        PictureInfo pictureInfo=new PictureInfo();
+    public static PictureInfo getPicInfo(String filePath) {
+        PictureInfo pictureInfo = new PictureInfo();
         String address = GPSUtils.parseAddress(filePath);
         pictureInfo.setPicAddress(address);
         ExifInterface exifInterface = null;
@@ -19,16 +19,16 @@ public class PictureUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String newDate="";
-        String time="";
-        String week="";
-        if (exifInterface!=null){
+        String newDate = "";
+        String time = "";
+        String week = "";
+        if (exifInterface != null) {
             String picDate = exifInterface.getAttribute(ExifInterface.TAG_DATETIME);
-            if (!TextUtils.isEmpty(picDate)){
-                newDate = picDate.split(" ")[0].replace(":","-");
-                week= DateUtils.getWeek(newDate);
+            if (!TextUtils.isEmpty(picDate)) {
+                newDate = picDate.split(" ")[0].replace(":", "-");
+                week = DateUtils.getWeek(newDate);
                 time = picDate.split(" ")[1];
-                time=TextUtils.isEmpty(time)?"":time.substring(0,time.lastIndexOf(":"));
+                time = TextUtils.isEmpty(time) ? "" : time.substring(0, time.lastIndexOf(":"));
             }
         }
         pictureInfo.setPicTime(time);

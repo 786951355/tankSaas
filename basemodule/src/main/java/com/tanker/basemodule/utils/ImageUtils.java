@@ -3,12 +3,12 @@ package com.tanker.basemodule.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.text.TextUtils;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.tanker.basemodule.common.Logger;
@@ -27,7 +27,7 @@ public class ImageUtils {
         return newPath;
     }
 
-    public static String compressImg(String filePath, String newPath,int requiredSize) {
+    public static String compressImg(String filePath, String newPath, int requiredSize) {
         File file = new File(filePath);
         newPath = saveBitmapToFile(file, newPath, 6, requiredSize);
         return newPath;
@@ -67,7 +67,7 @@ public class ImageUtils {
             String filepath = newFile.getAbsolutePath();
             Logger.e("getAbsolutePath", newFile.getAbsolutePath());
 
-            if (selectedBitmap!=null){
+            if (selectedBitmap != null) {
                 selectedBitmap.recycle();
             }
             return filepath;
@@ -78,6 +78,7 @@ public class ImageUtils {
 
     /**
      * 设置水印图片在左上角
+     *
      * @param context
      * @param src
      * @param watermark
@@ -116,6 +117,7 @@ public class ImageUtils {
 
     /**
      * 设置水印图片在右下角
+     *
      * @param context
      * @param src
      * @param watermark
@@ -133,6 +135,7 @@ public class ImageUtils {
 
     /**
      * 设置水印图片到右上角
+     *
      * @param context
      * @param src
      * @param watermark
@@ -143,13 +146,14 @@ public class ImageUtils {
     public static Bitmap createWaterMaskRightTop(
             Context context, Bitmap src, Bitmap watermark,
             int paddingRight, int paddingTop) {
-        return createWaterMaskBitmap( src, watermark,
+        return createWaterMaskBitmap(src, watermark,
                 src.getWidth() - watermark.getWidth() - dp2px(context, paddingRight),
                 dp2px(context, paddingTop));
     }
 
     /**
      * 设置水印图片到左下角
+     *
      * @param context
      * @param src
      * @param watermark
@@ -166,6 +170,7 @@ public class ImageUtils {
 
     /**
      * 设置水印图片到中间
+     *
      * @param src
      * @param watermark
      * @return
@@ -178,6 +183,7 @@ public class ImageUtils {
 
     /**
      * 给图片添加文字到左上角
+     *
      * @param context
      * @param bitmap
      * @param text
@@ -197,6 +203,7 @@ public class ImageUtils {
 
     /**
      * 绘制文字到右下角
+     *
      * @param context
      * @param bitmap
      * @param text
@@ -220,6 +227,7 @@ public class ImageUtils {
 
     /**
      * 绘制文字到右上方
+     *
      * @param context
      * @param bitmap
      * @param text
@@ -243,6 +251,7 @@ public class ImageUtils {
 
     /**
      * 绘制文字到左下方
+     *
      * @param context
      * @param bitmap
      * @param text
@@ -266,6 +275,7 @@ public class ImageUtils {
 
     /**
      * 绘制文字到中间
+     *
      * @param context
      * @param bitmap
      * @param text
@@ -304,6 +314,7 @@ public class ImageUtils {
 
     /**
      * 缩放图片
+     *
      * @param src
      * @param w
      * @param h
@@ -330,14 +341,14 @@ public class ImageUtils {
 
 
     /**
-     *  @author lwj
-     *  @describe 图片上绘制多行重复文字，可设置旋转角度
-     *  @params text：文本 size：文本大小  color：文本颜色 rotateDegrees：旋转角度
-     *  @time 2018/6/20 15:34
+     * @author lwj
+     * @describe 图片上绘制多行重复文字，可设置旋转角度
+     * @params text：文本 size：文本大小  color：文本颜色 rotateDegrees：旋转角度
+     * @time 2018/6/20 15:34
      */
     public static Bitmap drawTextsToBitmap(Context context, ImageView imageView, String text,
-                                           float size, int color , float rotateDegrees,float drawSpace) {
-        Bitmap bitmap=((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                                           float size, int color, float rotateDegrees, float drawSpace) {
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(color);
         paint.setTextSize(dp2px(context, size));
@@ -365,8 +376,8 @@ public class ImageUtils {
         float textWidth = paint.measureText(text);
         int index = 0;
         //canvas.drawText(text, paddingLeft, paddingTop, paint);
-        float height= bitmap.getHeight();
-        float width= bitmap.getWidth();
+        float height = bitmap.getHeight();
+        float width = bitmap.getWidth();
         //行循环，从高度为0开始，向下每隔40dp开始绘制文字
         for (int positionY = -dp2px(context, 30); positionY <= height; positionY += dp2px(context, drawSpace)) {
             //设置每行文字开始绘制的位置,0.58是根据角度算出tan30°,后面的(index++ % 2) * textWidth是为了展示效果交错绘制
@@ -381,13 +392,13 @@ public class ImageUtils {
     }
 
     /**
-     *  @author lwj
-     *  @describe 图片上绘制多行重复文字，可设置旋转角度
-     *  @params text：文本 size：文本大小  color：文本颜色 rotateDegrees：旋转角度 drawSpace:绘制文本间距
-     *  @time 2018/6/20 15:34
+     * @author lwj
+     * @describe 图片上绘制多行重复文字，可设置旋转角度
+     * @params text：文本 size：文本大小  color：文本颜色 rotateDegrees：旋转角度 drawSpace:绘制文本间距
+     * @time 2018/6/20 15:34
      */
     public static Bitmap drawTextsToBitmap(Context context, Bitmap bitmap, String text,
-                                           float size, int color , float rotateDegrees,float drawSpace) {
+                                           float size, int color, float rotateDegrees, float drawSpace) {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(color);
         //paint.setTextSize(dp2px(context, size));
@@ -416,8 +427,8 @@ public class ImageUtils {
         float textWidth = paint.measureText(text);
         int index = 0;
         //canvas.drawText(text, paddingLeft, paddingTop, paint);
-        float height= bitmap.getHeight();
-        float width= bitmap.getWidth();
+        float height = bitmap.getHeight();
+        float width = bitmap.getWidth();
         //行循环，从高度为0开始，向下每隔40dp开始绘制文字
         for (int positionY = -dp2px(context, 30); positionY <= height; positionY += dp2px(context, drawSpace)) {
             //设置每行文字开始绘制的位置,0.58是根据角度算出tan30°,后面的(index++ % 2) * textWidth是为了展示效果交错绘制
@@ -433,6 +444,7 @@ public class ImageUtils {
 
     /**
      * dip转pix
+     *
      * @param context
      * @param dp
      * @return
@@ -465,9 +477,9 @@ public class ImageUtils {
         }
     }
 
-    public static String compressImg(String filePath, String newPath,int inSampleSize,int Required_size) {
+    public static String compressImg(String filePath, String newPath, int inSampleSize, int Required_size) {
         File file = new File(filePath);
-        newPath = saveBitmapToFile(file, newPath,inSampleSize,Required_size);
+        newPath = saveBitmapToFile(file, newPath, inSampleSize, Required_size);
         return newPath;
     }
 

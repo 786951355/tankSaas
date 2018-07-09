@@ -48,7 +48,7 @@ public class WaterMarkUtils {
      */
     public static Bitmap drawWatermark(Bitmap bitmap, PictureInfo pictureInfo, String bookingNum) {
         String time = pictureInfo.getPicTime();
-        String data = pictureInfo.getPicDate()+" "+pictureInfo.getPicWeek();
+        String data = pictureInfo.getPicDate() + " " + pictureInfo.getPicWeek();
         String address = pictureInfo.getPicAddress();
 
         BitmapDrawable bitmapDrawable = (BitmapDrawable) TankerApp.getInstance().getResources().getDrawable(R.drawable.watermark_logo);

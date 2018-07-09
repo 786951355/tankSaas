@@ -28,24 +28,24 @@ public class CustomImageView extends LinearLayout {
     public ImageModel imageModel;
 
     public CustomImageView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public CustomImageView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public CustomImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.mContext =context;
+        this.mContext = context;
         initChild();
         addChildrenView();
-        imageModel=new ImageModel();
+        imageModel = new ImageModel();
         RxBus.getInstanceBus().doSubscribe(ImageModel.class, new Consumer<ImageModel>() {
             @Override
             public void accept(ImageModel image) {
                 imageModel.setLocalUrl(image.getLocalUrl());
-                onImageListern.onProcess(imageModel.getLocalUrl(),CustomImageView.this);
+                onImageListern.onProcess(imageModel.getLocalUrl(), CustomImageView.this);
 
             }
         }, new Consumer<Throwable>() {
@@ -64,12 +64,12 @@ public class CustomImageView extends LinearLayout {
         imageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!imageModel.hasImage()){//没有图片去添加图片
+                if (!imageModel.hasImage()) {//没有图片去添加图片
                     TAimationUtils.startLoadingAnimation((ImageView) v);
-                    Intent intent =new Intent(mContext, PhotoPickerActivity.class);
+                    Intent intent = new Intent(mContext, PhotoPickerActivity.class);
                     mContext.startActivity(intent);
-                }else{//有图片预览图片
-                    Intent intent =new Intent(mContext, PhotoPagerActivity.class);
+                } else {//有图片预览图片
+                    Intent intent = new Intent(mContext, PhotoPagerActivity.class);
 //                    intent.putParcelableArrayListExtra(PhotoPreview.EXTRA_PHOTOS, imageModel.getLocalUrl());
 //                    intent.putExtra(PhotoPreview.EXTRA_IS_MOVE, false);
                     mContext.startActivity(intent);
@@ -79,26 +79,26 @@ public class CustomImageView extends LinearLayout {
     }
 
     private void initChild() {
-        LayoutParams imageViewParams=new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT,1);
-        addView(imageView,imageViewParams);
-        LayoutParams textParams=new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
-        addView(tV_lable,textParams);
+        LayoutParams imageViewParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1);
+        addView(imageView, imageViewParams);
+        LayoutParams textParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        addView(tV_lable, textParams);
     }
 
-    public void showImage(String url){
+    public void showImage(String url) {
         TAimationUtils.cancleAnimation(imageView);
-        ShowImageUtils.showImageView(mContext,url,imageView);
+        ShowImageUtils.showImageView(mContext, url, imageView);
     }
 
-    public void setLable(String lable){
+    public void setLable(String lable) {
         tV_lable.setText(lable);
     }
 
-    public void setOnImageListener(OnImageListener onImageListener){
-        this.onImageListern=onImageListener;
+    public void setOnImageListener(OnImageListener onImageListener) {
+        this.onImageListern = onImageListener;
     }
 
-    interface OnImageListener{
+    interface OnImageListener {
         void onProcess(String localUrl, CustomImageView cImageView);
     }
 

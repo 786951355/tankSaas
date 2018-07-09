@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
@@ -50,7 +50,7 @@ public class PhotoPagerAdapter extends PagerAdapter {
 
         final ImageView imageView = itemView.findViewById(R.id.iv_pager);
 
-        final String path = AppConstants.IMAGE_SEVER+ paths.get(position).getNetPath();
+        final String path = AppConstants.IMAGE_SEVER + paths.get(position).getNetPath();
         final String localPath = paths.get(position).getLocalPath();
         final Uri uri;
         if (!TextUtils.isEmpty(localPath)) {
@@ -80,12 +80,12 @@ public class PhotoPagerAdapter extends PagerAdapter {
 
                         @Override
                         public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                            if(TextUtils.isEmpty(waterMark)){
+                            if (TextUtils.isEmpty(waterMark)) {
                                 return false;
-                            }else {
-                                Bitmap bitmap= ((BitmapDrawable) resource).getBitmap();
-                                if(bitmap!=null){
-                                    Bitmap bitmap_new= ImageUtils.drawTextsToBitmap(context,bitmap,waterMark,context.getResources().getDimension(R.dimen.watermark_big_size),context.getResources().getColor(R.color.text_watermark),-30,60);
+                            } else {
+                                Bitmap bitmap = ((BitmapDrawable) resource).getBitmap();
+                                if (bitmap != null) {
+                                    Bitmap bitmap_new = ImageUtils.drawTextsToBitmap(context, bitmap, waterMark, context.getResources().getDimension(R.dimen.watermark_big_size), context.getResources().getColor(R.color.text_watermark), -30, 60);
                                     imageView.setImageBitmap(bitmap_new);
                                 }
                                 return true;

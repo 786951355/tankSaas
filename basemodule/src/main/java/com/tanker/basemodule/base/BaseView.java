@@ -24,7 +24,7 @@ public interface BaseView {
 
     void showAlertDialogNoCancel(String content, String secondContent, int ImageRes, TankerDialog.OptionListener optionListener);
 
-    void showAlertDialogNoCancel(String content, String confirmText,TankerDialog.OptionListener optionListener);
+    void showAlertDialogNoCancel(String content, String confirmText, TankerDialog.OptionListener optionListener);
 
     void showMessage(String error);
 

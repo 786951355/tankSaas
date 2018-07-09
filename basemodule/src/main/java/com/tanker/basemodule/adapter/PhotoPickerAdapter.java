@@ -71,7 +71,7 @@ public class PhotoPickerAdapter extends ExpandableGridAdapter {
     @Override
     public View getGridGroupView(int gridGroupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 //        if (convertView == null)
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image_title, parent, false);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image_title, parent, false);
         TextView tvTitle = convertView.findViewById(R.id.tv_title);
         tvTitle.setTextColor(groupTextColor);
         tvTitle.setTextSize(DensityUtils.px2dip(groupTextSize));

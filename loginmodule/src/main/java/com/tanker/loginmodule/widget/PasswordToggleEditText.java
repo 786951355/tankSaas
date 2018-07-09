@@ -50,7 +50,7 @@ public class PasswordToggleEditText extends AppCompatEditText implements
      */
     private void init() {
         //获取EditText的DrawableRight,主要是通过xml或者外部设置右边的按钮，如果没有设置就采用默认的
-        mToggleDrawable =  ContextCompat.getDrawable(getContext(), R.drawable.icon_login_pwd_hide);
+        mToggleDrawable = ContextCompat.getDrawable(getContext(), R.drawable.icon_login_pwd_hide);
         mToggleDrawable.setBounds(0, 0, mToggleDrawable.getIntrinsicWidth(), mToggleDrawable.getIntrinsicHeight());
         setToggleIconVisible(false);
         setOnFocusChangeListener(this);

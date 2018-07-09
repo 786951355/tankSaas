@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -26,7 +25,7 @@ public class TestMainActivity extends Activity {
 
     private ImageView testImg;
     private Button btn;
-    private String temPath= "/storage/emulated/0/DCIM/Camera/temp.jpg";
+    private String temPath = "/storage/emulated/0/DCIM/Camera/temp.jpg";
     private String TAG = "fdf";
     private String addressLine;
 
@@ -52,21 +51,14 @@ public class TestMainActivity extends Activity {
                 photos = data.getParcelableArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
             }
             if (photos != null && photos.size() > 0) {
-                ImageUtils.compressImg(photos.get(0).getLocalPath(), temPath,800);
+                ImageUtils.compressImg(photos.get(0).getLocalPath(), temPath, 800);
                 Bitmap sourceBitmap = ImageUtils.readBitmapFromFile(temPath);
                 PictureInfo picInfo = PictureUtils.getPicInfo(photos.get(0).getLocalPath());
-                Bitmap waterMaskLeftBottom= WaterMarkUtils.drawWatermark(sourceBitmap,picInfo,"运单号：Y45454354356");
+                Bitmap waterMaskLeftBottom = WaterMarkUtils.drawWatermark(sourceBitmap, picInfo, "运单号：Y45454354356");
                 testImg.setImageBitmap(waterMaskLeftBottom);
             }
         }
     }
-
-
-
-
-
-
-
 
 
 }

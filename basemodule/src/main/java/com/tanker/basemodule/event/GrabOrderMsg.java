@@ -5,12 +5,12 @@ public class GrabOrderMsg {
     private boolean isRefreshDot;
 
     public GrabOrderMsg(String extraMsgType) {
-        this.msgType=extraMsgType;
+        this.msgType = extraMsgType;
     }
 
     public GrabOrderMsg(boolean isRefreshDot) {
-        msgType="";
-        this.isRefreshDot=isRefreshDot;
+        msgType = "";
+        this.isRefreshDot = isRefreshDot;
     }
 
     public String getMsgType() {

@@ -2,8 +2,8 @@ package com.tanker.basemodule.model;
 
 class ImageInfoRequest {
 
-    private String pictureTime ;
-    private String billPath ;
+    private String pictureTime;
+    private String billPath;
     private String picturePlace;
 
     public String getPictureTime() {
@@ -33,9 +33,9 @@ class ImageInfoRequest {
     @Override
     public String toString() {
         return "{" +
-                "pictureTime=" + pictureTime  +
+                "pictureTime=" + pictureTime +
                 ", billPath=" + billPath +
-                ", picturePlace=" + picturePlace  +
+                ", picturePlace=" + picturePlace +
                 '}';
     }
 }

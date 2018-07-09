@@ -9,6 +9,7 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textColorHint">@color/color_c7c7c7</item>
     </style>
+
     <style name="et_register_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dp_70</item>

@@ -29,7 +29,7 @@ import io.reactivex.disposables.Disposable;
 public class OrdersFragment extends BaseFragment<OrdersPresenter> implements OrdersContract.View {
     private static final String TAG = OrdersFragment.class.getName();
     private ArrayList<OrderListFragment> mFragments = new ArrayList<>();
-    private final String[] mTitles = {"待装货", "待卸货", "已签收", "已取消","账本"};
+    private final String[] mTitles = {"待装货", "待卸货", "已签收", "已取消", "账本"};
     protected OrderListFragment waitGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.WAITTING);
     protected OrderListFragment quotedGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.QUOTED);
     protected OrderListFragment biddingSuccessGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.SUCCESS);
@@ -108,14 +108,14 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
         super.onResume();
         reduceDot();
         MobclickAgent.onResume(getActivity()); //统计时长
-        Log.d(TAG, "onResume: "+"来了onResume");
+        Log.d(TAG, "onResume: " + "来了onResume");
     }
 
     @Override
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(getActivity()); //统计时长
-        Log.d(TAG, "onPause: "+"来了onPause");
+        Log.d(TAG, "onPause: " + "来了onPause");
     }
 
     private void reduceDot() {
@@ -137,9 +137,9 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
         stb.showMsg(position, msgCount);
         if (msgCount <= 0) {
             stb.hideMsg(position);
-        } else if (msgCount>9&&msgCount<=99){
+        } else if (msgCount > 9 && msgCount <= 99) {
             stb.getMsgView(position).setTextSize(12);
-        }else if (msgCount>99){
+        } else if (msgCount > 99) {
             stb.getMsgView(position).setTextSize(8);
         }
 

@@ -14,7 +14,7 @@ public class OrdersMsg<T> {
     }
 
     public OrdersMsg(String s) {
-        this.type=s;
+        this.type = s;
     }
 
     public String getType() {

@@ -1,10 +1,14 @@
 package com.tanker.basemodule.model.app_model;
 
 public class SplashPicModel {
-    /** 广告启动图image */
+    /**
+     * 广告启动图image
+     */
     private String pictureSrc;
 
-    /** 广告启动图title */
+    /**
+     * 广告启动图title
+     */
     private String pictureTitle;
 
     public String getPictureSrc() {

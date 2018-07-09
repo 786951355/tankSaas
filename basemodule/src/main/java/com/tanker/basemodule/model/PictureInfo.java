@@ -3,7 +3,7 @@ package com.tanker.basemodule.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class PictureInfo implements Parcelable{
+public class PictureInfo implements Parcelable {
     private String picAddress;
     private String picTime;
     private String picDate;
@@ -56,7 +56,7 @@ public class PictureInfo implements Parcelable{
     }
 
     public void setPicWeek(String week) {
-        this.week=week;
+        this.week = week;
     }
 
     public String getPicWeek() {

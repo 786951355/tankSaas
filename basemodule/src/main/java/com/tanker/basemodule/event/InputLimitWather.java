@@ -20,8 +20,6 @@ public class InputLimitWather implements TextWatcher {
     private String regex;
 
 
-
-
     /**
      * 构造方法
      *
@@ -74,7 +72,7 @@ public class InputLimitWather implements TextWatcher {
 
         Pattern r = Pattern.compile(regex);
         Matcher m = r.matcher(str);
-        if (!m.matches()){
+        if (!m.matches()) {
             return "";
         }
         return str;

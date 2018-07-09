@@ -56,12 +56,12 @@ public class CustomToolbar {
         this.rightImage = righticon;
         this.tvTitle = tvTitle;
         this.statusLine = statusLine;
-        this.tvMessageNum=tvMessageNum;
+        this.tvMessageNum = tvMessageNum;
     }
 
     public static CustomToolbar newInstance(RelativeLayout toolbar, ImageView leftAction,
                                             AppCompatTextView rightAction, ImageView rightIcon, TextView tvTitle, View statusLine, TextView tvMessageNum) {
-        return new CustomToolbar(toolbar, leftAction, rightAction, rightIcon, tvTitle, statusLine,tvMessageNum);
+        return new CustomToolbar(toolbar, leftAction, rightAction, rightIcon, tvTitle, statusLine, tvMessageNum);
     }
 
     public CustomToolbar setBackground(@ColorRes int bgColor) {
@@ -118,11 +118,11 @@ public class CustomToolbar {
         return this;
     }
 
-    public CustomToolbar setMessageNum(int num){
-        if (num>0){
-            tvMessageNum.setText(num+"");
+    public CustomToolbar setMessageNum(int num) {
+        if (num > 0) {
+            tvMessageNum.setText(num + "");
             tvMessageNum.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             tvMessageNum.setVisibility(View.GONE);
         }
 

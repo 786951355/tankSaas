@@ -16,11 +16,11 @@
         android:layout_height="49dp"
         android:layout_alignParentBottom="true"
         android:background="@android:color/white"
+        android:elevation="4dp"
         tl:tl_textSelectColor="@color/text_green"
         tl:tl_textUnselectColor="@color/text_gray"
         tl:tl_textsize="11sp"
         tl:tl_iconHeight="22dp"
-        tl:tl_iconWidth="18dp"
-        android:elevation="4dp"/>
+        tl:tl_iconWidth="18dp" />
 
 </RelativeLayout>

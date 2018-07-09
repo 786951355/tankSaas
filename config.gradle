@@ -20,8 +20,8 @@ ext {
              "login"    : "com.zhaoguanche.saas.login",
              "setting"  : "com.zhaoguanche.saas.setting",
              "orders"   : "com.zhaoguanche.saas.orders",
-             "home"   : "com.zhaoguanche.saas.home",
-             "workbench"   : "com.zhaoguanche.saas.workbench"]
+             "home"     : "com.zhaoguanche.saas.home",
+             "workbench": "com.zhaoguanche.saas.workbench"]
     url = [
             "uat"    : "http://uat.carrierapi.tankchaoren.com",
             "debug"  : "https://test.carrierapi.tankchaoren.com",

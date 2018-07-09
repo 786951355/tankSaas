@@ -53,19 +53,19 @@ public class DriverInfoModel implements Parcelable {
     public DriverInfoModel() {
     }
 
-    public DriverInfoModel(DriverInfoModel driverInfoModel){
-        this.driverId=driverInfoModel.driverId;
-        this.driverName=driverInfoModel.driverName;
-        this.auditStatus=driverInfoModel.auditStatus;
-        this.role=driverInfoModel.role;
-        this.enabled=driverInfoModel.enabled;
-        this.driverPhone=driverInfoModel.driverPhone;
-        this.drivingIdentityBackFile=driverInfoModel.drivingIdentityBackFile;
-        this.drivingIdentityFrontFile=driverInfoModel.drivingIdentityFrontFile;
-        this.drivingLicenseImage=driverInfoModel.drivingLicenseImage;
-        this.qualificationCertificateImage=driverInfoModel.qualificationCertificateImage;
-        this.followVehiclesImage=driverInfoModel.followVehiclesImage;
-        this.drivingIdentityNumber=driverInfoModel.drivingIdentityNumber;
+    public DriverInfoModel(DriverInfoModel driverInfoModel) {
+        this.driverId = driverInfoModel.driverId;
+        this.driverName = driverInfoModel.driverName;
+        this.auditStatus = driverInfoModel.auditStatus;
+        this.role = driverInfoModel.role;
+        this.enabled = driverInfoModel.enabled;
+        this.driverPhone = driverInfoModel.driverPhone;
+        this.drivingIdentityBackFile = driverInfoModel.drivingIdentityBackFile;
+        this.drivingIdentityFrontFile = driverInfoModel.drivingIdentityFrontFile;
+        this.drivingLicenseImage = driverInfoModel.drivingLicenseImage;
+        this.qualificationCertificateImage = driverInfoModel.qualificationCertificateImage;
+        this.followVehiclesImage = driverInfoModel.followVehiclesImage;
+        this.drivingIdentityNumber = driverInfoModel.drivingIdentityNumber;
         this.ifAllowUpdate = driverInfoModel.ifAllowUpdate;
         this.invitationState = driverInfoModel.invitationState;
     }
@@ -104,7 +104,7 @@ public class DriverInfoModel implements Parcelable {
         return ifAllowUpdate;
     }
 
-    public boolean isAllowUpdate(){
+    public boolean isAllowUpdate() {
         return "0".equals(ifAllowUpdate);
     }
 
@@ -235,19 +235,19 @@ public class DriverInfoModel implements Parcelable {
         return !TextUtils.isEmpty(drivingIdentityFrontFile);
     }
 
-    public boolean hasIDBackImg(){
+    public boolean hasIDBackImg() {
         return !TextUtils.isEmpty(drivingIdentityBackFile);
     }
 
-    public boolean hasDrivingLicenseImg(){
+    public boolean hasDrivingLicenseImg() {
         return !TextUtils.isEmpty(drivingLicenseImage);
     }
 
-    public boolean hasFollowVehicleImg(){
+    public boolean hasFollowVehicleImg() {
         return !TextUtils.isEmpty(followVehiclesImage);
     }
 
-    public boolean hasQualiCertificateImg(){
+    public boolean hasQualiCertificateImg() {
         return !TextUtils.isEmpty(qualificationCertificateImage);
     }
 }

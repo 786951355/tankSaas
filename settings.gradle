@@ -1,1 +1,1 @@
-include ':app', ':basemodule', ':resmodule', ':loginmodule' , ':workbenchmodule', ':ordersmodule', ':homemodule', ':settingmodule'
+include ':app', ':basemodule', ':resmodule', ':loginmodule', ':workbenchmodule', ':ordersmodule', ':homemodule', ':settingmodule'

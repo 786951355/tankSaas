@@ -12,6 +12,7 @@ import com.umeng.analytics.MobclickAgent;
 
 public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements WelcomeContract.View {
     private static final String TAG = WelcomeActivity.class.getName();
+
     @Override
     protected void initView() {
         //友盟禁止默认的页面统计功能
@@ -46,7 +47,7 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
         super.onResume();
         //手动统计页面(页面名称可自定义)
         MobclickAgent.onPageStart("WelcomeActivity");
-        Log.d(TAG, "onResume: "+"来了");
+        Log.d(TAG, "onResume: " + "来了");
     }
 
     @Override
@@ -54,6 +55,6 @@ public class WelcomeActivity extends BaseActivity<WelcomePresenter> implements W
         super.onPause();
         //手动统计页面(页面名称可自定义)
         MobclickAgent.onPageEnd("WelcomeActivity");
-        Log.d(TAG, "onPause: "+"来了");
+        Log.d(TAG, "onPause: " + "来了");
     }
 }

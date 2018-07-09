@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhaoguanche.setting" >
+    package="com.zhaoguanche.setting">
+
     <application
         android:allowBackup="true"
         android:name="com.tanker.basemodule.common.TankerApp"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--<external-path-->
-        <!--name="images"-->
-        <!--path="DCIM/Camera/" />-->
+    <!--name="images"-->
+    <!--path="DCIM/Camera/" />-->
     <files-path
         name="files"
         path="." />

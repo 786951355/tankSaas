@@ -19,7 +19,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @Override
     protected void initData() {
         super.initData();
-        mPresenter=new HomePresenter(this);
+        mPresenter = new HomePresenter(this);
     }
 
     @Override

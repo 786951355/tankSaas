@@ -157,7 +157,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     }
 
     protected void initToolbar() {
-        mCustomToolbar = CustomToolbar.newInstance(toolbar, leftAction, rightAction, rightIcon, tvTitle, statusLine,tvMessageNum);
+        mCustomToolbar = CustomToolbar.newInstance(toolbar, leftAction, rightAction, rightIcon, tvTitle, statusLine, tvMessageNum);
         configToolbar(mCustomToolbar);
     }
 
@@ -239,7 +239,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             bundle.putString(DialogConst.DIALOG_TITLE_TEXT, title);
         }
         bundle.putInt(DialogConst.DIALOG_MESSAGE_TYPE, TankerDialog.IMAGE_DIALOG_WITH_TWO_CONTENT);
-        bundle.putInt(DialogConst.DIALOG_HEIGHT, ImageRes==-1?DialogConst.DIALOG_DEFAULT_HEIGHT:DialogConst.DIALOG_SECOND_HEIGHT);
+        bundle.putInt(DialogConst.DIALOG_HEIGHT, ImageRes == -1 ? DialogConst.DIALOG_DEFAULT_HEIGHT : DialogConst.DIALOG_SECOND_HEIGHT);
         bundle.putString(DialogConst.DIALOG_CONTENT_TEXT, msg);
         if (ImageRes != -1) {
             bundle.putInt(DialogConst.DIALOG_IMAGE_RES_ID, ImageRes);
@@ -365,7 +365,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
-        if (requestCode == 1&&permissions.length>0) {
+        if (requestCode == 1 && permissions.length > 0) {
             if (permissions[0].equals(Manifest.permission.CALL_PHONE)
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + AppConstants.getServicePhone()));

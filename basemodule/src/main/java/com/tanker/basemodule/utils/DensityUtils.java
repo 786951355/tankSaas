@@ -29,7 +29,7 @@ public class DensityUtils {
     /**
      * 将px值转换为sp值，保证文字大小不变
      */
-    public static int px2sp( float pxValue) {
+    public static int px2sp(float pxValue) {
         final float fontScale = TankerApp.getInstance().getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
@@ -42,13 +42,13 @@ public class DensityUtils {
         return (int) (spValue * fontScale + 0.5f);
     }
 
-    public static int getWindowWidth(){
+    public static int getWindowWidth() {
         DisplayMetrics displayMetrics = TankerApp.getInstance().getResources().getDisplayMetrics();
         int width = displayMetrics.widthPixels;
-      return width;
+        return width;
     }
 
-    public static int getWindowHeight(){
+    public static int getWindowHeight() {
         DisplayMetrics displayMetrics = TankerApp.getInstance().getResources().getDisplayMetrics();
         int height = displayMetrics.heightPixels;
         return height;

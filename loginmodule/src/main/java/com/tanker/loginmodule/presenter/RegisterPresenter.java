@@ -48,7 +48,7 @@ public class RegisterPresenter extends RegisterContract.Presenter {
             @Override
             public void onNext(LoginModel loginModel) {
                 UserInfo user = loginModel.getUserInfo();
-                if (user!=null){
+                if (user != null) {
                     //AuthBookActiivty的退出字段是通过AuditStatus是否为空判断的
                     //所以如果是注册过去的设置盖字段
                     user.setAuditStatus("");
@@ -59,7 +59,7 @@ public class RegisterPresenter extends RegisterContract.Presenter {
                     mView.dismissProgress();
                     mView.navigationTo(TankerRegisterSuccessActivity.class);
                     mView.getContext().finish();
-                }else{
+                } else {
                     mView.showMessage("用户信息获取失败，请重新尝试");
                 }
             }
@@ -121,7 +121,7 @@ public class RegisterPresenter extends RegisterContract.Presenter {
             public void onNext(ConfigInfo configInfo) {
                 configInfo.setNeedUpdate(true);
                 TankerApp.getInstance().getConfigManager().setConfigInfo(configInfo);
-                register(platform, userPhone,userPwd,vertificationCode);
+                register(platform, userPhone, userPwd, vertificationCode);
             }
 
             @Override

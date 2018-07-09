@@ -10,19 +10,20 @@
         <activity
             android:name=".view.TankerLoginActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <!--找回密码-->
         <activity
             android:name=".view.TankerRetrieveActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".view.DebugActivity"/>
+        <activity android:name=".view.DebugActivity" />
 
         <activity
             android:name=".view.TankerRegisterActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity android:name=".view.TankerRegisterSuccessActivity"
+        <activity
+            android:name=".view.TankerRegisterSuccessActivity"
             android:launchMode="singleTask" />
 
     </application>

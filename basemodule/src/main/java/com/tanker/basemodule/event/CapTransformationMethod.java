@@ -6,7 +6,7 @@ import android.text.method.ReplacementTransformationMethod;
  * author zhanglei
  * date 2018/6/29
  * description 小写字符转化成大写 EditText.setTransformationMethod(new CapTransformationMethod());
-**/
+ **/
 public class CapTransformationMethod extends ReplacementTransformationMethod {
     @Override
     protected char[] getOriginal() {

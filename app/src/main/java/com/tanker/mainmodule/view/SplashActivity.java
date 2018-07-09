@@ -20,8 +20,8 @@ import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.basemodule.common.Logger;
 import com.tanker.basemodule.common.TankerApp;
 import com.tanker.basemodule.model.app_model.SplashPicModel;
-import com.tanker.mainmodule.R;
 import com.tanker.basemodule.router.ReflectUtils;
+import com.tanker.mainmodule.R;
 
 import java.util.concurrent.TimeUnit;
 

@@ -24,7 +24,7 @@ public class GPSUtils {
         double[] locations = getLocation(imagePath);
         Geocoder gc = new Geocoder(TankerApp.getInstance().getApplicationContext(), Locale.getDefault());
         List<android.location.Address> locationList = null;
-        if (!gc.isPresent()) {
+        if (!Geocoder.isPresent()) {
             Toast.makeText(TankerApp.getInstance().getApplicationContext(), "地理位置服务不存在", Toast.LENGTH_LONG).show();
             return "";
         }
@@ -38,17 +38,17 @@ public class GPSUtils {
         }
         Address address = locationList.get(0);//得到Address实例
         String cityName = address.getLocality();//  得到城市名称，比如：上海市
-        String area=address.getSubLocality();   //  区名字：虹口区
-        String road=address.getThoroughfare();  //  街道  ：汶水东路
-        String roadNum =address.getSubThoroughfare();  // 门牌号 ：351号b座
+        String area = address.getSubLocality();   //  区名字：虹口区
+        String road = address.getThoroughfare();  //  街道  ：汶水东路
+        String roadNum = address.getSubThoroughfare();  // 门牌号 ：351号b座
 
-        String featureName=address.getFeatureName();   //部分手机该字段为空，该字段的名称比较全面 优先获取 "汶水东路351号b座1876老站创意园"
+        String featureName = address.getFeatureName();   //部分手机该字段为空，该字段的名称比较全面 优先获取 "汶水东路351号b座1876老站创意园"
 
         String addressLine = " ";
-        if (TextUtils.isEmpty(featureName)){ //如果获取不到featureName那么可以就用其他字段拼凑出完整的地址
-            addressLine = cityName+area+road+roadNum;
-        }else{
-            addressLine = cityName+area+featureName;
+        if (TextUtils.isEmpty(featureName)) { //如果获取不到featureName那么可以就用其他字段拼凑出完整的地址
+            addressLine = cityName + area + road + roadNum;
+        } else {
+            addressLine = cityName + area + featureName;
         }
 
         return addressLine.trim()
@@ -137,11 +137,8 @@ public class GPSUtils {
         boolean gps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         // 通过WLAN或移动网络(3G/2G)确定的位置（也称作AGPS，辅助GPS定位。主要用于在室内或遮盖物（建筑群或茂密的深林等）密集的地方定位）
         boolean network = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        if (gps || network) {
-            return true;
-        }
+        return gps || network;
 
-        return false;
     }
 
     /**

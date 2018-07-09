@@ -69,7 +69,7 @@ public class BiddingOrderDetModel implements Serializable {
     private String otherFees;
     private String quotedCount;
     private String quotedPrice;
-//    报价类型  0：未报价 1 报单价  2包车价
+    //    报价类型  0：未报价 1 报单价  2包车价
     private String quotedPriceType;
     private String receiverMobilePhone;
     private String receiverName;
@@ -89,7 +89,7 @@ public class BiddingOrderDetModel implements Serializable {
     private String ifConfirmQuote;
 
 
-    public boolean isExpectUnitPrice(){
+    public boolean isExpectUnitPrice() {
         return "1".equals(expectationPriceType);
     }
 

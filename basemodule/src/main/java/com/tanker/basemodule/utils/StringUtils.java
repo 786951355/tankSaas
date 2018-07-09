@@ -25,7 +25,7 @@ public class StringUtils {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < pNumber.length(); i++) {
                 char c = pNumber.charAt(i);
-                if (i >= 3 && i < pNumber.length()-4) {
+                if (i >= 3 && i < pNumber.length() - 4) {
                     sb.append('*');
                 } else {
                     sb.append(c);
@@ -101,11 +101,11 @@ public class StringUtils {
     }
 
     /**
-    * @Description: 正则表达式，提取我们所有匹配的内容,颜色可传递自定义颜色
-    * @date 2018/5/2
-    * @author lwj
-    */
-    public static SpannableString showPhoneLink(Activity context, String note,int colorid) {
+     * @Description: 正则表达式，提取我们所有匹配的内容,颜色可传递自定义颜色
+     * @date 2018/5/2
+     * @author lwj
+     */
+    public static SpannableString showPhoneLink(Activity context, String note, int colorid) {
         SpannableString spannableInfo = new SpannableString(note);
 
         Pattern pattern = Pattern
@@ -164,13 +164,14 @@ public class StringUtils {
 
     /**
      * 注册输入姓名格式
-     *  匹配中文、英文、"."、","2-20个字符，
+     * 匹配中文、英文、"."、","2-20个字符，
+     *
      * @param userNameStr
      * @return
      */
     public static boolean checkName(String userNameStr) {
         String userNameRegex = "[a-zA-Z\\u4e00-\\u9fa5.,]{2,20}$";
-        return TextUtils.isEmpty(userNameStr)?false:userNameStr.matches(userNameRegex);
+        return !TextUtils.isEmpty(userNameStr) && userNameStr.matches(userNameRegex);
 
     }
 

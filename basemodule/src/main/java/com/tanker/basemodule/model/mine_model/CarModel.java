@@ -47,7 +47,7 @@ public class CarModel implements Parcelable {
         this.ifAllowUpdate = ifAllowUpdate;
     }
 
-    public boolean isAllowDelete(){
+    public boolean isAllowDelete() {
         return "0".equals(ifAllowUpdate);
     }
 

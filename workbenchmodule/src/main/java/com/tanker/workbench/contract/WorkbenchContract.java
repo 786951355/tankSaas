@@ -11,6 +11,7 @@ import com.tanker.basemodule.model.mine_model.UserInfoModel;
 public interface WorkbenchContract {
     interface View extends BaseView {
         void refreshUI(UserInfoModel userInfoModel);
+
         void addCarrierUserSuccess();
     }
 
@@ -28,7 +29,7 @@ public interface WorkbenchContract {
          * @Description: 添加车主
          * @date 2018/5/25 16:25
          */
-        public abstract  void addCarrierUser(String carrierCompanyName);
+        public abstract void addCarrierUser(String carrierCompanyName);
     }
 
 }

@@ -39,21 +39,21 @@ public interface AppService {
     @POST("/notificationCenter/clearIsRead")
     Observable<HttpResult<String>> clearIsRead(@Body HashMap<String, String> hashMap);
 
-   /**
-    *  @author lwj
-    *  @describe 用户接收到通知以后回调接口统计数量
-    *  @params
-    *  @time 2018/6/25 12:01
-    */
+    /**
+     * @author lwj
+     * @describe 用户接收到通知以后回调接口统计数量
+     * @params
+     * @time 2018/6/25 12:01
+     */
     @Headers("Content-Type: application/json")
     @POST("/notificationCenter/receiveNotification")
     Observable<HttpResult<String>> receiveNotification(@Body HashMap<String, Object> hashMap);
 
     /**
-     *  @author lwj
-     *  @describe 用户在app内阅读公告,返回时统计阅读时长
-     *  @params
-     *  @time 2018/6/25 12:01
+     * @author lwj
+     * @describe 用户在app内阅读公告, 返回时统计阅读时长
+     * @params
+     * @time 2018/6/25 12:01
      */
     @Headers("Content-Type: application/json")
     @POST(" /notificationCenter/notificationReadBack")

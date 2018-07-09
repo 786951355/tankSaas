@@ -109,7 +109,7 @@ public class PhotoPreview {
             return this;
         }
 
-        public PhotoPreviewBuilder setWaterMark(String waterMark){
+        public PhotoPreviewBuilder setWaterMark(String waterMark) {
             mPreviewOptionsBundle.putString(EXTRA_WATER_MARK, waterMark);
             return this;
         }

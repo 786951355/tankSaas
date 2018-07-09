@@ -24,13 +24,15 @@ import com.tanker.loginmodule.R;
 public class DebugActivity extends BaseActivity implements View.OnClickListener {
 
     private RadioGroup mRgUrl;
-    /**保存*/
+    public static final String IS_MIT_ENV = "IS_MIT_ENV";
+    /**
+     * 保存
+     */
     private Button mConfirm;
-    public static final String IS_MIT_ENV ="IS_MIT_ENV";
 
     private String uat = "http://uat.carrierapi.tankchaoren.com";
     private String test = "https://test.carrierapi.tankchaoren.com";
-    private String  mit = "http://mit.carrierapi.guanguan.com";
+    private String mit = "http://mit.carrierapi.guanguan.com";
     private RadioButton rbTest;
     private RadioButton rbUat;
     private boolean isTestHost;
@@ -62,10 +64,10 @@ public class DebugActivity extends BaseActivity implements View.OnClickListener 
         rgCrash = findViewById(R.id.rg_crash);
         rbSave = findViewById(R.id.rb_save);
         rbNotSave = findViewById(R.id.rb_not_save);
-        if (isSaveCrash){
+        if (isSaveCrash) {
             rbSave.setChecked(true);
             rbNotSave.setChecked(false);
-        }else{
+        } else {
             rbSave.setChecked(false);
             rbNotSave.setChecked(true);
         }
@@ -83,13 +85,13 @@ public class DebugActivity extends BaseActivity implements View.OnClickListener 
             rbDev.setChecked(false);
             rbMit.setChecked(false);
             etDev.setVisibility(View.GONE);
-        } else if (mit.equals(tempUrl)){
+        } else if (mit.equals(tempUrl)) {
             rbTest.setChecked(false);
             rbUat.setChecked(false);
             rbDev.setChecked(false);
             rbMit.setChecked(true);
             etDev.setVisibility(View.GONE);
-        }else{
+        } else {
             rbDev.setChecked(true);
             rbUat.setChecked(false);
             rbMit.setChecked(false);
@@ -103,22 +105,22 @@ public class DebugActivity extends BaseActivity implements View.OnClickListener 
         mRgUrl.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                isMit =false;
+                isMit = false;
                 if (checkedId == R.id.rb_test) {
                     tempUrl = test;
                     etDev.setVisibility(View.GONE);
-                    isMit=false;
+                    isMit = false;
                 } else if (checkedId == R.id.rb_uat) {
                     tempUrl = uat;
                     etDev.setVisibility(View.GONE);
-                    isMit=false;
-                } else if (checkedId==R.id.rb_mit){
-                    isMit=true;
-                    tempUrl=mit;
+                    isMit = false;
+                } else if (checkedId == R.id.rb_mit) {
+                    isMit = true;
+                    tempUrl = mit;
                     etDev.setVisibility(View.GONE);
-                }else if (checkedId == R.id.rb_dev) {
+                } else if (checkedId == R.id.rb_dev) {
                     etDev.setVisibility(View.VISIBLE);
-                    isMit=false;
+                    isMit = false;
                 }
             }
         });
@@ -146,16 +148,16 @@ public class DebugActivity extends BaseActivity implements View.OnClickListener 
                     return;
                 }
             }
-            Hawk.put(IS_MIT_ENV,isMit);
-            if (rgCrash.getCheckedRadioButtonId()==R.id.rb_save){
-                Hawk.put("isSaveCrash",true);
-            }else{
-                Hawk.put("isSaveCrash",false);
+            Hawk.put(IS_MIT_ENV, isMit);
+            if (rgCrash.getCheckedRadioButtonId() == R.id.rb_save) {
+                Hawk.put("isSaveCrash", true);
+            } else {
+                Hawk.put("isSaveCrash", false);
             }
-            if (tempUrl!=null&&!tempUrl.equals(Hawk.get(AppConstants.HAWK_APP_HOST))){
+            if (tempUrl != null && !tempUrl.equals(Hawk.get(AppConstants.HAWK_APP_HOST))) {
                 Hawk.put(AppConstants.HAWK_APP_HOST, tempUrl);
                 restartApp();
-            }else{
+            } else {
                 restartApp3();
             }
             showMessage("配置已更改");

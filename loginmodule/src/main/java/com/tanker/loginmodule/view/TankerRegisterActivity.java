@@ -38,7 +38,7 @@ public class TankerRegisterActivity extends BaseActivity<RegisterPresenter> impl
     protected ImageView mIvLoginAgreementCheck, mIvLoginAgreementUncheck;
     protected RelativeLayout rl_login_agreement_uncheck;
     protected TextView mTvRegister, mTvRegisterSendCode;
-    private int mGetCodeTime=60;
+    private int mGetCodeTime = 60;
 
 
     @Override
@@ -80,10 +80,10 @@ public class TankerRegisterActivity extends BaseActivity<RegisterPresenter> impl
      */
     private void hideSoftInputFromWindow() {
         rootView.setOnTouchListener((view1, motionEvent) -> {
-            InputMethodManager manager = (InputMethodManager)  getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                if ( getCurrentFocus() != null &&  getCurrentFocus().getWindowToken() != null) {
-                    manager.hideSoftInputFromWindow( getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                if (getCurrentFocus() != null && getCurrentFocus().getWindowToken() != null) {
+                    manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 }
             }
             return false;

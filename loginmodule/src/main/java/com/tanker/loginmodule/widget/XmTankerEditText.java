@@ -58,7 +58,7 @@ public class XmTankerEditText extends android.support.v7.widget.AppCompatEditTex
             mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
             //默认设置隐藏图标
             setClearIconVisible(true);
-        }else{
+        } else {
             setClearIconVisible(false);
         }
 

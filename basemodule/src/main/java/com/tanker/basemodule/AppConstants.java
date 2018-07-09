@@ -10,8 +10,8 @@ import com.tanker.basemodule.model.login_model.ConfigInfo;
  * Created by ronny on 2018/3/21.
  */
 public class AppConstants {
-    public static final String MIT_IMAGE_URL="http://mit.image.guanguan.com/images";
-    public static final String IMAGE_SEVER = Hawk.get("IS_MIT_ENV",false)?MIT_IMAGE_URL:BuildConfig.ImageUrl;
+    public static final String MIT_IMAGE_URL = "http://mit.image.guanguan.com/images";
+    public static final String IMAGE_SEVER = Hawk.get("IS_MIT_ENV", false) ? MIT_IMAGE_URL : BuildConfig.ImageUrl;
 
     public static final String PROTOCOL_URL = "file:///android_asset/agreement.html";
     public static final String SOUND_TOGGLE = "SOUND_TOGGLE_KEY";
@@ -87,11 +87,10 @@ public class AppConstants {
     /**************************网络请求参数的key--End**************************/
 
 
-
     /**************************第三方sdkKey--start**************************/
-    public static final String UMENG_CHANEL="UMENG_CHANNEL";
-    public static final String UMENG_DEBUG_KEY="5b04f863a40fa34ab9000253";
-    public static final String UMENG_RELEASE_KEY="5b023668a40fa3536000005c";
+    public static final String UMENG_CHANEL = "UMENG_CHANNEL";
+    public static final String UMENG_DEBUG_KEY = "5b04f863a40fa34ab9000253";
+    public static final String UMENG_RELEASE_KEY = "5b023668a40fa3536000005c";
 
 
     /**************************第三方sdkKey--End**************************/
@@ -134,7 +133,7 @@ public class AppConstants {
     /**
      * 用于图片框架返回真实的绝对路径，以获取图片的Exif信息
      */
-    public final static String THE_REAL_PATH ="THE_REAL_PATH";
+    public final static String THE_REAL_PATH = "THE_REAL_PATH";
 
 
 }

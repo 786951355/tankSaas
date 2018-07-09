@@ -111,8 +111,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     }
 
     @Override
-    public void showAlertDialogNoCancel(String content, String confirmText,TankerDialog.OptionListener optionListener) {
-        mContext.showAlertDialogNoCancel(content, confirmText,optionListener);
+    public void showAlertDialogNoCancel(String content, String confirmText, TankerDialog.OptionListener optionListener) {
+        mContext.showAlertDialogNoCancel(content, confirmText, optionListener);
     }
 
     @Override
@@ -177,14 +177,14 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("lwj", "fragment_onResumeSimpleName: "+mContext.getClass().getSimpleName());
-       // MobclickAgent.onResume(mContext); //统计时长
+        Log.d("lwj", "fragment_onResumeSimpleName: " + mContext.getClass().getSimpleName());
+        // MobclickAgent.onResume(mContext); //统计时长
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("lwj", "fragment_onPauseSimpleName: "+mContext.getClass().getSimpleName());
+        Log.d("lwj", "fragment_onPauseSimpleName: " + mContext.getClass().getSimpleName());
         //MobclickAgent.onPause(mContext); //统计时长
     }
 

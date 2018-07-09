@@ -18,6 +18,7 @@ import com.tanker.loginmodule.R;
 import com.tanker.loginmodule.api.LoginApi;
 import com.tanker.loginmodule.common.ViewUtils;
 import com.tanker.loginmodule.contract.LoginContract;
+
 import cn.jpush.android.api.JPushInterface;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

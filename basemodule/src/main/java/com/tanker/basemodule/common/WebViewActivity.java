@@ -11,9 +11,6 @@ import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.R;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
-import com.tanker.basemodule.http.HttpParamObj;
-import com.tanker.basemodule.http.api.AppService;
-import com.tanker.basemodule.http.api.RetroAPIFactory;
 import com.tanker.basemodule.utils.ShareUtils;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.ShareAction;
@@ -21,11 +18,6 @@ import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.shareboard.SnsPlatform;
 import com.umeng.socialize.utils.ShareBoardlistener;
-
-import java.util.HashMap;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by :Ronny

@@ -159,7 +159,7 @@ public class TankerDialog extends Dialog {
     protected void initData() {
         if (data != null) {
             messageType = data.getInt(DialogConst.DIALOG_MESSAGE_TYPE, -1);
-            notCancelDialog =data.getBoolean(DialogConst.DIALOG_NOT_CANCEL_DIALOG_AFTER_CLICK,false);
+            notCancelDialog = data.getBoolean(DialogConst.DIALOG_NOT_CANCEL_DIALOG_AFTER_CLICK, false);
             initDialogSize();
             initVisibility();
         }
@@ -220,7 +220,7 @@ public class TankerDialog extends Dialog {
                     id_iv_image.setVisibility(View.VISIBLE);
                 }
                 id_tv_content.setText(contentText);
-                if (!TextUtils.isEmpty(confirmText)){
+                if (!TextUtils.isEmpty(confirmText)) {
                     btnConfirm.setText(confirmText);
                 }
                 break;
@@ -243,12 +243,12 @@ public class TankerDialog extends Dialog {
                 ed_ed_content.setText(contentText);
                 ViewUtils.moveToEndSelection(ed_ed_content);
                 ed_ed_content.setHint(contentHintText);
-                if (!TextUtils.isEmpty(confirmText)){
+                if (!TextUtils.isEmpty(confirmText)) {
                     btnConfirm.setText(confirmText);
                 }
                 break;
         }
-     }
+    }
 
 
     protected void initListener() {

@@ -266,7 +266,7 @@ public class DateUtils {
      * @return
      */
     public static int getDateToCur(String date) {
-        if (date == null){
+        if (date == null) {
             return 0;
         }
         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_YMDHMS, Locale.CHINA);

@@ -58,7 +58,7 @@ public class CarInfoModel implements Parcelable {
         return ifAllowUpdate;
     }
 
-    public boolean isAllowUpdate(){
+    public boolean isAllowUpdate() {
         return "0".equals(ifAllowUpdate);
     }
 

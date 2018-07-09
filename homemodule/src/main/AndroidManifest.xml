@@ -5,7 +5,8 @@
     <application>
         <activity android:name=".view.OrderDetailActivity" />
         <activity android:name=".view.ObjectionActivity" />
-        <activity android:name=".view.OrdersQueryActivity"
+        <activity
+            android:name=".view.OrdersQueryActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".view.QueryResultActivity" />
         <activity

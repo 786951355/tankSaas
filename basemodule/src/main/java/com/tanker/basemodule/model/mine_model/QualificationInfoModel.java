@@ -31,7 +31,7 @@ public class QualificationInfoModel implements Parcelable {
     //道路许可证的认证状态  -1未维护,0认证中;1审核通过;2审核驳回；
     private String roadLicenseStatus;
     //用于授权书页面是否展示退出按钮
-    private boolean isShowExit=true;
+    private boolean isShowExit = true;
 
 
     protected QualificationInfoModel(Parcel in) {
@@ -170,7 +170,6 @@ public class QualificationInfoModel implements Parcelable {
     public void setRoadLicenseStatus(String roadLicenseStatus) {
         this.roadLicenseStatus = roadLicenseStatus;
     }
-
 
 
     public List<String> getImageList() {

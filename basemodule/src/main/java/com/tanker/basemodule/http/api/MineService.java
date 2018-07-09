@@ -282,11 +282,11 @@ public interface MineService {
     @GET
     Observable<ResponseBody> downloadFile(@Url String authBookPath);
 
-   /**
-    * @author lwj
-    * @Description: 获取关联车主列表
-    * @date 2018/5/23 11:40
-    */
+    /**
+     * @author lwj
+     * @Description: 获取关联车主列表
+     * @date 2018/5/23 11:40
+     */
     @Headers("Content-Type: application/json")
     @POST("/driver/getCarrierInfoList")
     Observable<HttpResult<CarrierListModel>> getCarrierInfoList(@Body HashMap<String, String> hashMap);

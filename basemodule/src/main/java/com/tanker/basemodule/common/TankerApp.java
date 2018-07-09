@@ -41,22 +41,32 @@ public class TankerApp extends Application {
     private String token;
     private String TAG = "TankerApp";
 
+    /**
+     * @author lwj
+     * @Description: 友盟分享平台初始化
+     * @date 2018/6/5 10:40
+     */ {
+        //微信
+        //PlatformConfig.setWeixin("wx51b2f44500d354b2", "2d04642e6f159e8546dec29de2b906de");//我的测试账号
+        PlatformConfig.setWeixin("wx249c978c39903b95", "467d87ca73fd592a34839f054a16ea9c");//正式
+    }
+
     public UserManager getUserManager() {
-        if (userManager==null){
+        if (userManager == null) {
             initManager();
         }
         return userManager;
     }
 
+    public static TankerApp getInstance() {
+        return mApp;
+    }
+
     public ConfigManager getConfigManager() {
-        if (configManager==null){
+        if (configManager == null) {
             initManager();
         }
         return configManager;
-    }
-
-    public static TankerApp getInstance() {
-        return mApp;
     }
 
     @Override
@@ -68,9 +78,9 @@ public class TankerApp extends Application {
         //LeakCanary.install(this);
         SharedPreferenceUtil.initSharedPreference(this);
         Hawk.init(this).build();
-        if (!BuildConfig.isDebug||Hawk.get("isSaveCrash",false)) {
+        if (!BuildConfig.isDebug || Hawk.get("isSaveCrash", false)) {
             initCrashHandler();
-            Logger.d(TAG,"Turn on the crash handler！");
+            Logger.d(TAG, "Turn on the crash handler！");
         }
 //        initDatabase("tanker.db");
         RetroAPIFactory.init();
@@ -78,17 +88,6 @@ public class TankerApp extends Application {
         initJpush();
         initBugly();
         initUmeng();
-    }
-
-    /**
-     * @author lwj
-     * @Description: 友盟分享平台初始化
-     * @date 2018/6/5 10:40
-     */
-    {
-        //微信
-        //PlatformConfig.setWeixin("wx51b2f44500d354b2", "2d04642e6f159e8546dec29de2b906de");//我的测试账号
-        PlatformConfig.setWeixin("wx249c978c39903b95", "467d87ca73fd592a34839f054a16ea9c");//正式
     }
 
     /**
@@ -118,7 +117,7 @@ public class TankerApp extends Application {
          * 参数4:设备类型，UMConfigure.DEVICE_TYPE_PHONE为手机、UMConfigure.DEVICE_TYPE_BOX为盒子，默认为手机
          * 参数5:Push推送业务的secret,需要集成Push功能时必须传入Push的secret，否则传空。
          */
-        UMConfigure.init(this, BuildConfig.isDebug?AppConstants.UMENG_DEBUG_KEY:AppConstants.UMENG_RELEASE_KEY, getChannel(AppConstants.UMENG_CHANEL), UMConfigure.DEVICE_TYPE_PHONE, "");
+        UMConfigure.init(this, BuildConfig.isDebug ? AppConstants.UMENG_DEBUG_KEY : AppConstants.UMENG_RELEASE_KEY, getChannel(AppConstants.UMENG_CHANEL), UMConfigure.DEVICE_TYPE_PHONE, "");
     }
 
     /**
@@ -199,29 +198,30 @@ public class TankerApp extends Application {
     }
 
     public void updateToken(String token) {
-        Hawk.put(AppConstants.HAWK_TOKEN,token);
-        this.token=token;
+        Hawk.put(AppConstants.HAWK_TOKEN, token);
+        this.token = token;
     }
 
     public String getToken() {
-        if (TextUtils.isEmpty(token)){
-            token=Hawk.get(AppConstants.HAWK_TOKEN);
+        if (TextUtils.isEmpty(token)) {
+            token = Hawk.get(AppConstants.HAWK_TOKEN);
         }
-        return token==null?"0":token;
+        return token == null ? "0" : token;
     }
 
 
     /**
      * get App versionCode
+     *
      * @return
      */
-    public Integer getVersionCode(){
-        PackageManager packageManager=getPackageManager();
+    public Integer getVersionCode() {
+        PackageManager packageManager = getPackageManager();
         PackageInfo packageInfo;
-        String versionCode="";
+        String versionCode = "";
         try {
-            packageInfo=packageManager.getPackageInfo(getPackageName(),0);
-            versionCode=packageInfo.versionCode+"";
+            packageInfo = packageManager.getPackageInfo(getPackageName(), 0);
+            versionCode = packageInfo.versionCode + "";
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -230,15 +230,16 @@ public class TankerApp extends Application {
 
     /**
      * get App versionName
+     *
      * @return
      */
-    public String getVersionName(){
-        PackageManager packageManager=getPackageManager();
+    public String getVersionName() {
+        PackageManager packageManager = getPackageManager();
         PackageInfo packageInfo;
-        String versionName="";
+        String versionName = "";
         try {
-            packageInfo=packageManager.getPackageInfo(getPackageName(),0);
-            versionName=packageInfo.versionName;
+            packageInfo = packageManager.getPackageInfo(getPackageName(), 0);
+            versionName = packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -255,6 +256,7 @@ public class TankerApp extends Application {
         }
         return "";
     }
+
     @Override
     public void onLowMemory() {
         super.onLowMemory();

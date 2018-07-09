@@ -70,9 +70,10 @@ public class ShowMassageUtil {
 
     /**
      * Toast提示（解决Toast重复弹出 长时间不消失的问题 ）
+     *
      * @param message
      */
-    public static void showToast( String message) {
+    public static void showToast(String message) {
         if (toast == null) {
             toast = Toast.makeText(TankerApp.getInstance().getApplicationContext(), message, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);

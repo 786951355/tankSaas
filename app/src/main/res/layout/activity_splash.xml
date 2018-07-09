@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:fitsSystemWindows="true"
-    android:id="@+id/rl_bg"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.tanker.mainmodule.view.SplashActivity">
+
   <Button
-      android:elevation="4dp"
-      android:background="@drawable/dialog_btn_confirm_selector"
       android:id="@+id/skip"
-      android:textSize="12sp"
-      android:textColor="@android:color/white"
-      android:layout_gravity="center"
-      tools:text="跳过广告"
-      android:layout_marginTop="16dp"
-      android:layout_marginRight="16dp"
-      android:layout_alignParentRight="true"
       android:layout_width="96dp"
-      android:layout_height="32dp"/>
+      android:layout_height="32dp"
+      android:layout_alignParentRight="true"
+      android:layout_gravity="center"
+      android:layout_marginRight="16dp"
+      android:layout_marginTop="16dp"
+      android:background="@drawable/dialog_btn_confirm_selector"
+      android:elevation="4dp"
+      android:textColor="@android:color/white"
+      android:textSize="12sp"
+      tools:text="跳过广告" />
 
 </RelativeLayout>

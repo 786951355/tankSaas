@@ -11,19 +11,19 @@ import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
 
 /**
-* @author lwj
-* @ClassName: ShareUtils
-* @Description:  友盟分享工具类
-* @date 2018/6/11 17:44
-*/
+ * @author lwj
+ * @ClassName: ShareUtils
+ * @Description: 友盟分享工具类
+ * @date 2018/6/11 17:44
+ */
 public class ShareUtils {
     private static final String TAG = "ShareUtils";
 
     /**
-     *  @author lwj
-     *  @describe 分享链接
-     *  @params
-     *  @time 2018/6/11 18:21
+     * @author lwj
+     * @describe 分享链接
+     * @params
+     * @time 2018/6/11 18:21
      */
     public static void shareWeb(final Activity activity, String webUrl, String title, String description, String imageUrl, int imageID, SHARE_MEDIA platform) {
         UMWeb web = new UMWeb(webUrl);//连接地址
@@ -31,7 +31,7 @@ public class ShareUtils {
         web.setDescription(description);//描述
         if (!TextUtils.isEmpty(imageUrl)) {
             web.setThumb(new UMImage(activity, imageUrl));  //网络缩略图
-        } else if(imageID!=0){
+        } else if (imageID != 0) {
             web.setThumb(new UMImage(activity, imageID));  //本地缩略图
         }
         new ShareAction(activity)

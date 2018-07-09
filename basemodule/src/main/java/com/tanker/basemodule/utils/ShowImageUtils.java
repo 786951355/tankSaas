@@ -42,7 +42,7 @@ public class ShowImageUtils {
         Logger.d("显示图片地址：" + url);
         Glide.with(context).load(url)// 加载图片
                 .apply(new RequestOptions()
-                        .centerCrop()
+                                .centerCrop()
 //                        .diskCacheStrategy(DiskCacheStrategy.NONE)
 //                        .skipMemoryCache(true)
                 )
@@ -110,14 +110,14 @@ public class ShowImageUtils {
     }
 
     public static void showImageWithMemoryCache(Context context, String url,
-                                     ImageView imageView) {
+                                                ImageView imageView) {
         if (!StringUtils.isUrl(url)) {
             url = AppConstants.IMAGE_SEVER + url;
         }
         Logger.d("显示图片地址：" + url);
         Glide.with(context).load(url)// 加载图片
                 .apply(new RequestOptions()
-                                .centerCrop()
+                        .centerCrop()
                         .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                         .skipMemoryCache(false)
                 )
@@ -130,7 +130,7 @@ public class ShowImageUtils {
         RequestOptions requestOptions = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
-                .override(1080,1920);
+                .override(1080, 1920);
 
         url = AppConstants.IMAGE_SEVER + url;
 

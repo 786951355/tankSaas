@@ -98,7 +98,7 @@ public abstract class CommonObserver<T> implements Observer<T> {
         Logger.e(e.toString());
         if (e.getCause() instanceof ServerException
                 && ((ServerException) e.getCause()).getCode() == 30000) {//token失效
-            context.get().showAlertDialogNoCancel(((ServerException) e.getCause()).getMsg(), "去登录",new TankerDialog.OptionListener() {
+            context.get().showAlertDialogNoCancel(((ServerException) e.getCause()).getMsg(), "去登录", new TankerDialog.OptionListener() {
                 @Override
                 public void onConfirm(TankerDialog obDialog) {
                     navigationToLogin(context.get());

@@ -119,8 +119,6 @@ public class ImageBean implements Parcelable {
     }
 
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -153,7 +151,7 @@ public class ImageBean implements Parcelable {
         ImageInfoRequest imageInfoRequest = new ImageInfoRequest();
         imageInfoRequest.setBillPath(getNetPath());
         imageInfoRequest.setPicturePlace(pictureInfo.getPicAddress());
-        imageInfoRequest.setPictureTime(pictureInfo.getPicDate()+" "+pictureInfo.getPicTime());
+        imageInfoRequest.setPictureTime(pictureInfo.getPicDate() + " " + pictureInfo.getPicTime());
         return imageInfoRequest;
     }
 
@@ -163,11 +161,11 @@ public class ImageBean implements Parcelable {
 
     public Uri getImageUri() {
         Uri uri = null;
-        if(!TextUtils.isEmpty(waterMarkPath)){
-            uri=Uri.fromFile(new File(waterMarkPath));
+        if (!TextUtils.isEmpty(waterMarkPath)) {
+            uri = Uri.fromFile(new File(waterMarkPath));
         } else if (!TextUtils.isEmpty(localPath)) {
             uri = Uri.fromFile(new File(localPath));
-        } else if (!TextUtils.isEmpty(netPath)){
+        } else if (!TextUtils.isEmpty(netPath)) {
             uri = Uri.parse(BuildConfig.ImageUrl + netPath);
         }
         return uri;

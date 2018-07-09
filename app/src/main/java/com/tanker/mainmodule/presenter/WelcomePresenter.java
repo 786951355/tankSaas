@@ -10,11 +10,11 @@ import com.tanker.basemodule.http.ExceptionEngine;
 import com.tanker.basemodule.http.api.HttpResult;
 import com.tanker.basemodule.model.app_model.SplashPicModel;
 import com.tanker.basemodule.model.login_model.ConfigInfo;
+import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.mainmodule.api.AppApi;
 import com.tanker.mainmodule.contract.WelcomeContract;
 import com.tanker.mainmodule.view.GuideActivity;
 import com.tanker.mainmodule.view.SplashActivity;
-import com.tanker.basemodule.router.ReflectUtils;
 
 import io.reactivex.Observable;
 
@@ -76,7 +76,7 @@ public class WelcomePresenter extends WelcomeContract.Presenter {
                     Hawk.put("isFirstIn", false);
                     mView.navigationTo(GuideActivity.class);
                     mView.getContext().finish();
-                }else{
+                } else {
                     gotoLoginOrMain();
                 }
             }

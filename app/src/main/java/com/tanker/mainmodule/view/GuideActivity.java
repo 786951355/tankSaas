@@ -4,10 +4,10 @@ import android.view.View;
 
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
+import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.basemodule.widget.CycleViewPager;
 import com.tanker.basemodule.widget.ViewFactory;
 import com.tanker.mainmodule.R;
-import com.tanker.basemodule.router.ReflectUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

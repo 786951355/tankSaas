@@ -24,7 +24,7 @@ public class WorkbenchPresenter extends WorkbenchContract.Presenter {
     @Override
     public void getMineInfo() {
         Observable<HttpResult<UserInfoModel>> resultObservable = MineApi.getInstance().getMineInfo();
-        toSubscribe(resultObservable, new CommonObserver<UserInfoModel>(WorkbenchConstants.MINE_INFO_KEY,mView.getContext(), false) {
+        toSubscribe(resultObservable, new CommonObserver<UserInfoModel>(WorkbenchConstants.MINE_INFO_KEY, mView.getContext(), false) {
             @Override
             public void onNext(UserInfoModel userInfoModel) {
                 TankerApp.getInstance().getUserManager().updateUserInfo(userInfoModel);
@@ -64,7 +64,7 @@ public class WorkbenchPresenter extends WorkbenchContract.Presenter {
      */
     @Override
     public void addCarrierUser(String carrierCompanyName) {
-        Observable<HttpResult<String>> resultObservable=MineApi.getInstance().addCarrierUser(carrierCompanyName);
+        Observable<HttpResult<String>> resultObservable = MineApi.getInstance().addCarrierUser(carrierCompanyName);
         toSubscribe(resultObservable, new CommonObserver<String>(mView.getContext()) {
             @Override
             public void onNext(String s) {

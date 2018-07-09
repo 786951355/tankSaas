@@ -224,10 +224,10 @@ public class TankerTwoButtonDialog extends Dialog {
                     id_iv_image.setImageResource(srcImage);
                 }
                 id_tv_content.setText(contentText);
-                if (!TextUtils.isEmpty(confirmText)){
+                if (!TextUtils.isEmpty(confirmText)) {
                     btnConfirm.setText(confirmText);
                 }
-                if (!TextUtils.isEmpty(cancelText)){
+                if (!TextUtils.isEmpty(cancelText)) {
                     btnClose.setText(cancelText);
                 }
                 break;
@@ -246,7 +246,7 @@ public class TankerTwoButtonDialog extends Dialog {
                 ed_ed_content.setText(contentText);
                 ed_ed_content.setSelection(contentText.length());
                 ed_ed_content.setHint(contentHintText);
-                if (!TextUtils.isEmpty(confirmText)){
+                if (!TextUtils.isEmpty(confirmText)) {
                     btnConfirm.setText(confirmText);
                 }
                 break;

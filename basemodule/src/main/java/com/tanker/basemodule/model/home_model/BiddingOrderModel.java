@@ -99,11 +99,11 @@ public class BiddingOrderModel implements Serializable {
         private String loadingWareHouse;
         private String unloadingWareHouse;
         private String enquiryId;
-//      是否确认报价,0为未确认报价,1为已确认报价,当status为2的时候,需要判断这个字段,如果为0则显示确认报价按钮,1则已确认,不显示按钮
+        //      是否确认报价,0为未确认报价,1为已确认报价,当status为2的时候,需要判断这个字段,如果为0则显示确认报价按钮,1则已确认,不显示按钮
         private String ifConfirmQuote;
 
 
-        public boolean isExpectUnitPrice(){
+        public boolean isExpectUnitPrice() {
             return "1".equals(expectationPriceType);
         }
 

@@ -42,5 +42,5 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="名称"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 </LinearLayout>

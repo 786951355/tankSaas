@@ -278,14 +278,14 @@ public class PhotoPickerActivity extends BaseActivity {
                 Log.d("sglei-time", String.valueOf(time = System.currentTimeMillis()));
                 ArrayList<ImageBean> selectedPhotos = null;
                 selectedPhotos = getPhotoGridAdapter().getSelectedPhotoPaths();
-                Log.d("sglei-time", String.valueOf(System.currentTimeMillis()-time));
+                Log.d("sglei-time", String.valueOf(System.currentTimeMillis() - time));
                 if (selectedPhotos != null && selectedPhotos.size() > 0) {
                     intent.putParcelableArrayListExtra(KEY_SELECTED_PHOTOS, selectedPhotos);
                     intent.putExtra(EXTRA_GROUP_POSITION, groupPosition);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
-                Log.d("sglei-time", String.valueOf(System.currentTimeMillis()-time));
+                Log.d("sglei-time", String.valueOf(System.currentTimeMillis() - time));
             }
         });
         Drawable drawable = ContextCompat.getDrawable(this, R.drawable.picker_photo_pull_selector);
@@ -304,11 +304,11 @@ public class PhotoPickerActivity extends BaseActivity {
     protected void initData() {
         //获取地理位置管理器
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        mLocationListener=new LocationListener() {
+        mLocationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                currentLocation=location;
-                Logger.d("刷新经纬度"+location.getLatitude()+"纬度"+location.getLongitude());
+                currentLocation = location;
+                Logger.d("刷新经纬度" + location.getLatitude() + "纬度" + location.getLongitude());
             }
 
             @Override
@@ -351,8 +351,8 @@ public class PhotoPickerActivity extends BaseActivity {
             Intent localIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(newPicPath)));
             sendBroadcast(localIntent);
             if (TextUtils.isEmpty(GPSUtils.parseAddress(newPicPath))) {
-                if (currentLocation!=null){
-                    ExifUtils.updateLocationInfoToPic(newPicPath,currentLocation);
+                if (currentLocation != null) {
+                    ExifUtils.updateLocationInfoToPic(newPicPath, currentLocation);
                 }
             }
 
@@ -384,14 +384,14 @@ public class PhotoPickerActivity extends BaseActivity {
     public void initLocation() {
         String locationProvider = null;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return ;
+            return;
         }
 
         //获取所有可用的位置提供器
         List<String> providers = mLocationManager.getProviders(true);
-        if (providers==null||providers.size()==0){
+        if (providers == null || providers.size() == 0) {
             Toast.makeText(this, "没有可用的位置提供器", Toast.LENGTH_SHORT).show();
-            return ;
+            return;
         }
         if (providers.contains(LocationManager.NETWORK_PROVIDER)) {
             //如果是Network
@@ -412,7 +412,7 @@ public class PhotoPickerActivity extends BaseActivity {
         }
 
         //监视地理位置变化
-        if (locationProvider!=null){
+        if (locationProvider != null) {
             mLocationManager.requestLocationUpdates(locationProvider, 0, 0, mLocationListener);
         }
     }

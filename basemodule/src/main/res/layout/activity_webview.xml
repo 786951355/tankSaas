@@ -16,7 +16,7 @@
         android:layout_height="3dip"
         android:progressDrawable="@drawable/webview_progressbar"
         android:max="100"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <WebView
         android:id="@+id/webview"
