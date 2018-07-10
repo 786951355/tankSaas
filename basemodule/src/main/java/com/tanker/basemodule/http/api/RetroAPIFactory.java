@@ -87,8 +87,6 @@ public class RetroAPIFactory {
             }
         }
     };
-//    public static final String BASEURL = BuildConfig.HostUrl;
-//    public static final String BASEURL = "http://10.0.70.7:8080";
 
     private static Retrofit innerRetrofit;
     private static Retrofit outerRetrofit;
@@ -132,21 +130,17 @@ public class RetroAPIFactory {
         mResponseLogInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().cache(cache)
                 .retryOnConnectionFailure(true)
-                .addInterceptor(sRewriteCacheControlInterceptor)
-//                .addInterceptor(mRequestLogInterceptor)
+                .addInterceptor(rewriteResponseInterceptorOffline)
                 .addInterceptor(mResponseLogInterceptor)
                 .addNetworkInterceptor(sRewriteCacheControlInterceptor)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .sslSocketFactory(createSSLSocketFactory())
-                .hostnameVerifier(new HostnameVerifier() {
-                    @Override
-                    public boolean verify(String s, SSLSession sslSession) {
-                        return true;
+                .hostnameVerifier((s, sslSession) -> {
+                    return true;
 //                        return "test.image.tankchaoren.com".equals(s)
 //                                || "test.carrierapi.tankchaoren.com".equals(s);
-                    }
                 })
                 .build();
 
@@ -166,17 +160,25 @@ public class RetroAPIFactory {
                 .build();
     }
 
+    private static final Interceptor rewriteResponseInterceptorOffline = chain -> {
+        Request request = chain.request();
+        if (!NetUtil.isNetworkAvailable(SaasApp.getInstance().getApplicationContext())) {
+            request = request.newBuilder()
+                    .removeHeader("Pragma")
+                    .header("Cache-Control", "public, only-if-cached")
+                    .build();
+        }
+        return chain.proceed(request);
+    };
 
-    private static final HttpLoggingInterceptor mResponseLogInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-        @Override
-        public void log(String message) {
-            if (message.contains("http") && !message.contains("ms")) {
-                Logger.d("\nsglei-net请求地址：" + message);
-            } else if (message.contains(AppConstants.PARAM_SIGN)) {
-                Logger.d("\nsglei-net请求报文：" + message);
-            } else if (message.contains(AppConstants.PARAM_DATA)) {
-                Logger.d("\nsglei-net响应报文：" + message);
-            }
+
+    private static final HttpLoggingInterceptor mResponseLogInterceptor = new HttpLoggingInterceptor(message -> {
+        if (message.contains("http") && !message.contains("ms")) {
+            Logger.d("\nsglei-net请求地址：" + message);
+        } else if (message.contains(AppConstants.PARAM_SIGN)) {
+            Logger.d("\nsglei-net请求报文：" + message);
+        } else if (message.contains(AppConstants.PARAM_DATA)) {
+            Logger.d("\nsglei-net响应报文：" + message);
         }
     });
 
