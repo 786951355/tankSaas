@@ -2,7 +2,7 @@ package com.tanker.basemodule.http;
 
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -28,9 +28,9 @@ public class HttpParam {
         ignoreParamNames = new ArrayList<>();
         paramsMap.put(AppConstants.PARAM_APP_ID, AppConstants.APP_ID);
         paramsMap.put(AppConstants.PARAM_EVENT_TIME, System.currentTimeMillis() + "");
-        paramsMap.put(AppConstants.PARAM_TOKEN, TankerApp.getInstance().getToken());
+        paramsMap.put(AppConstants.PARAM_TOKEN, SaasApp.getInstance().getToken());
         if (!isLogin) {
-            paramsMap.put(AppConstants.PARAM_UID, TankerApp.getInstance().getUserManager().getUserId());
+            paramsMap.put(AppConstants.PARAM_UID, SaasApp.getInstance().getUserManager().getUserId());
         }
     }
 

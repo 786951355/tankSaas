@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,10 +22,10 @@ public class GPSUtils {
 
     public static String parseAddress(String imagePath) {
         double[] locations = getLocation(imagePath);
-        Geocoder gc = new Geocoder(TankerApp.getInstance().getApplicationContext(), Locale.getDefault());
+        Geocoder gc = new Geocoder(SaasApp.getInstance().getApplicationContext(), Locale.getDefault());
         List<android.location.Address> locationList = null;
         if (!Geocoder.isPresent()) {
-            Toast.makeText(TankerApp.getInstance().getApplicationContext(), "地理位置服务不存在", Toast.LENGTH_LONG).show();
+            Toast.makeText(SaasApp.getInstance().getApplicationContext(), "地理位置服务不存在", Toast.LENGTH_LONG).show();
             return "";
         }
         try {

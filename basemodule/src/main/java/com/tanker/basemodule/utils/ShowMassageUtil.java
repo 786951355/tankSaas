@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import com.tanker.basemodule.R;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.constants.DialogConst;
 import com.tanker.basemodule.dialog.TankerDialog;
 import com.tanker.basemodule.dialog.TankerDialogHelper;
@@ -61,7 +61,7 @@ public class ShowMassageUtil {
      * @param errorMsg  错误信息
      */
     public static void showErrorToast(String errorCode, String errorMsg) {
-        toast = Toast.makeText(TankerApp.getInstance().getApplicationContext(), getErrorMessage(errorCode, errorMsg), Toast.LENGTH_LONG);
+        toast = Toast.makeText(SaasApp.getInstance().getApplicationContext(), getErrorMessage(errorCode, errorMsg), Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, DensityUtils.dip2px(148));
         toast.show();
 //        showToast(getErrorMessage(errorCode,errorMsg));
@@ -75,7 +75,7 @@ public class ShowMassageUtil {
      */
     public static void showToast(String message) {
         if (toast == null) {
-            toast = Toast.makeText(TankerApp.getInstance().getApplicationContext(), message, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(SaasApp.getInstance().getApplicationContext(), message, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
         } else {
             toast.setText(message);

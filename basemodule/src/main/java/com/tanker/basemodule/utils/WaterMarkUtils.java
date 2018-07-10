@@ -9,7 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 
 import com.tanker.basemodule.R;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.model.PictureInfo;
 
 
@@ -51,11 +51,11 @@ public class WaterMarkUtils {
         String data = pictureInfo.getPicDate() + " " + pictureInfo.getPicWeek();
         String address = pictureInfo.getPicAddress();
 
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) TankerApp.getInstance().getResources().getDrawable(R.drawable.watermark_logo);
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) SaasApp.getInstance().getResources().getDrawable(R.drawable.watermark_logo);
         Bitmap zoomImage = zoomImage(bitmapDrawable.getBitmap(), DensityUtils.dip2px(71), DensityUtils.dip2px(32));
         Bitmap waterMaskLeftBottom = WaterMarkUtils.createWaterMaskLeftBottom(bitmap, zoomImage, 11, 12);
         if (!TextUtils.isEmpty(address)) {
-            bitmapDrawable = (BitmapDrawable) TankerApp.getInstance().getResources().getDrawable(R.drawable.watermark_address);
+            bitmapDrawable = (BitmapDrawable) SaasApp.getInstance().getResources().getDrawable(R.drawable.watermark_address);
             zoomImage = zoomImage(bitmapDrawable.getBitmap(), DensityUtils.dip2px(8), DensityUtils.dip2px(10));
             waterMaskLeftBottom = WaterMarkUtils.createWaterMaskLeftBottom(waterMaskLeftBottom, zoomImage, 14, 64);
         }
@@ -83,14 +83,14 @@ public class WaterMarkUtils {
     private static Paint initPaint(String text, float textSize) {
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         Rect bounds = new Rect();
-        int textColor = TankerApp.getInstance().getResources().getColor(R.color.white);
+        int textColor = SaasApp.getInstance().getResources().getColor(R.color.white);
         paint.setDither(true);
         paint.setFilterBitmap(true);
         paint.setAntiAlias(true);
         paint.getTextBounds(text, 0, text.length(), bounds);
         paint.setColor(textColor);
         paint.setTextSize(DensityUtils.sp2px(textSize));
-//        paint.setTypeface(Typeface.createFromAsset(TankerApp.getInstance().getAssets(),""));
+//        paint.setTypeface(Typeface.createFromAsset(SaasApp.getInstance().getAssets(),""));
         return paint;
     }
 

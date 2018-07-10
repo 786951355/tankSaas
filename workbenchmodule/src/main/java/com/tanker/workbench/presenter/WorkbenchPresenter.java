@@ -1,6 +1,6 @@
 package com.tanker.workbench.presenter;
 
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.http.CommonObserver;
 import com.tanker.basemodule.http.ExceptionEngine;
 import com.tanker.basemodule.http.api.HttpResult;
@@ -27,7 +27,7 @@ public class WorkbenchPresenter extends WorkbenchContract.Presenter {
         toSubscribe(resultObservable, new CommonObserver<UserInfoModel>(WorkbenchConstants.MINE_INFO_KEY, mView.getContext(), false) {
             @Override
             public void onNext(UserInfoModel userInfoModel) {
-                TankerApp.getInstance().getUserManager().updateUserInfo(userInfoModel);
+                SaasApp.getInstance().getUserManager().updateUserInfo(userInfoModel);
                 mView.refreshUI(userInfoModel);
             }
 
@@ -44,14 +44,14 @@ public class WorkbenchPresenter extends WorkbenchContract.Presenter {
         toSubscribe(observable, new CommonObserver<String>(mView.getContext()) {
             @Override
             public void onNext(String s) {
-                TankerApp.getInstance().exit();
+                SaasApp.getInstance().exit();
                 mView.getContext().finish();
             }
 
             @Override
             public void onError(ExceptionEngine.ResponseThrowable t) {
                 mView.showMessage(t.message);
-                TankerApp.getInstance().exit();
+                SaasApp.getInstance().exit();
                 mView.getContext().finish();
             }
         });

@@ -11,17 +11,17 @@ ext {
             minSdkVersion    : 16,
             targetSdkVersion : 26,
             buildToolsVersion: "27.0.3",
-            versionCode      : 12,
-            versionName      : "2.3.0"
+            versionCode      : 1,
+            versionName      : "1.0.0"
 
     ]
 
-    appId = ["app"      : "com.zhaoguanche.saas.huaxiang",
-             "login"    : "com.zhaoguanche.saas.login",
-             "setting"  : "com.zhaoguanche.saas.setting",
-             "orders"   : "com.zhaoguanche.saas.orders",
-             "home"     : "com.zhaoguanche.saas.home",
-             "workbench": "com.zhaoguanche.saas.workbench"]
+    appId = ["app"      : "com.tanker.saas.driver",
+             "login"    : "com.tanker.saas.driver.login",
+             "setting"  : "com.tanker.saas.driver.setting",
+             "orders"   : "com.tanker.saas.driver.orders",
+             "home"     : "com.tanker.saas.driver.home",
+             "workbench": "com.tanker.saas.driver.workbench"]
     url = [
             "uat"    : "http://uat.carrierapi.tankchaoren.com",
             "debug"  : "https://test.carrierapi.tankchaoren.com",
@@ -32,13 +32,6 @@ ext {
             "release": "https://image.tankchaoren.com/images"
     ]
 
-    //Version
-    dependencies = [
-            "multidex"     : "com.android.support:multidex:1.0.1",
-            "cardview"     : "com.android.support:cardview-v7:${supportLibrary}",
-            "constraint"   : "com.android.support.constraint:constraint-layout:1.0.2",
-            "recyclerview" : "com.android.support:recyclerview-v7:${supportLibrary}",
-            "suppoutDesign": "com.android.support:design:${supportLibrary}"
-    ]
+
 
 }

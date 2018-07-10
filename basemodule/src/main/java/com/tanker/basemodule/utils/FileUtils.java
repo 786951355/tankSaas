@@ -5,7 +5,7 @@ import android.os.Environment;
 
 import com.google.gson.reflect.TypeToken;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.model.mine_model.ProvinceModel;
 
 import java.io.BufferedReader;
@@ -24,7 +24,7 @@ public class FileUtils {
 
 
     public static List<ProvinceModel> getCities(Context context) {
-        File address = TankerApp.getInstance().getApplicationContext().getFileStreamPath("province.json");
+        File address = SaasApp.getInstance().getApplicationContext().getFileStreamPath("province.json");
         if (!address.exists()) {
             return readJsonFromAssets(context);
         }
@@ -86,7 +86,7 @@ public class FileUtils {
     }
 
     public static File getTempPicFile() {
-        return TankerApp.getInstance().getExternalFilesDir("TempPic");
+        return SaasApp.getInstance().getExternalFilesDir("TempPic");
     }
 
 
@@ -115,7 +115,7 @@ public class FileUtils {
             path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/TankerDownload" + File.separator + fileName + fileSuffix;
             file = new File(path);
         } else {
-            file = TankerApp.getInstance().getApplicationContext().getFileStreamPath(fileName + fileSuffix);
+            file = SaasApp.getInstance().getApplicationContext().getFileStreamPath(fileName + fileSuffix);
         }
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();

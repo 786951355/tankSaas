@@ -10,7 +10,7 @@ import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.utils.StringUtils;
 import com.umeng.analytics.MobclickAgent;
 import com.zhaoguanche.setting.R;
@@ -59,8 +59,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements V
     @Override
     protected void initData() {
         toggle = Hawk.<Boolean>get(AppConstants.SOUND_TOGGLE, Boolean.TRUE);
-        mTvVersionNum.setText(TankerApp.getInstance().getVersion());
-        String phone = TankerApp.getInstance().getUserManager().getPhone();
+        mTvVersionNum.setText(SaasApp.getInstance().getVersion());
+        String phone = SaasApp.getInstance().getUserManager().getPhone();
         phone = StringUtils.getHidePhoneNum(phone);
         mTvPhoneNum.setText(phone);
     }

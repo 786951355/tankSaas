@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.security.AesEncodeUtil;
 import com.tanker.basemodule.security.Md5Util;
 import com.tanker.basemodule.utils.EmptyUtils;
@@ -225,7 +225,7 @@ public class TankerRegisterActivity extends BaseActivity<RegisterPresenter> impl
         String verifyCode = mEtRegisterVerifyCode.getText().toString();
         String encode = Md5Util.encode(registerPwd);
         String pwd = AesEncodeUtil.encrypt(encode);
-        if (TankerApp.getInstance().getConfigManager().getConfigInfo() == null) {
+        if (SaasApp.getInstance().getConfigManager().getConfigInfo() == null) {
             mPresenter.requestConfig(LoginConstants.PLATFORM_VALUE, registerPhoneNum, pwd, verifyCode);
         } else {
             //注册（发送网络请求）

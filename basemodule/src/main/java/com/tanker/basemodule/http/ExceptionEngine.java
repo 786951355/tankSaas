@@ -6,7 +6,7 @@ import com.google.gson.JsonParseException;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.tanker.basemodule.R;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
@@ -43,7 +43,7 @@ public class ExceptionEngine {
                 case BAD_GATEWAY:
                 case SERVICE_UNAVAILABLE:
                 default:
-                    ex.message = TankerApp.getInstance().getString(R.string.error_net);
+                    ex.message = SaasApp.getInstance().getString(R.string.error_net);
                     break;
             }
             return ex;

@@ -3,7 +3,7 @@ package com.tanker.basemodule;
 import android.text.TextUtils;
 
 import com.orhanobut.hawk.Hawk;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.model.login_model.ConfigInfo;
 
 /**
@@ -96,18 +96,18 @@ public class AppConstants {
     /**************************第三方sdkKey--End**************************/
 
     public static String getServicePhone() {
-        ConfigInfo configInfo = TankerApp.getInstance().getConfigManager().getConfigInfo();
+        ConfigInfo configInfo = SaasApp.getInstance().getConfigManager().getConfigInfo();
         return configInfo != null ? configInfo.getAppServicePhone() : "17701655392";
     }
 
     public static String getTransportWorkTime() {
-        ConfigInfo configInfo = TankerApp.getInstance().getConfigManager().getConfigInfo();
+        ConfigInfo configInfo = SaasApp.getInstance().getConfigManager().getConfigInfo();
         return configInfo != null ? configInfo.getTransportWorkTime() : "早9:00-晚8:00";
     }
 
     public static int getMaxPictureCount() {
-        String count = TankerApp.getInstance().getConfigManager().getConfigInfo() != null ?
-                TankerApp.getInstance().getConfigManager().getConfigInfo().getPictureCount() : "";
+        String count = SaasApp.getInstance().getConfigManager().getConfigInfo() != null ?
+                SaasApp.getInstance().getConfigManager().getConfigInfo().getPictureCount() : "";
         return (TextUtils.isEmpty(count) || Integer.valueOf(count) <= 0) ? 6 : Integer.valueOf(count);
     }
 

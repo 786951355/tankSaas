@@ -22,7 +22,7 @@ import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.security.AesEncodeUtil;
 import com.tanker.basemodule.security.Md5Util;
 import com.tanker.basemodule.utils.EmptyUtils;
@@ -364,7 +364,7 @@ public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements
             //友盟事件监听
             MobclickAgent.onEvent(mContext, "1118", "账号密码登录按键");
         }
-        if (TankerApp.getInstance().getConfigManager().getConfigInfo() == null || BuildConfig.DEBUG) {
+        if (SaasApp.getInstance().getConfigManager().getConfigInfo() == null || BuildConfig.DEBUG) {
             mPresenter.requestConfig(userPhone, passwordOrCode, loginType);
         } else {
             //网络请求登录

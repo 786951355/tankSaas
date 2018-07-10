@@ -12,8 +12,8 @@ android {
         minSdkVersion cfg.minSdkVersion
         targetSdkVersion cfg.targetSdkVersion
         if (isDebug.toBoolean()) {//用于测试版的bugly的更新
-            versionCode 14
-            versionName "2.3.0.0.beta"
+            versionCode 1
+            versionName "1.0.0.0.beta"
         } else {
             versionCode cfg.versionCode
             versionName cfg.versionName
@@ -32,13 +32,13 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("../tankerKey")
+            storeFile file("../saasKey")
             storePassword "Zhao2017guanche"
             keyAlias "guanguan"
             keyPassword "guanguan"
         }
         release {
-            storeFile file("../tankerKey")
+            storeFile file("../saasKey")
             storePassword "Zhao2017guanche"
             keyAlias "guanguan"
             keyPassword "guanguan"
@@ -54,10 +54,9 @@ android {
             signingConfig signingConfigs.debug
             applicationIdSuffix '.inhouse'
             manifestPlaceholders = [
-                    JPUSH_PKGNAME: "com.zhaoguanche.tankerApp.inhouse",
-                    JPUSH_APPKEY : "568fcfe5978e8e3b8b9b7407", //JPush上注册的包名对应的appkey(罐罐测试).
+                    JPUSH_PKGNAME: "com.tanker.saas.driver.inhouse",
+                    JPUSH_APPKEY : "05ae49c91a6afd797af49b6d", //JPush上注册的包名对应的appkey(罐罐测试).
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-
             ]
         }
 
@@ -69,8 +68,8 @@ android {
             signingConfig signingConfigs.release
 
             manifestPlaceholders = [
-                    JPUSH_PKGNAME: "com.zhaoguanche.tankerApp",
-                    JPUSH_APPKEY : "a877ae04b62afafbe3863a60", //JPush上注册的包名对应的appkey(罐罐).正式Key
+                    JPUSH_PKGNAME: "com.tanker.saas.driver",
+                    JPUSH_APPKEY : "eb9799e6d6ef8e7e6f257761", //JPush上注册的包名对应的appkey(罐罐).正式Key
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
             ]
 
@@ -111,11 +110,11 @@ if (!isModuleRun.toBoolean()) {
         def upperName = task.toUpperCase()
         //判断task是编译期还是运行期
         if (upperName.contains("ASSEMBLE") || upperName.contains("INSTALL")) {
-//            dependencies.add("implementation", project.project(':' + 'minemodule'))
-//            dependencies.add("implementation", project.project(':' + 'grabordermodule'))
-//            dependencies.add("implementation", project.project(':' + 'loginmodule'))
-//            dependencies.add("implementation", project.project(":" + 'ordersmodule'))
-//            dependencies.add("implementation", project.project(":" + 'informmodule'))
+            dependencies.add("implementation", project.project(':' + 'homemodule'))
+            dependencies.add("implementation", project.project(':' + 'settingmodule'))
+            dependencies.add("implementation", project.project(':' + 'loginmodule'))
+            dependencies.add("implementation", project.project(":" + 'ordersmodule'))
+            dependencies.add("implementation", project.project(":" + 'workbenchmodule'))
         }
     }
 }

@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.http.CommonObserver;
 import com.tanker.basemodule.http.ExceptionEngine;
 import com.tanker.basemodule.http.api.HttpResult;
@@ -43,7 +43,7 @@ public class LoginPresenter extends LoginContract.Presenter {
     }
 
     private void processDownLoad() {
-        ConfigInfo configInfo = TankerApp.getInstance().getConfigManager().getConfigInfo();
+        ConfigInfo configInfo = SaasApp.getInstance().getConfigManager().getConfigInfo();
 
         if (!configInfo.isNeedUpdateJson()) {//是否需要更新json
             return;
@@ -60,7 +60,7 @@ public class LoginPresenter extends LoginContract.Presenter {
                 .subscribe(aBoolean -> {
                     Logger.d("下载Json成功：" + aBoolean);
                     if (aBoolean) {
-                        TankerApp.getInstance().getConfigManager().setNeedUpdate(false);
+                        SaasApp.getInstance().getConfigManager().setNeedUpdate(false);
                     }
                 });
         addDisposable(province);
@@ -73,8 +73,8 @@ public class LoginPresenter extends LoginContract.Presenter {
             public void onNext(LoginModel loginModel) {
                 UserInfo tankerUser = loginModel.getUserInfo();
                 if (tankerUser != null) {
-                    TankerApp.getInstance().getUserManager().setUser(tankerUser);
-                    TankerApp.getInstance().updateToken(loginModel.getToken());
+                    SaasApp.getInstance().getUserManager().setUser(tankerUser);
+                    SaasApp.getInstance().updateToken(loginModel.getToken());
                     //存储最近一次登录的手机号
                     Hawk.put(AppConstants.HAWK_RECENT_ACCOUNT, userPhone);
                     if (tankerUser.isHistoryUser()) {
@@ -103,7 +103,7 @@ public class LoginPresenter extends LoginContract.Presenter {
             @Override
             public void onNext(ConfigInfo configInfo) {
                 configInfo.setNeedUpdate(true);
-                TankerApp.getInstance().getConfigManager().setConfigInfo(configInfo);
+                SaasApp.getInstance().getConfigManager().setConfigInfo(configInfo);
                 login(userPhone, passwordOrCode, loginType);
             }
 

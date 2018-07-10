@@ -15,7 +15,7 @@ import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.basemodule.utils.StringUtils;
 import com.tanker.loginmodule.R;
@@ -100,8 +100,8 @@ public class DebugActivity extends BaseActivity implements View.OnClickListener 
             etDev.setVisibility(View.VISIBLE);
         }
 
-        versionName.setText("VersionName: " + TankerApp.getInstance().getVersionName());
-        versionCode.setText("VersionCode: " + TankerApp.getInstance().getVersionCode());
+        versionName.setText("VersionName: " + SaasApp.getInstance().getVersionName());
+        versionCode.setText("VersionCode: " + SaasApp.getInstance().getVersionCode());
         mRgUrl.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -169,10 +169,10 @@ public class DebugActivity extends BaseActivity implements View.OnClickListener 
      * 重新启动App -> 不杀进程,缓存的东西不清除,启动快
      */
     public void restartApp2() {
-        final Intent intent = TankerApp.getInstance().getPackageManager()
-                .getLaunchIntentForPackage(TankerApp.getInstance().getPackageName());
+        final Intent intent = SaasApp.getInstance().getPackageManager()
+                .getLaunchIntentForPackage(SaasApp.getInstance().getPackageName());
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        TankerApp.getInstance().startActivity(intent);
+        SaasApp.getInstance().startActivity(intent);
     }
 
     public void restartApp3() {

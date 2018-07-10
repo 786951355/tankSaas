@@ -194,8 +194,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt("saveCurrentIndex", commonTab.getCurrentTab());
         super.onSaveInstanceState(outState);
+        outState.clear();
+        outState.putInt("saveCurrentIndex", commonTab.getCurrentTab());
     }
 
     @Override

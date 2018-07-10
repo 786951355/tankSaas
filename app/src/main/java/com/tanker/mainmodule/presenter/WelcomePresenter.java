@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.http.CommonObserver;
 import com.tanker.basemodule.http.ExceptionEngine;
 import com.tanker.basemodule.http.api.HttpResult;
@@ -84,8 +84,8 @@ public class WelcomePresenter extends WelcomeContract.Presenter {
     }
 
     private void gotoLoginOrMain() {
-        if (TankerApp.getInstance().getUserManager().getUser() != null
-                && TankerApp.getInstance().getUserManager().getUser().getUserId() != null) {
+        if (SaasApp.getInstance().getUserManager().getUser() != null
+                && SaasApp.getInstance().getUserManager().getUser().getUserId() != null) {
             ReflectUtils.navigationToHome(mView.getContext(), 0);
         } else {
             ReflectUtils.startActivityWithName(mView.getContext(), "com.tanker.loginmodule.view.TankerLoginActivity");

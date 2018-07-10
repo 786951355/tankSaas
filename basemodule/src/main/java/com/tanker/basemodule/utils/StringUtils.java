@@ -9,7 +9,7 @@ import android.text.style.ForegroundColorSpan;
 
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.R;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.event.TextSpanClickable;
 
 import java.math.BigDecimal;
@@ -52,7 +52,7 @@ public class StringUtils {
         spannableInfo.setSpan(new TextSpanClickable(context, AppConstants.PROTOCOL_URL), firsStar, firstEnd + 1,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        spannableInfo.setSpan(new ForegroundColorSpan(TankerApp.getInstance().getResources().getColor(R.color.colorAccent)), firsStar, firstEnd + 1,
+        spannableInfo.setSpan(new ForegroundColorSpan(SaasApp.getInstance().getResources().getColor(R.color.colorAccent)), firsStar, firstEnd + 1,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableInfo;
     }
@@ -72,7 +72,7 @@ public class StringUtils {
 
             spannableInfo.setSpan(new TextSpanClickable(context, TextSpanClickable.TO_CALL, phoneNum), matcher.start(),
                     matcher.end(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            spannableInfo.setSpan(new ForegroundColorSpan(TankerApp.getInstance().getResources().getColor(R.color.text_green)), matcher.start(), matcher.end(),
+            spannableInfo.setSpan(new ForegroundColorSpan(SaasApp.getInstance().getResources().getColor(R.color.text_green)), matcher.start(), matcher.end(),
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (start >= note.length()) {
                 break;
@@ -91,7 +91,7 @@ public class StringUtils {
         //遍历取出字符串中所有的符合条件的；
         while (matcher.find(start)) {
             start = matcher.end();
-            spannableInfo.setSpan(new ForegroundColorSpan(TankerApp.getInstance().getResources().getColor(R.color.text_money)), matcher.start(), matcher.end(),
+            spannableInfo.setSpan(new ForegroundColorSpan(SaasApp.getInstance().getResources().getColor(R.color.text_money)), matcher.start(), matcher.end(),
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (start >= note.length()) {
                 break;
@@ -119,7 +119,7 @@ public class StringUtils {
 
             spannableInfo.setSpan(new TextSpanClickable(context, TextSpanClickable.TO_CALL, phoneNum), matcher.start(),
                     matcher.end(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            spannableInfo.setSpan(new ForegroundColorSpan(TankerApp.getInstance().getResources().getColor(colorid)), matcher.start(), matcher.end(),
+            spannableInfo.setSpan(new ForegroundColorSpan(SaasApp.getInstance().getResources().getColor(colorid)), matcher.start(), matcher.end(),
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (start >= note.length()) {
                 break;
@@ -139,7 +139,7 @@ public class StringUtils {
             start = matcher.end();
             sp.setSpan(new TextSpanClickable(context, TextSpanClickable.TO_CALL), matcher.start(),
                     matcher.end(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            sp.setSpan(new ForegroundColorSpan(TankerApp.getInstance().getResources().getColor(R.color.colorAccent)), matcher.start(), matcher.end(),
+            sp.setSpan(new ForegroundColorSpan(SaasApp.getInstance().getResources().getColor(R.color.colorAccent)), matcher.start(), matcher.end(),
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (start >= text.length()) {
                 break;
@@ -199,10 +199,10 @@ public class StringUtils {
      */
     public static String checkCompanyName(String etCompanyName) {
         if (EmptyUtils.isEmpty(etCompanyName)) {
-            return TankerApp.getInstance().getResources().getString(R.string.login_toast_company_name_empty_str);
+            return SaasApp.getInstance().getResources().getString(R.string.login_toast_company_name_empty_str);
         }
         if (!companyNameFormat(etCompanyName)) {
-            return TankerApp.getInstance().getResources().getString(R.string.login_toast_company_name_format_str);
+            return SaasApp.getInstance().getResources().getString(R.string.login_toast_company_name_format_str);
         }
         return "";
     }

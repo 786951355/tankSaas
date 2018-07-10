@@ -1,7 +1,7 @@
 package com.tanker.workbench.api;
 
 import com.tanker.basemodule.AppConstants;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.http.HttpParam;
 import com.tanker.basemodule.http.api.HttpResult;
 import com.tanker.basemodule.http.api.MineService;
@@ -42,7 +42,7 @@ public class MineApi {
 
     public Observable<HttpResult<String>> logout() {
         HashMap<String, String> paramMap = HttpParam.createParams().end();
-        paramMap.put(AppConstants.PARAM_PHONE, TankerApp.getInstance().getUserManager().getPhone());
+        paramMap.put(AppConstants.PARAM_PHONE, SaasApp.getInstance().getUserManager().getPhone());
         return mineService.logout(paramMap);
     }
 

@@ -3,7 +3,7 @@
 
     <application
         android:allowBackup="true"
-        android:name="com.tanker.basemodule.common.TankerApp"
+        android:name="com.tanker.basemodule.common.SaasApp"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"

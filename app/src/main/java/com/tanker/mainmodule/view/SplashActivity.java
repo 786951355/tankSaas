@@ -18,7 +18,7 @@ import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.model.app_model.SplashPicModel;
 import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.mainmodule.R;
@@ -49,11 +49,11 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
 
     private void skipSplash() {
         if (!hasSkip) {
-            if (TankerApp.getInstance().getUserManager().getUser() != null) {
+            if (SaasApp.getInstance().getUserManager().getUser() != null) {
                 navigationTo(MainActivity.class);
             } else {
-                if (TankerApp.getInstance().getUserManager().getUser() != null
-                        && TankerApp.getInstance().getUserManager().getUser().getUserId() != null) {
+                if (SaasApp.getInstance().getUserManager().getUser() != null
+                        && SaasApp.getInstance().getUserManager().getUser().getUserId() != null) {
                     ReflectUtils.navigationToHome(this, 0);
                 } else {
                     ReflectUtils.startActivityWithName(this, "com.tanker.loginmodule.view.TankerLoginActivity");

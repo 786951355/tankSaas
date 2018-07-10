@@ -7,7 +7,7 @@ import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import android.net.Uri;
 
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +56,7 @@ public class SoundPoolUtil {
     private static Integer getSoundPoolSourceByid(int resId) {
         Integer phonering = ringMap.get(resId);
         if (phonering == null) {
-            phonering = soundPool.load(TankerApp.getInstance(), resId, 0);
+            phonering = soundPool.load(SaasApp.getInstance(), resId, 0);
             ringMap.put(resId, phonering);
         }
         return phonering;
@@ -70,7 +70,7 @@ public class SoundPoolUtil {
 
     private static int getRingVolume() {
         int result = -1;
-        AudioManager audioManager = (AudioManager) TankerApp.getInstance()
+        AudioManager audioManager = (AudioManager) SaasApp.getInstance()
                 .getSystemService(Context.AUDIO_SERVICE);
         result = audioManager.getStreamVolume(AudioManager.STREAM_RING);
         return result;

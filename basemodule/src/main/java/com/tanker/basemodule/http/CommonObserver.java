@@ -8,7 +8,7 @@ import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.R;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.dialog.TankerDialog;
 import com.tanker.basemodule.utils.CommonUtils;
 import com.tanker.basemodule.utils.NetUtil;
@@ -102,7 +102,7 @@ public abstract class CommonObserver<T> implements Observer<T> {
                 @Override
                 public void onConfirm(TankerDialog obDialog) {
                     navigationToLogin(context.get());
-                    TankerApp.getInstance().exit();
+                    SaasApp.getInstance().exit();
                 }
             });
             return;
@@ -114,7 +114,7 @@ public abstract class CommonObserver<T> implements Observer<T> {
                     @Override
                     public void onConfirm(TankerDialog obDialog) {
                         navigationToLogin(context.get());
-                        TankerApp.getInstance().exit();
+                        SaasApp.getInstance().exit();
                     }
                 });
                 return;

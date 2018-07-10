@@ -22,11 +22,13 @@ android {
             buildConfigField "String", "HostUrl", "\"${url["release"]}\""
             buildConfigField "String", "ImageUrl", "\"${imgUrl["release"]}\""
             buildConfigField 'boolean', 'isDebug', "false"
+            buildConfigField 'String', 'BuglyAppID',"\"145b732bdb\""
         }
         debug {
             //debug模式
             buildConfigField "String", "HostUrl", "\"${url["uat"]}\""
             buildConfigField "String", "ImageUrl", "\"${imgUrl["debug"]}\""
+            buildConfigField 'String', 'BuglyAppID',"\"9d4a62d386\""
             buildConfigField 'boolean', 'isDebug', "true"
             manifestPlaceholders = [
                     JPUSH_PKGNAME: "com.zhaoguanche.tankerApp.inhouse",

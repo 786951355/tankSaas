@@ -2,7 +2,7 @@ package com.tanker.homemodule.debug;
 
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.model.login_model.UserInfo;
 import com.tanker.homemodule.R;
 
@@ -17,7 +17,7 @@ public class TestOrderActivity extends BaseActivity {
     public void configToolbar(CustomToolbar rToolbar) {
         UserInfo user = new UserInfo();
         user.setUserId("291");
-        TankerApp.getInstance().getUserManager().setUser(user);
+        SaasApp.getInstance().getUserManager().setUser(user);
         rToolbar.setTitle("订单管理").setToolbarVisible(true);
     }
 

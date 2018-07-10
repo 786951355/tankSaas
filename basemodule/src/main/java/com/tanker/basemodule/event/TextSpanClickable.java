@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.R;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.common.WebViewActivity;
 
 import java.lang.ref.WeakReference;
@@ -56,7 +56,7 @@ public class TextSpanClickable extends ClickableSpan {
     public void updateDrawState(TextPaint ds) {
         super.updateDrawState(ds);
         ds.setColor(
-                TankerApp.getInstance().getResources().getColor(R.color.text_gray));
+                SaasApp.getInstance().getResources().getColor(R.color.text_gray));
         ds.setUnderlineText(false);
     }
 

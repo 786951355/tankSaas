@@ -78,11 +78,11 @@ public class WebViewActivity extends BaseActivity {
                 break;
             case TO_INVOICE:
                 title = getString(R.string.invoice_info);
-                intentUrl = TankerApp.getInstance().getConfigManager().getConfigInfo().getAppInvoiceSrc();
+                intentUrl = SaasApp.getInstance().getConfigManager().getConfigInfo().getAppInvoiceSrc();
                 break;
             case TO_ADDRESS:
                 title = getString(R.string.address_info);
-                intentUrl = TankerApp.getInstance().getConfigManager().getConfigInfo().getAppAddressSrc();
+                intentUrl = SaasApp.getInstance().getConfigManager().getConfigInfo().getAppAddressSrc();
                 break;
             case TO_NOTICE:
                 title = "公告";

@@ -5,7 +5,7 @@ import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.BuildConfig;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.https.certification.TrustAllCerts;
 import com.tanker.basemodule.utils.NetUtil;
 import com.tencent.bugly.beta.Beta;
@@ -57,20 +57,20 @@ public class RetroAPIFactory {
 
         @Override
         public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request().newBuilder().addHeader("token", TankerApp.getInstance().getToken()).build();
-            if (!NetUtil.isNetworkAvailable(TankerApp.getInstance())) {
+            Request request = chain.request().newBuilder().addHeader("token", SaasApp.getInstance().getToken()).build();
+            if (!NetUtil.isNetworkAvailable(SaasApp.getInstance())) {
                 request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
                 Logger.e("no network");
             }
             Response originalResponse = chain.proceed(request);
-            if (NetUtil.isNetworkAvailable(TankerApp.getInstance())) {
+            if (NetUtil.isNetworkAvailable(SaasApp.getInstance())) {
                 //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
                 String cacheControl = request.cacheControl().toString();
                 Map<String, List<String>> stringListMap = originalResponse.headers().toMultimap();
                 List<String> versionCode = stringListMap.get(AppConstants.ANDROID_VERISON);
                 if (versionCode != null && versionCode.size() > 0) {
                     Integer integer = Integer.valueOf(versionCode.get(0));
-                    if (integer > TankerApp.getInstance().getVersionCode()) {
+                    if (integer > SaasApp.getInstance().getVersionCode()) {
                         Beta.checkUpgrade(false, false);
                     }
                 }
@@ -127,7 +127,7 @@ public class RetroAPIFactory {
      */
     public static void init() {
         // 指定缓存路径,缓存大小100Mb
-        Cache cache = new Cache(new File(TankerApp.getInstance().getCacheDir(), "HttpCache"),
+        Cache cache = new Cache(new File(SaasApp.getInstance().getCacheDir(), "HttpCache"),
                 1024 * 1024 * 100);
         mResponseLogInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().cache(cache)

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 
 public class SharedPreferenceUtil {
 
@@ -39,7 +39,7 @@ public class SharedPreferenceUtil {
 
     public static synchronized SharedPreferenceUtil getInstance() {
         if (spUtils == null) {
-            spUtils = new SharedPreferenceUtil(TankerApp.getInstance());
+            spUtils = new SharedPreferenceUtil(SaasApp.getInstance());
         }
 
         return spUtils;

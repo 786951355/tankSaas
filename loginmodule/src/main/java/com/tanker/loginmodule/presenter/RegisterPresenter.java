@@ -3,7 +3,7 @@ package com.tanker.loginmodule.presenter;
 import android.text.TextUtils;
 
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.http.CommonObserver;
 import com.tanker.basemodule.http.ExceptionEngine;
 import com.tanker.basemodule.http.api.HttpResult;
@@ -52,8 +52,8 @@ public class RegisterPresenter extends RegisterContract.Presenter {
                     //AuthBookActiivty的退出字段是通过AuditStatus是否为空判断的
                     //所以如果是注册过去的设置盖字段
                     user.setAuditStatus("");
-                    TankerApp.getInstance().getUserManager().setUser(user);
-                    TankerApp.getInstance().updateToken(loginModel.getToken());
+                    SaasApp.getInstance().getUserManager().setUser(user);
+                    SaasApp.getInstance().updateToken(loginModel.getToken());
                     //为极光设置别名（登陆手机号码）
                     JPushInterface.setAlias(mView.getContext(), 1, user.getMobilePhone());
                     mView.dismissProgress();
@@ -72,7 +72,7 @@ public class RegisterPresenter extends RegisterContract.Presenter {
     }
 
     private void processDownLoad() {
-        ConfigInfo configInfo = TankerApp.getInstance().getConfigManager().getConfigInfo();
+        ConfigInfo configInfo = SaasApp.getInstance().getConfigManager().getConfigInfo();
 
         if (!configInfo.isNeedUpdateJson()) {//是否需要更新json
             return;
@@ -89,7 +89,7 @@ public class RegisterPresenter extends RegisterContract.Presenter {
                 .subscribe(aBoolean -> {
                     Logger.d("下载Json成功：" + aBoolean);
                     if (aBoolean) {
-                        TankerApp.getInstance().getConfigManager().setNeedUpdate(false);
+                        SaasApp.getInstance().getConfigManager().setNeedUpdate(false);
                     }
                 });
         addDisposable(province);
@@ -120,7 +120,7 @@ public class RegisterPresenter extends RegisterContract.Presenter {
             @Override
             public void onNext(ConfigInfo configInfo) {
                 configInfo.setNeedUpdate(true);
-                TankerApp.getInstance().getConfigManager().setConfigInfo(configInfo);
+                SaasApp.getInstance().getConfigManager().setConfigInfo(configInfo);
                 register(platform, userPhone, userPwd, vertificationCode);
             }
 

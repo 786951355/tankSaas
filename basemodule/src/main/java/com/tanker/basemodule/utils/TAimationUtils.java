@@ -8,7 +8,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
 import com.tanker.basemodule.R;
-import com.tanker.basemodule.common.TankerApp;
+import com.tanker.basemodule.common.SaasApp;
 
 
 public class TAimationUtils {
@@ -16,7 +16,7 @@ public class TAimationUtils {
         imageView.setBackground(null);
         imageView.setImageResource(R.drawable.progress);
         imageView.refreshDrawableState();
-        Animation circle_anim = AnimationUtils.loadAnimation(TankerApp.getInstance(), R.anim.anim_round_rotate);
+        Animation circle_anim = AnimationUtils.loadAnimation(SaasApp.getInstance(), R.anim.anim_round_rotate);
         LinearInterpolator interpolator = new LinearInterpolator();  //设置匀速旋转，在xml文件中设置会出现卡顿
         circle_anim.setInterpolator(interpolator);
         if (circle_anim != null) {
