@@ -25,8 +25,8 @@ android {
         debug {
             if (isModuleRun.toBoolean()) {
                 manifestPlaceholders = [
-                        JPUSH_PKGNAME: "com.zhaoguanche.tankerApp.inhouse",
-                        JPUSH_APPKEY : "568fcfe5978e8e3b8b9b7407", //JPush上注册的包名对应的appkey(罐罐测试).
+                        JPUSH_PKGNAME: "com.tanker.saas.driver.inhouse",
+                        JPUSH_APPKEY : "05ae49c91a6afd797af49b6d", //JPush上注册的包名对应的appkey(罐罐测试).
                         JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
                 ]
             }

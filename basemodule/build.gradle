@@ -23,6 +23,11 @@ android {
             buildConfigField "String", "ImageUrl", "\"${imgUrl["release"]}\""
             buildConfigField 'boolean', 'isDebug', "false"
             buildConfigField 'String', 'BuglyAppID',"\"145b732bdb\""
+            manifestPlaceholders = [
+                    JPUSH_PKGNAME: "com.tanker.saas.driver",
+                    JPUSH_APPKEY : "eb9799e6d6ef8e7e6f257761", //JPush上注册的包名对应的appkey(罐罐).正式Key
+                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+            ]
         }
         debug {
             //debug模式
@@ -30,12 +35,11 @@ android {
             buildConfigField "String", "ImageUrl", "\"${imgUrl["debug"]}\""
             buildConfigField 'String', 'BuglyAppID',"\"9d4a62d386\""
             buildConfigField 'boolean', 'isDebug', "true"
-            manifestPlaceholders = [
-                    JPUSH_PKGNAME: "com.zhaoguanche.tankerApp.inhouse",
-                    JPUSH_APPKEY : "568fcfe5978e8e3b8b9b7407", //JPush上注册的包名对应的appkey(罐罐测试).
-                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-
-            ]
+//            manifestPlaceholders = [
+//                    JPUSH_PKGNAME: "com.tanker.saas.driver.inhouse",
+//                    JPUSH_APPKEY : "05ae49c91a6afd797af49b6d", //JPush上注册的包名对应的appkey(罐罐测试).
+//                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+//            ]
         }
     }
 

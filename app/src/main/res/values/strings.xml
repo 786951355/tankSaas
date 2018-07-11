@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Saas</string>
+    <string name="app_name_release">Saas</string>
+    <string name="app_name_debug">Saas测试</string>
 </resources>

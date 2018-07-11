@@ -89,25 +89,11 @@ public class WebViewActivity extends BaseActivity {
                 //intentUrl = AppConstants.PROTOCOL_URL;
                 intentUrl = noticeWebUrl;
 
-                //noticeWebUrl="http://www.zhaoguanche.com/index";
-                //noticeTitle="通知";
-                //noticeDescript="国庆放假七天，请各位伙伴了安排好假期行程，祝假期愉快！";
-                //noticeImageUrl="http://p2.so.qhmsg.com/bdr/200_200_/t01d4d1b6ffe05fd187.jpg";
-                // noticeImageID=R.drawable.logo;
-
-                rToolbar.setRightIcon(R.drawable.icon_share).setOnRightIconClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //友盟分享
-                        new ShareAction(mContext)
-                                .setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)//可分享的市场
-                                .setShareboardclickCallback(new ShareBoardlistener() {
-                                    @Override
-                                    public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
-                                        ShareUtils.shareWeb(mContext, noticeWebUrl, noticeTitle, noticeDescript, noticeImageUrl, noticeImageID, share_media);
-                                    }
-                                }).open();
-                    }
+                rToolbar.setRightIcon(R.drawable.icon_share).setOnRightIconClickListener(view -> {
+                    //友盟分享
+                    new ShareAction(mContext)
+                            .setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)//可分享的市场
+                            .setShareboardclickCallback((snsPlatform, share_media) -> ShareUtils.shareWeb(mContext, noticeWebUrl, noticeTitle, noticeDescript, noticeImageUrl, noticeImageID, share_media)).open();
                 });
                 break;
             case -1:

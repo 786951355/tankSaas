@@ -53,7 +53,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
             applicationIdSuffix '.inhouse'
+            resValue "string", "app_name", "@string/app_name_debug"
             manifestPlaceholders = [
+                    app_icon   : "@drawable/logo_small",
                     JPUSH_PKGNAME: "com.tanker.saas.driver.inhouse",
                     JPUSH_APPKEY : "05ae49c91a6afd797af49b6d", //JPush上注册的包名对应的appkey(罐罐测试).
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
@@ -64,10 +66,11 @@ android {
             shrinkResources true
             minifyEnabled true
 //            useProguard true
+            resValue "string", "app_name", "@string/app_name_release"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-
             manifestPlaceholders = [
+                    app_icon   : "@drawable/logo",
                     JPUSH_PKGNAME: "com.tanker.saas.driver",
                     JPUSH_APPKEY : "eb9799e6d6ef8e7e6f257761", //JPush上注册的包名对应的appkey(罐罐).正式Key
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
