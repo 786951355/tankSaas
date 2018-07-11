@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        layout="@layout/tanker_login_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/et_login_username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_74" />
+
+    <com.tanker.loginmodule.widget.XmTankerEditText
+        android:id="@+id/et_login_username"
+        style="@style/et_login_register_style"
+        android:layout_above="@+id/ll_login_pwd_code"
+        android:layout_weight="1.0"
+        android:drawableLeft="@drawable/icon_login_user"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:hint="@string/tv_input_phone_num_str"
+        android:inputType="number"
+        android:maxLength="11"
+        android:paddingLeft="@dimen/dp_4"
+        android:paddingTop="@dimen/dp_8" />
+
+
+    <LinearLayout
+        android:layout_height="@dimen/dp_76"
+        android:layout_above="@+id/rl_login_phone_pwd_code"
+        android:layout_marginBottom="@dimen/dp_48"
+        android:id="@+id/ll_login_pwd_code"
+        android:layout_width="match_parent"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:orientation="horizontal">
+
+        <com.tanker.loginmodule.widget.PasswordToggleEditText
+            android:id="@+id/et_login_pwd"
+            style="@style/et_login_register_style"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:drawableLeft="@drawable/icon_login_pwd"
+            android:drawableRight="@drawable/icon_login_pwd_hide"
+            android:hint="@string/et_input_pwd_hide"
+            android:inputType="textPassword"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingLeft="@dimen/dp_4"
+            android:paddingTop="@dimen/dp_8"
+            android:visibility="visible" />
+
+        <include
+            layout="@layout/common_login_send_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1.0"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_above="@+id/tv_login"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:id="@+id/rl_login_phone_pwd_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_login_phone_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:text="@string/tv_login_phone_pwd"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_16"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_login_phone_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:text="@string/tv_login_phone_code"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_16"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="@dimen/dp_324"
+        android:layout_height="@dimen/dp_45"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_110"
+        android:background="@drawable/btn_radius_bg"
+        android:gravity="center"
+        android:text="@string/btn_login"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp_20" />
+
+    <include
+        layout="@layout/common_read_agreement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_register_retrieve_pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_2" />
+
+
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_28"
+        android:id="@+id/ll_register_retrieve_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/dp_14"
+        android:layout_toLeftOf="@+id/v_line"
+        android:text="@string/tv_register"
+        android:paddingBottom="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_12"
+        android:textColor="@color/colorWhite" />
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="@dimen/dp_1"
+        android:layout_height="@dimen/dp_14"
+        android:layout_gravity="center"
+        android:background="@color/colorWhite" />
+
+    <TextView
+        android:id="@+id/tv_retrieve_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/dp_14"
+        android:paddingBottom="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_12"
+        android:layout_toLeftOf="@+id/v_line"
+        android:text="@string/et_retrieve_pwd"
+        android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:elevation="4dp"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorWhite"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -14,11 +14,10 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_query"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="10dp"
+            android:layout_margin="8dp"
             android:background="@drawable/ordersmodule_search_bg_gray"
             android:orientation="horizontal">
 

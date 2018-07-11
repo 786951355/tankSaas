@@ -23,6 +23,7 @@ import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.basemodule.common.Logger;
 import com.tanker.basemodule.common.SaasApp;
+import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.basemodule.security.AesEncodeUtil;
 import com.tanker.basemodule.security.Md5Util;
 import com.tanker.basemodule.utils.EmptyUtils;
@@ -51,7 +52,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Administrator on 2018/3/23.
  */
 
-public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements View.OnClickListener, LoginContract.View {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements View.OnClickListener, LoginContract.View {
 
     protected EditText mEtLoginUserName, mEtLoginPwd, mEtLoginVerifyCode;
     protected RelativeLayout mRlLoginPhonePwdCode;
@@ -61,6 +62,21 @@ public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements
     protected ImageView mIvLoginAgreementCheck, mIvLoginAgreementUncheck;
     protected RelativeLayout rl_login_agreement_uncheck;
     private TextView tv_agreement;
+
+    @Override
+    public int getContentView() {
+        return R.layout.loginmodule_activity_login;
+    }
+
+    @Override
+    public void configToolbar(CustomToolbar rToolbar) {
+        rToolbar.setToolbarVisible(false);
+        //友盟禁止默认的页面统计功能
+        MobclickAgent.openActivityDurationTrack(false);
+    }
+
+
+    private Disposable time_disposable;
 
     @Override
     protected void initView() {
@@ -185,7 +201,9 @@ public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements
             tvLoginSendCode();
         } else if (i == R.id.tv_login) {
             //登录
-            tvLogin();
+//            tvLogin();
+            ReflectUtils.navigationToHome(this, 0);
+
         } else if (i == R.id.rl_login_phone_pwd_code) {
             //用手机号密码或者手机号验证码登录
             tvLoginPhonePwdCode();
@@ -269,20 +287,6 @@ public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements
         return true;
     }
 
-    @Override
-    public int getContentView() {
-        return R.layout.fragment_tanker_login;
-    }
-
-    @Override
-    public void configToolbar(CustomToolbar rToolbar) {
-        rToolbar.setToolbarVisible(false);
-        //友盟禁止默认的页面统计功能
-        MobclickAgent.openActivityDurationTrack(false);
-    }
-
-
-    private Disposable time_disposable;
 
     /**
      * 登录发送验证码
@@ -294,7 +298,7 @@ public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements
         }
         if (!phoneNumLoginInputVerity(true)) return;
         //点击启动发送验证码提示
-        /*TimeUtils.timeTask(mContext, TankerLoginFragment.this);*/
+        /*TimeUtils.timeTask(mContext, LoginFragment.this);*/
         //发送验证码
         mPresenter.getCode(mEtLoginUserName.getText().toString(),
                 LoginConstants.PLATFORM_VALUE,
@@ -436,7 +440,7 @@ public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements
     protected void tvRegister() {
         //友盟事件监听
         MobclickAgent.onEvent(mContext, "1118", "注册按键");
-        navigationTo(TankerRegisterActivity.class);
+        navigationTo(RegisterActivity.class);
     }
 
     /**
@@ -445,7 +449,7 @@ public class TankerLoginActivity extends BaseActivity<LoginPresenter> implements
     protected void tvRetrievePwd() {
         //友盟事件监听
         MobclickAgent.onEvent(mContext, "1118", "找回密码按键");
-        navigationTo(TankerRetrieveActivity.class);
+        navigationTo(RetrieveActivity.class);
     }
 
 }

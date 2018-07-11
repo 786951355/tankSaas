@@ -8,7 +8,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
-            android:name="com.tanker.loginmodule.view.TankerLoginActivity"
+            android:name="com.tanker.loginmodule.view.LoginActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan">
@@ -19,7 +19,7 @@
         </activity>
         <!--找回密码-->
         <activity
-            android:name=".view.TankerRetrieveActivity"
+            android:name=".view.RetrieveActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
     </application>

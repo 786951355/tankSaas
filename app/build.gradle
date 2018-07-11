@@ -34,14 +34,14 @@ android {
         debug {
             storeFile file("../saasKey")
             storePassword "Zhao2017guanche"
-            keyAlias "guanguan"
+            keyAlias "guangaun"
             keyPassword "guanguan"
         }
         release {
             storeFile file("../saasKey")
             storePassword "Zhao2017guanche"
-            keyAlias "guanguan"
-            keyPassword "guanguan"
+            keyAlias "saas"
+            keyPassword "saasapp"
         }
     }
 

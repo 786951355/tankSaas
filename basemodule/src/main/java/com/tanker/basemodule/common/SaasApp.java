@@ -14,7 +14,6 @@ import android.util.Log;
 import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.BuildConfig;
-import com.tanker.basemodule.constants.BuglyConst;
 import com.tanker.basemodule.dao.DaoMaster;
 import com.tanker.basemodule.dao.DaoSession;
 import com.tanker.basemodule.http.api.RetroAPIFactory;
@@ -45,11 +44,12 @@ public class SaasApp extends Application {
      * @author lwj
      * @Description: 友盟分享平台初始化
      * @date 2018/6/5 10:40
-     */ {
+     */
+//    {
         //微信
         //PlatformConfig.setWeixin("wx51b2f44500d354b2", "2d04642e6f159e8546dec29de2b906de");//我的测试账号
-        PlatformConfig.setWeixin("wx249c978c39903b95", "467d87ca73fd592a34839f054a16ea9c");//正式
-    }
+//        PlatformConfig.setWeixin("wx249c978c39903b95", "467d87ca73fd592a34839f054a16ea9c");//正式
+//    }
 
     public UserManager getUserManager() {
         if (userManager == null) {
@@ -87,7 +87,7 @@ public class SaasApp extends Application {
         initManager();
         initJpush();
         initBugly();
-        initUmeng();
+//        initUmeng();
     }
 
     /**

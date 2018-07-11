@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.tanker.orders.OrderListFragment;
+import com.tanker.orders.view.OrderListFragment;
 
 import java.util.ArrayList;
 

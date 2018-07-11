@@ -14,7 +14,7 @@ import com.tanker.basemodule.utils.FileUtils;
 import com.tanker.loginmodule.R;
 import com.tanker.loginmodule.api.LoginApi;
 import com.tanker.loginmodule.contract.RegisterContract;
-import com.tanker.loginmodule.view.TankerRegisterSuccessActivity;
+import com.tanker.loginmodule.view.RegisterSuccessActivity;
 
 import cn.jpush.android.api.JPushInterface;
 import io.reactivex.Observable;
@@ -57,7 +57,7 @@ public class RegisterPresenter extends RegisterContract.Presenter {
                     //为极光设置别名（登陆手机号码）
                     JPushInterface.setAlias(mView.getContext(), 1, user.getMobilePhone());
                     mView.dismissProgress();
-                    mView.navigationTo(TankerRegisterSuccessActivity.class);
+                    mView.navigationTo(RegisterSuccessActivity.class);
                     mView.getContext().finish();
                 } else {
                     mView.showMessage("用户信息获取失败，请重新尝试");

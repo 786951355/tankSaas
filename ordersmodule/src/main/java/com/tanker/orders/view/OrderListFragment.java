@@ -1,10 +1,11 @@
-package com.tanker.orders;
+package com.tanker.orders.view;
 
 import android.os.Bundle;
 import android.view.View;
 
 import com.tanker.basemodule.base.BaseFragment;
 import com.tanker.basemodule.model.home_model.BiddingOrderModel;
+import com.tanker.orders.R;
 import com.tanker.orders.contract.OrderListContract;
 import com.tanker.orders.presenter.OrderListPresenter;
 

@@ -11,6 +11,8 @@ import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.basemodule.common.SaasApp;
+import com.tanker.basemodule.dialog.TankerDialog;
+import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.basemodule.utils.StringUtils;
 import com.umeng.analytics.MobclickAgent;
 import com.zhaoguanche.setting.R;
@@ -30,6 +32,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements V
     private Boolean toggle;
     private RelativeLayout mRlBindPhone;
     private LinearLayout ll_content;
+    private TextView mBtnExit;
 
 
     @Override
@@ -48,26 +51,33 @@ public class SettingActivity extends BaseActivity<SettingPresenter> implements V
         MobclickAgent.openActivityDurationTrack(false);
         mTvVersionNum = findViewById(R.id.tv_version_num);
         mTvPhoneNum = findViewById(R.id.tv_phone_num);
-
+        mBtnExit = findViewById(R.id.btn_exit);
+        mBtnExit.setOnClickListener(this);
         findViewById(R.id.rl_check_version).setOnClickListener(this);
-        mIvSwitch.setOnClickListener(this);
-        mRlBindPhone.setOnClickListener(this);
 
-        ll_content.setVisibility(View.VISIBLE);
+//        ll_content.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void initData() {
         toggle = Hawk.<Boolean>get(AppConstants.SOUND_TOGGLE, Boolean.TRUE);
         mTvVersionNum.setText(SaasApp.getInstance().getVersion());
-        String phone = SaasApp.getInstance().getUserManager().getPhone();
-        phone = StringUtils.getHidePhoneNum(phone);
-        mTvPhoneNum.setText(phone);
+//        String phone = SaasApp.getInstance().getUserManager().getPhone();
+//        phone = StringUtils.getHidePhoneNum(phone);
+//        mTvPhoneNum.setText(phone);
     }
 
     @Override
     public void onClick(View v) {
         int i = v.getId();
+        if (i==R.id.btn_exit){
+            TankerDialog.OptionListener optionListener = obDialog -> {
+                ReflectUtils.navigationToLogin(mContext);
+                SaasApp.getInstance().exit();
+                mContext.finish();
+            };
+            showAlertDialog("确认退出当前账号吗？", R.drawable.warning, optionListener);
+        }
 
     }
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:calendar="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.tanker.resmodule.widget.DayPickerView
+        android:id="@+id/pickerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_gray"
+        calendar:colorAbnormalDay="#979797"
+        calendar:colorCurrentDay="@color/white"
+        calendar:colorDayName="@color/text_green"
+        calendar:colorMonthName="#686868"
+        calendar:colorNormalDay="@color/text_green"
+        calendar:colorSelectedDayBackground="@color/picker_item_day_selected"
+        calendar:colorRangeSelectedDayBackground="@color/picker_item_range_day_selected"
+        calendar:colorSelectedDayText="@color/white"
+        calendar:colorRangeSelectedDayText="@color/white"
+        calendar:drawRoundRect="false"
+        calendar:enableLaterDay="false"
+        calendar:textSizeMonth="14sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/bt_commit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/btn_radius_bg"
+            android:text="@string/ordersmodule_btn_commit"
+            android:textColor="@color/white" />
+    </FrameLayout>
+</LinearLayout>

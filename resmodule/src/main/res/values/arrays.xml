@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ordersmodule_tabs">
+        <item>全部</item>
+        <item>待装货</item>
+        <item>待卸货</item>
+        <item>待确认签收</item>
+        <item>已签收</item>
+        <item>异议中</item>
+        <item>已终止</item>
+    </string-array>
+
+    <string-array name="ordersmodule_query_type_tabs">
+        <item>车牌号</item>
+        <item>订单号</item>
+        <item>日期</item>
+    </string-array>
+
+    <string-array name="ordersmodule_calendar_week_label">
+        <item>星期日</item>
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+    </string-array>
+
+    <string-array name="ordersmodule_calendar_zh_month_label">
+        <item>一月</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>十一月</item>
+        <item>十二月</item>
+    </string-array>
+
+    <string-array name="ordersmodule_dtl_tabs">
+        <item>备注</item>
+        <item>联系人</item>
+    </string-array>
+</resources>

@@ -11,15 +11,12 @@ import com.tanker.basemodule.utils.NetUtil;
 import com.tencent.bugly.beta.Beta;
 
 import java.io.File;
-import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
@@ -48,46 +45,6 @@ public class RetroAPIFactory {
     // 避免出现 HTTP 403 Forbidden，参考：http://stackoverflow.com/questions/13670692/403-forbidden-with-java-but-not-web-browser
     static final String AVOID_HTTP403_FORBIDDEN =
             "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11";
-
-    /**
-     * 云端响应头拦截器，用来配置缓存策略
-     * Dangerous interceptor that rewrites the server's cache-control header.
-     */
-    private static final Interceptor sRewriteCacheControlInterceptor = new Interceptor() {
-
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            Request request = chain.request().newBuilder().addHeader("token", SaasApp.getInstance().getToken()).build();
-            if (!NetUtil.isNetworkAvailable(SaasApp.getInstance())) {
-                request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
-                Logger.e("no network");
-            }
-            Response originalResponse = chain.proceed(request);
-            if (NetUtil.isNetworkAvailable(SaasApp.getInstance())) {
-                //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
-                String cacheControl = request.cacheControl().toString();
-                Map<String, List<String>> stringListMap = originalResponse.headers().toMultimap();
-                List<String> versionCode = stringListMap.get(AppConstants.ANDROID_VERISON);
-                if (versionCode != null && versionCode.size() > 0) {
-                    Integer integer = Integer.valueOf(versionCode.get(0));
-                    if (integer > SaasApp.getInstance().getVersionCode()) {
-                        Beta.checkUpgrade(false, false);
-                    }
-                }
-
-                return originalResponse.newBuilder()
-                        .header("Cache-Control", cacheControl)
-                        .removeHeader("Pragma")
-                        .build();
-            } else {
-                return originalResponse.newBuilder()
-                        .header("Cache-Control", "public, " + CACHE_CONTROL_CACHE)
-                        .removeHeader("Pragma")
-                        .build();
-            }
-        }
-    };
-
     private static Retrofit innerRetrofit;
     private static Retrofit outerRetrofit;
 
@@ -97,28 +54,68 @@ public class RetroAPIFactory {
 
     public static String BASEURL = BuildConfig.isDebug ? Hawk.get(AppConstants.HAWK_APP_HOST, "https://test.carrierapi.tankchaoren.com") : BuildConfig.HostUrl;
 
+    /**
+     * 云端响应头拦截器，用来配置缓存策略
+     * Dangerous interceptor that rewrites the server's cache-control header.
+     */
+    private static final Interceptor sRewriteCacheControlInterceptor = chain -> {
+        Request request = chain.request().newBuilder().addHeader("token", SaasApp.getInstance().getToken()).build();
+        if (!NetUtil.isNetworkAvailable(SaasApp.getInstance())) {
+            request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
+            Logger.e("no network");
+        }
+        Response originalResponse = chain.proceed(request);
+        if (NetUtil.isNetworkAvailable(SaasApp.getInstance())) {
+            //有网的时候读接口上的@Headers里的配置，你可以在这里进行统一的设置
+            String cacheControl = request.cacheControl().toString();
+            Map<String, List<String>> stringListMap = originalResponse.headers().toMultimap();
+            List<String> versionCode = stringListMap.get(AppConstants.ANDROID_VERISON);
+            if (versionCode != null && versionCode.size() > 0) {
+                Integer integer = Integer.valueOf(versionCode.get(0));
+                if (integer > SaasApp.getInstance().getVersionCode()) {
+                    Beta.checkUpgrade(false, false);
+                }
+            }
+
+            return originalResponse.newBuilder()
+                    .header("Cache-Control", cacheControl)
+                    .removeHeader("Pragma")
+                    .build();
+        } else {
+            return originalResponse.newBuilder()
+                    .header("Cache-Control", "public, " + CACHE_CONTROL_CACHE)
+                    .removeHeader("Pragma")
+                    .build();
+        }
+    };
+
+    private static final Interceptor rewriteResponseInterceptorOffline = chain -> {
+        Request request = chain.request();
+        if (!NetUtil.isNetworkAvailable(SaasApp.getInstance().getApplicationContext())) {
+            request = request.newBuilder()
+                    .removeHeader("Pragma")
+                    .header("Cache-Control", "public, only-if-cached")
+                    .build();
+        }
+        return chain.proceed(request);
+    };
+
+
+    private static final HttpLoggingInterceptor mResponseLogInterceptor = new HttpLoggingInterceptor(message -> {
+        if (message.contains("http") && !message.contains("ms")) {
+            Logger.d("\nsglei-net请求地址：" + message);
+        } else if (message.contains(AppConstants.PARAM_SIGN)) {
+            Logger.d("\nsglei-net请求报文：" + message);
+        } else if (message.contains(AppConstants.PARAM_DATA)) {
+            Logger.d("\nsglei-net响应报文：" + message);
+        }
+    });
+
+
     public static <T> T create(final Class<T> service) {
         return innerRetrofit.create(service);
     }
 
-
-    /**
-     * 用来解决https需要证书认证的问题
-     *
-     * @return
-     */
-    private static SSLSocketFactory createSSLSocketFactory() {
-        SSLSocketFactory ssfFactory = null;
-
-        try {
-            SSLContext sc = SSLContext.getInstance("TLS");
-            sc.init(null, new TrustManager[]{new TrustAllCerts()}, new SecureRandom());
-            ssfFactory = sc.getSocketFactory();
-        } catch (Exception e) {
-        }
-
-        return ssfFactory;
-    }
 
     /**
      * 初始化网络通信服务
@@ -160,26 +157,24 @@ public class RetroAPIFactory {
                 .build();
     }
 
-    private static final Interceptor rewriteResponseInterceptorOffline = chain -> {
-        Request request = chain.request();
-        if (!NetUtil.isNetworkAvailable(SaasApp.getInstance().getApplicationContext())) {
-            request = request.newBuilder()
-                    .removeHeader("Pragma")
-                    .header("Cache-Control", "public, only-if-cached")
-                    .build();
+    /**
+     * 用来解决https需要证书认证的问题
+     *
+     * @return
+     */
+    private static SSLSocketFactory createSSLSocketFactory() {
+        SSLSocketFactory ssfFactory = null;
+
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, new TrustManager[]{new TrustAllCerts()}, new SecureRandom());
+            ssfFactory = sc.getSocketFactory();
+        } catch (Exception e) {
         }
-        return chain.proceed(request);
-    };
+
+        return ssfFactory;
+    }
 
 
-    private static final HttpLoggingInterceptor mResponseLogInterceptor = new HttpLoggingInterceptor(message -> {
-        if (message.contains("http") && !message.contains("ms")) {
-            Logger.d("\nsglei-net请求地址：" + message);
-        } else if (message.contains(AppConstants.PARAM_SIGN)) {
-            Logger.d("\nsglei-net请求报文：" + message);
-        } else if (message.contains(AppConstants.PARAM_DATA)) {
-            Logger.d("\nsglei-net响应报文：" + message);
-        }
-    });
 
 }

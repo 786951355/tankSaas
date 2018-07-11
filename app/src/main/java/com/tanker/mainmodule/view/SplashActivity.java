@@ -56,7 +56,7 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
                         && SaasApp.getInstance().getUserManager().getUser().getUserId() != null) {
                     ReflectUtils.navigationToHome(this, 0);
                 } else {
-                    ReflectUtils.startActivityWithName(this, "com.tanker.loginmodule.view.TankerLoginActivity");
+                    ReflectUtils.startActivityWithName(this, "com.tanker.loginmodule.view.LoginActivity");
                 }
             }
             hasSkip = true;

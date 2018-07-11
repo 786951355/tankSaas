@@ -31,7 +31,7 @@ import com.tanker.loginmodule.presenter.RegisterPresenter;
 
 import java.util.Locale;
 
-public class TankerRegisterActivity extends BaseActivity<RegisterPresenter> implements View.OnClickListener, RegisterContract.View, TimeUtils.ItimeTaskListener {
+public class RegisterActivity extends BaseActivity<RegisterPresenter> implements View.OnClickListener, RegisterContract.View, TimeUtils.ItimeTaskListener {
     protected EditText mEtRegisterPhoneNum, mEtRegisterVerifyCode, mEtRegisterPwd, mEtRegisterConfirmPwd;
     private TextView tv_agreement;
     protected ImageView mIvBack;
@@ -190,7 +190,7 @@ public class TankerRegisterActivity extends BaseActivity<RegisterPresenter> impl
 
 
     protected void ivBack() {
-        navigationTo(TankerLoginActivity.class);
+        navigationTo(LoginActivity.class);
         finish();
     }
 
@@ -305,7 +305,7 @@ public class TankerRegisterActivity extends BaseActivity<RegisterPresenter> impl
 
     @Override
     public int getContentView() {
-        return R.layout.fragment_tanker_register;
+        return R.layout.loginmodule_activity_register;
     }
 
     @Override

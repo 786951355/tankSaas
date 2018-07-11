@@ -27,30 +27,9 @@
              </intent-filter>
          </activity>-->
 
-        <!--抢单详情-->
-        <activity
-            android:name=".view.TankerGrabOrderDetailActivity"
-            android:launchMode="singleTop" />
-
-        <activity
-            android:name=".view.TankerQuotedGraborderDetailActivity"
-            android:launchMode="singleTop" />
-
-        <activity
-            android:name=".view.TankerQuotedGraborderDetailActivity"
-            android:launchMode="singleTop" />
-
-        <!--竞价失败详情界面-->
-        <activity
-            android:name=".view.TankerBiddingFailGraborderDetailActivity"
-            android:launchMode="singleTop" />
-
-        <!--选择好的车辆司机信息-->
-
-        <!--车辆司机信息-->
-        <activity
-            android:name=".view.DispatcherCarActivity"
-            android:launchMode="singleTop" />
+        <activity android:name=".view.OrdersQueryActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".view.QueryResultActivity" />
     </application>
 
 </manifest>

@@ -10,7 +10,6 @@ import com.tanker.basemodule.base.BaseFragment;
 import com.tanker.basemodule.common.Logger;
 import com.tanker.basemodule.event.GrabOrderMsg;
 import com.tanker.basemodule.event.RxBus;
-import com.tanker.orders.OrderListFragment;
 import com.tanker.orders.OrderStateType;
 import com.tanker.orders.R;
 import com.tanker.orders.adapter.OrdersPagerAdapter;
@@ -29,12 +28,12 @@ import io.reactivex.disposables.Disposable;
 public class OrdersFragment extends BaseFragment<OrdersPresenter> implements OrdersContract.View {
     private static final String TAG = OrdersFragment.class.getName();
     private ArrayList<OrderListFragment> mFragments = new ArrayList<>();
-    private final String[] mTitles = {"待装货", "待卸货", "已签收", "已取消", "账本"};
+    private final String[] mTitles = {"未完成", "已完成", "已取消"};
     protected OrderListFragment waitGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.WAITTING);
     protected OrderListFragment quotedGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.QUOTED);
     protected OrderListFragment biddingSuccessGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.SUCCESS);
-    protected OrderListFragment biddingFailGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.FAILED);
-    protected OrderListFragment accountBookFragment = new OrderListFragment().newInstance(OrderStateType.ACCOUNT_BOOK);
+//    protected OrderListFragment biddingFailGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.FAILED);
+//    protected OrderListFragment accountBookFragment = new OrderListFragment().newInstance(OrderStateType.ACCOUNT_BOOK);
     private ViewPager viewPager;
     private SlidingTabLayout stb;
     private Disposable disposable;
@@ -49,8 +48,8 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
         mFragments.add(waitGrabOrderFragment);
         mFragments.add(quotedGrabOrderFragment);
         mFragments.add(biddingSuccessGrabOrderFragment);
-        mFragments.add(biddingFailGrabOrderFragment);
-        mFragments.add(accountBookFragment);
+//        mFragments.add(biddingFailGrabOrderFragment);
+//        mFragments.add(accountBookFragment);
         stb = parent.findViewById(R.id.stb);
         viewPager = parent.findViewById(R.id.vp_grab_order);
         OrdersPagerAdapter grabViewPagerAdapter = new OrdersPagerAdapter(getChildFragmentManager(), mTitles, mFragments);
@@ -58,6 +57,9 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
         viewPager.setCurrentItem(0);
         viewPager.setOffscreenPageLimit(4);
         stb.setViewPager(viewPager);
+
+        parent.findViewById(R.id.ll_query).setOnClickListener(view -> navigationTo(OrdersQueryActivity.class));
+
         stb.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {

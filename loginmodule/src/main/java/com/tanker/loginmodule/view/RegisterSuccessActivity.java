@@ -16,7 +16,7 @@ import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.loginmodule.R;
 import com.umeng.analytics.MobclickAgent;
 
-public class TankerRegisterSuccessActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterSuccessActivity extends BaseActivity implements View.OnClickListener {
 
 
     @Override
@@ -61,7 +61,7 @@ public class TankerRegisterSuccessActivity extends BaseActivity implements View.
                     getResources().getString(R.string.to_edit_qualification_later), new TankerTwoButtonDialog.OptionListener() {
                         @Override
                         public void onConfirm(TankerTwoButtonDialog obDialog) {
-                            ReflectUtils.startActivityWithName(TankerRegisterSuccessActivity.this, RouterConstants.BASIC_CERTIFICATION_EDIT);
+                            ReflectUtils.startActivityWithName(RegisterSuccessActivity.this, RouterConstants.BASIC_CERTIFICATION_EDIT);
                         }
 
                         @Override
@@ -73,7 +73,7 @@ public class TankerRegisterSuccessActivity extends BaseActivity implements View.
             //返回
         } else if (viewId == R.id.iv_back || viewId == R.id.tv_right) {
             showAlertDialog("是否退出当前账号", obDialog -> {
-                navigationTo(TankerLoginActivity.class);
+                navigationTo(LoginActivity.class);
                 mContext.finish();
             });
         }
@@ -100,7 +100,7 @@ public class TankerRegisterSuccessActivity extends BaseActivity implements View.
 
     @Override
     public int getContentView() {
-        return R.layout.fragment_tanker_register_success;
+        return R.layout.loginmodule_activity_register_success;
     }
 
     private Button mBtnRegisterAuth, mBtnRegisterWaitAuth;

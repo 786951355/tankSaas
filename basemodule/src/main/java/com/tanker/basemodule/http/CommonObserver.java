@@ -171,7 +171,7 @@ public abstract class CommonObserver<T> implements Observer<T> {
     }
 
     public static void navigationToLogin(Context context) {
-        Intent intent = CommonObserver.getIntent(context, "com.tanker.loginmodule.view.TankerLoginActivity");
+        Intent intent = CommonObserver.getIntent(context, "com.tanker.loginmodule.view.LoginActivity");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("actionCode", 0);
         CommonObserver.startActivity(context, intent);

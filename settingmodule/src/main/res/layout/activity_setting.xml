@@ -20,7 +20,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_logo"
-            android:src="@drawable/leak_canary_icon"
+            android:src="@drawable/logo"
             android:layout_marginTop="32dp"
             android:layout_width="70dp"
             android:layout_height="70dp" />
@@ -28,6 +28,7 @@
         <TextView
             android:id="@+id/tv_userName"
             tools:text="马云"
+            android:elevation="4dp"
             android:layout_marginTop="16dp"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
@@ -103,6 +104,8 @@
             android:background="@color/bg_gray" />
 
         <TextView
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/btn_exit"
             android:paddingLeft="16dp"
             android:textSize="16sp"
             android:textColor="@color/text_green"

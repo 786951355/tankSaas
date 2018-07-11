@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 日历控件 -->
+    <dimen name="ordersmodule_text_size_day">12sp</dimen>
+    <dimen name="ordersmodule_text_size_month">12sp</dimen>
+    <dimen name="ordersmodule_text_size_day_name">12sp</dimen>
+    <dimen name="ordersmodule_header_month_height">50dp</dimen>
+    <dimen name="ordersmodule_selected_day_radius">16dp</dimen>
+    <dimen name="ordersmodule_calendar_height">270dp</dimen>
+
+</resources>

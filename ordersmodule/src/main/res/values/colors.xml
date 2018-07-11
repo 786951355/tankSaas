@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!--白色-->
-    <color name="colorWhite">#ffffff</color>
-    <color name="color_979797">#979797</color>
-    <color name="color_666666">#666666</color>
-    <color name="text_light_color">#c7c7c7</color>
-</resources>

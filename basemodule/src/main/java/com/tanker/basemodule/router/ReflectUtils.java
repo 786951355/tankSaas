@@ -98,14 +98,14 @@ public class ReflectUtils {
 
 
     public static void navigationToHome(Context context, int index) {
-        Intent intent = ReflectUtils.getIntent(context, "com.tanker.mainmodule.view.NewMainActivity");
+        Intent intent = ReflectUtils.getIntent(context, "com.tanker.mainmodule.view.MainActivity");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AppConstants.HOME_PAGE_INDEX, index);
         ReflectUtils.startActivity(context, intent);
     }
 
     public static void navigationToLogin(Context context) {
-        Intent intent = ReflectUtils.getIntent(context, "com.tanker.loginmodule.view.TankerLoginActivity");
+        Intent intent = ReflectUtils.getIntent(context, "com.tanker.loginmodule.view.LoginActivity");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("actionCode", 0);
         ReflectUtils.startActivity(context, intent);

@@ -165,7 +165,7 @@
 
 #-----------处理反射类---------------
 
- -keep class com.tanker.routermodule.ReflectUtils{*;}
+ -keep class com.tanker.basemodule.router.ReflectUtils{*;}
  -keep class com.tanker.basemodule.http.CommonObserver{*;}
 
 #-----------处理js交互---------------
@@ -176,11 +176,8 @@
 # 在开发的时候我们可以将所有的实体类放在一个包内，这样我们写一次混淆就行了。
 #-keep class com.blankj.data.bean.**{ *; }
 -keep class com.tanker.basemodule.model.**{*;}
--keep class com.tanker.ordersmodule.model.**{*;}
 -keep class com.tanker.basemodule.http.api.HttpResult{*;}
--keep class com.tanker.minemodule.model.LineRequest{*;}
 -keep class com.tanker.basemodule.common.**{*;}
--keep class com.zhaoguanche.inform.model.**{*;}
 
 
 #-----------处理第三方依赖库---------
@@ -357,32 +354,7 @@ public static final int *;
 #不混淆glide的https配置类
 -keep class com.tanker.basemodule.https.**{*;}
 
-
-
-
-
-#-dontwarn sun.misc.Unsafe
-#-dontwarn javax.annotation.Nullable
-#-dontwarn javax.annotation.ParametersAreNonnullByDefault
-#-dontwarn javax.annotation.CheckReturnValue
-#-dontwarn javax.annotation.CheckForNull
-#-dontwarn javax.annotation.concurrent.GuardedBy
-#-dontwarn javax.annotation.concurrent.Immutable
-#-dontwarn javax.annotation.concurrent.ThreadSafe
-#-dontwarn javax.annotation.concurrent.NotThreadSafe
-
-#-dontwarn com.instagram.common.json.**
-#-dontwarn com.fasterxml.jackson.databind.ext.DOMSerializer
-#-dontwarn com.squareup.javawriter.JavaWriter
-#-dontwarn com.google.common.primitives.UnsignedBytes*
-
-#-keep class com.tanker.basemodule.widget.**{*;}
-#-keep class com.tanker.graborder.widget.**{*;}
-#-keep class com.flyco.tablayout.**{*;}
-#-keep class com.bigkoo.pickerview.**{*;}
-
-#-dontwarn com.instagram.common.json.**
-#-dontnote com.android.**
-#-dontwarn org.greenrobot.greendao.rx.**
-#-dontwarn net.sqlcipher.database.**
-#-dontwarn org.codehaus.mojo.animal_sniffer.**
+-ignorewarnings
+-keep class * {
+    public private *;
+}

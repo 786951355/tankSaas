@@ -53,20 +53,23 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void initView() {
         List<String> titles = Arrays.asList(
+                "首页",
                 "订单",
-                "我的");
+                "工作台");
         List<Integer> iconUnselectedIds = Arrays.asList(
                 R.drawable.order_normal,
+                R.drawable.grab_order_normal,
                 R.drawable.mine_normal);
         List<Integer> iconSelectIds = Arrays.asList(
                 R.drawable.order_selected,
+                R.drawable.grab_order_selected,
                 R.drawable.mine_selected);
         mTitles = new ArrayList<>(titles);
         mIconSelectIds = new ArrayList<>(iconSelectIds);
         mIconUnselectedIds = new ArrayList<>(iconUnselectedIds);
-        mTitles.add(0, "抢单");
-        mIconUnselectedIds.add(0, R.drawable.grab_order_normal);
-        mIconSelectIds.add(0, R.drawable.grab_order_selected);
+//        mTitles.add(0, "订单");
+//        mIconUnselectedIds.add(0, R.drawable.grab_order_normal);
+//        mIconSelectIds.add(0, R.drawable.grab_order_selected);
         index = index >= mTitles.size() ? mTitles.size() - 1 : index; //防止数组溢出
         mTabEntities = new ArrayList<>();
         mFragments = new ArrayList<>();
@@ -75,9 +78,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
             mTabEntities.add(new TabEntity(mTitles.get(i), mIconSelectIds.get(i), mIconUnselectedIds.get(i)));
         }
 
-        Fragment fragmentOrders = ReflectUtils.getFragment("com.tanker.ordersmodule.view.OrdersFragment");
-        Fragment fragmentHome = ReflectUtils.getFragment("com.tanker.graborder.view.NewHomeFragment");
-        Fragment fragmentMine = ReflectUtils.getFragment("com.tanker.minemodule.view.MineFragment");
+        Fragment fragmentHome = ReflectUtils.getFragment("com.tanker.homemodule.view.HomeFragment");
+        Fragment fragmentOrders  = ReflectUtils.getFragment("com.tanker.orders.view.OrdersFragment");
+        Fragment fragmentMine = ReflectUtils.getFragment("com.tanker.workbench.view.WorkbenchFragment");
 
         if (fragmentHome == null || fragmentMine == null || fragmentOrders == null) {
             CommonUtils.showToast(mContext, "业务组件单独调试不应该跟其他业务Module产生交互，如果你依然想要在运行期依赖其它组件，那么请参考MainModule");
@@ -137,12 +140,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     private void initToolBar(String title) {
         mCustomToolbar.setTitle(title).setRightIcon(R.drawable.setting)
                 .setElevation(0).setToolbarVisible(true)
+                .setLeftIconVisible(false)
                 .setOnRightIconClickListener(v -> {
                     // 点击消息图标，同步更新我的界面消息数量
                     RxBus.getInstanceBus().post(new InformMsg<StatisticalHeadModel>("refresh"));
                     mPresenter.clearIsRead();
                     mCustomToolbar.setMessageNum(0);
-                    ReflectUtils.startActivityWithName(mContext, "com.zhaoguanche.inform.view.SettingActivity");
+                    ReflectUtils.startActivityWithName(mContext, "com.zhaoguanche.setting.view.SettingActivity");
                 });
     }
 

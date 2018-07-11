@@ -28,13 +28,13 @@ import java.util.Locale;
  * Created by Administrator on 2018/3/26.
  */
 
-public class TankerRetrieveActivity extends BaseActivity<RetrievePresenter> implements
+public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
         TimeUtils.ItimeTaskListener, RetrieveContract.View, RetrievePresenter.IretrieveCallBack, View.OnClickListener {
 
 
     @Override
     public int getContentView() {
-        return R.layout.fragment_tanker_retrieve;
+        return R.layout.loginmodule_activity_retrieve;
     }
 
     @Override
@@ -254,7 +254,7 @@ public class TankerRetrieveActivity extends BaseActivity<RetrievePresenter> impl
     @Override
     public void startCountDown() {
         //60秒倒计时提示
-        TimeUtils.timeTask(mContext, TankerRetrieveActivity.this);
+        TimeUtils.timeTask(mContext, RetrieveActivity.this);
     }
 
     @Override

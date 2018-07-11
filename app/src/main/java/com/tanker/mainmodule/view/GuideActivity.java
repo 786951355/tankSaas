@@ -39,7 +39,7 @@ public class GuideActivity extends BaseActivity implements CycleViewPager.ImageC
                 @Override
                 public void click() {
                     ReflectUtils.startActivityWithName(GuideActivity.this,
-                            "com.tanker.loginmodule.view.TankerLoginActivity");
+                            "com.tanker.loginmodule.view.LoginActivity");
                     GuideActivity.this.finish();
                 }
             }));

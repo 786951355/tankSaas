@@ -88,7 +88,7 @@ public class WelcomePresenter extends WelcomeContract.Presenter {
                 && SaasApp.getInstance().getUserManager().getUser().getUserId() != null) {
             ReflectUtils.navigationToHome(mView.getContext(), 0);
         } else {
-            ReflectUtils.startActivityWithName(mView.getContext(), "com.tanker.loginmodule.view.TankerLoginActivity");
+            ReflectUtils.startActivityWithName(mView.getContext(), "com.tanker.loginmodule.view.LoginActivity");
         }
         mView.getContext().finish();
     }
