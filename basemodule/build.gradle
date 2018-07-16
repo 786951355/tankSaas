@@ -127,4 +127,6 @@ dependencies {
     //添加上蜡加载、下拉刷新的框架
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-7'
+    //高德定位
+    api 'com.amap.api:location:4.1.0'
 }
