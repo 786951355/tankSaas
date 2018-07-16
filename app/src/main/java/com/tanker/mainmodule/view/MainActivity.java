@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         List<String> titles = Arrays.asList(
                 "首页",
                 "订单",
-                "工作台");
+                "我的");
         List<Integer> iconUnselectedIds = Arrays.asList(
                 R.drawable.order_normal,
                 R.drawable.grab_order_normal,
@@ -223,7 +223,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 initToolBar("订单");
                 break;
             case 2:
-                initToolBar("工作台");
+                initToolBar("我的");
                 break;
 
         }

@@ -114,7 +114,7 @@ if (!isModuleRun.toBoolean()) {
         //判断task是编译期还是运行期
         if (upperName.contains("ASSEMBLE") || upperName.contains("INSTALL")) {
             dependencies.add("implementation", project.project(':' + 'homemodule'))
-            dependencies.add("implementation", project.project(':' + 'settingmodule'))
+//            dependencies.add("implementation", project.project(':' + 'settingmodule'))
             dependencies.add("implementation", project.project(':' + 'loginmodule'))
             dependencies.add("implementation", project.project(":" + 'ordersmodule'))
             dependencies.add("implementation", project.project(":" + 'workbenchmodule'))

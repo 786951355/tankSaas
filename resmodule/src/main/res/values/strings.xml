@@ -5,4 +5,10 @@
     <string name="settingmodule_exit">退出</string>
 
     <string name="sans_serif" translatable="false">sans-serif</string>
+    <string name="loginmodule_title_login">登录</string>
+    <string name="loginmodule_switch_msg_code_login">使用短信验证码登录</string>
+    <string name="loginmodule_title_retrieve">找回密码</string>
+    <string name="common_confirm">确认</string>
+    <string name="loginmodule_hint_pwd">密码</string>
+    <string name="loginmodule_switch_pwd_login">使用手机号密码登录</string>
 </resources>
