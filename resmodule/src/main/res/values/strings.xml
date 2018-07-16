@@ -5,4 +5,10 @@
     <string name="settingmodule_exit">退出</string>
 
     <string name="sans_serif" translatable="false">sans-serif</string>
+
+    //#----------------------------------------homemodule----------------------------------------#
+    <!--账单列表-->
+    <string name="homemodule_bills_title">账单</string>
+    <string name="homemodule_bills_noconfirm_money_txt">待确认  ￥</string>
+    <string name="homemodule_bills_confirm_money_txt">已确认  ￥</string>
 </resources>

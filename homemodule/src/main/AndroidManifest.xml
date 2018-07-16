@@ -3,15 +3,8 @@
     package="com.tanker.homemodule">
 
     <application>
-        <activity android:name=".view.OrderDetailActivity" />
-        <activity android:name=".view.ObjectionActivity" />
-        <activity
-            android:name=".view.OrdersQueryActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".view.QueryResultActivity" />
-        <activity
-            android:name=".view.UploadCertificateActivity"
-            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".view.BillActivity"></activity>
+        <activity android:name=".view.BillDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author lwj
- * @ClassName: CarrierListModel
+ * @ClassName: BillListModel
  * @Description: 关联车主列表
  * @date 2018/5/23 11:01
  */
