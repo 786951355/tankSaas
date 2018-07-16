@@ -8,7 +8,7 @@ import com.tanker.basemodule.model.mine_model.UserInfoModel;
  * Created by ronny on 2018/3/24.
  */
 
-public interface WorkbenchContract {
+public interface MineContract {
     interface View extends BaseView {
         void refreshUI(UserInfoModel userInfoModel);
 

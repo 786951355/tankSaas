@@ -7,7 +7,7 @@ import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.model.login_model.UserInfo;
 import com.tanker.workbench.R;
-import com.tanker.workbench.view.WorkbenchFragment;
+import com.tanker.workbench.view.MineFragment;
 
 /**
  * Created by ronny on 2018/3/23.
@@ -31,7 +31,7 @@ public class TestMineActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().add(R.id.fl_mine, new WorkbenchFragment());
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().add(R.id.fl_mine, new MineFragment());
         fragmentTransaction.commit();
     }
 

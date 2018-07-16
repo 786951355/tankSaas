@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
         Fragment fragmentHome = ReflectUtils.getFragment("com.tanker.homemodule.view.HomeFragment");
         Fragment fragmentOrders  = ReflectUtils.getFragment("com.tanker.orders.view.OrdersFragment");
-        Fragment fragmentMine = ReflectUtils.getFragment("com.tanker.workbench.view.WorkbenchFragment");
+        Fragment fragmentMine = ReflectUtils.getFragment("com.tanker.workbench.view.MineFragment");
 
         if (fragmentHome == null || fragmentMine == null || fragmentOrders == null) {
             CommonUtils.showToast(mContext, "业务组件单独调试不应该跟其他业务Module产生交互，如果你依然想要在运行期依赖其它组件，那么请参考MainModule");
@@ -138,16 +138,17 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     }
 
     private void initToolBar(String title) {
-        mCustomToolbar.setTitle(title).setRightIcon(R.drawable.setting)
+        mCustomToolbar.setTitle(title)
+//                .setRightIcon(R.drawable.setting)
                 .setElevation(0).setToolbarVisible(true)
-                .setLeftIconVisible(false)
-                .setOnRightIconClickListener(v -> {
-                    // 点击消息图标，同步更新我的界面消息数量
-                    RxBus.getInstanceBus().post(new InformMsg<StatisticalHeadModel>("refresh"));
-                    mPresenter.clearIsRead();
-                    mCustomToolbar.setMessageNum(0);
-                    ReflectUtils.startActivityWithName(mContext, "com.zhaoguanche.setting.view.SettingActivity");
-                });
+                .setLeftIconVisible(false);
+//                .setOnRightIconClickListener(v -> {
+//                    // 点击消息图标，同步更新我的界面消息数量
+//                    RxBus.getInstanceBus().post(new InformMsg<StatisticalHeadModel>("refresh"));
+//                    mPresenter.clearIsRead();
+//                    mCustomToolbar.setMessageNum(0);
+//                    ReflectUtils.startActivityWithName(mContext, "com.zhaoguanche.setting.view.SettingActivity");
+//                });
     }
 
     @Override

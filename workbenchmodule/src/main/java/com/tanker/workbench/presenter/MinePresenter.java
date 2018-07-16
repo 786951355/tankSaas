@@ -4,10 +4,8 @@ import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.http.CommonObserver;
 import com.tanker.basemodule.http.ExceptionEngine;
 import com.tanker.basemodule.http.api.HttpResult;
-import com.tanker.basemodule.model.mine_model.UserInfoModel;
 import com.tanker.workbench.api.MineApi;
-import com.tanker.workbench.constants.WorkbenchConstants;
-import com.tanker.workbench.contract.WorkbenchContract;
+import com.tanker.workbench.contract.MineContract;
 
 import io.reactivex.Observable;
 
@@ -15,9 +13,9 @@ import io.reactivex.Observable;
  * Created by ronny on 2018/3/24.
  */
 
-public class WorkbenchPresenter extends WorkbenchContract.Presenter {
+public class MinePresenter extends MineContract.Presenter {
 
-    public WorkbenchPresenter(WorkbenchContract.View view) {
+    public MinePresenter(MineContract.View view) {
         super(view);
     }
 

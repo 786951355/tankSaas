@@ -7,15 +7,15 @@ import android.view.View;
 import com.tanker.basemodule.base.BaseFragment;
 import com.tanker.basemodule.model.mine_model.UserInfoModel;
 import com.tanker.workbench.R;
-import com.tanker.workbench.contract.WorkbenchContract;
-import com.tanker.workbench.presenter.WorkbenchPresenter;
+import com.tanker.workbench.contract.MineContract;
+import com.tanker.workbench.presenter.MinePresenter;
 import com.umeng.analytics.MobclickAgent;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WorkbenchFragment extends BaseFragment<WorkbenchPresenter> implements WorkbenchContract.View, View.OnClickListener {
+public class MineFragment extends BaseFragment<MinePresenter> implements MineContract.View, View.OnClickListener {
 
 
     @Override
@@ -35,7 +35,7 @@ public class WorkbenchFragment extends BaseFragment<WorkbenchPresenter> implemen
 
     @Override
     protected void initData() {
-        mPresenter = new WorkbenchPresenter(this);
+        mPresenter = new MinePresenter(this);
     }
 
     @Override
