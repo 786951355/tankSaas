@@ -124,7 +124,11 @@ dependencies {
     //api 'com.umeng.sdk:debug:1.0.0'//测试阶段添加此jar，在App上线前请务必删除集成调试库，避免无关信息的打印
     api 'com.umeng.sdk:share-core:6.9.2'
     api 'com.umeng.sdk:share-wechat:6.9.2'
-    //添加上蜡加载、下拉刷新的框架
+    //添加上拉加载、下拉刷新的框架
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7'
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-7'
+    //仿iOS的PickerView控件，有时间选择器和选项选择器（https://github.com/Bigkoo/Android-PickerView）
+    api 'com.contrarywind:Android-PickerView:4.1.5'
+    //高德定位
+    api 'com.amap.api:location:4.1.0'
 }

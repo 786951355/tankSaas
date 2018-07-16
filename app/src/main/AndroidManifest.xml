@@ -10,18 +10,28 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!-- 高德定位其他权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
     <application
         android:name="com.tanker.basemodule.common.SaasApp"
-        android:testOnly="false"
-        android:resizeableActivity="true"
         android:hardwareAccelerated="true"
         android:icon="${app_icon}"
         android:label="@string/app_name"
+        android:resizeableActivity="true"
         android:supportsRtl="true"
+        android:testOnly="false"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="umeng" />
+
+        <!-- 高德定位 -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="${amap_key}" />
 
         <activity
             android:name=".view.WelcomeActivity"
@@ -43,6 +53,9 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 高德定位组件 -->
+        <service android:name="com.amap.api.location.APSService" />
 
         <!--User defined. 用户自定义的广播接收器-->
         <receiver

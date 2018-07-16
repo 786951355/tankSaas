@@ -4,4 +4,6 @@
     <color name="picker_item_range_day_selected">#B8E986</color>
     <color name="text_hint">#999999</color>
     <color name="btn_color_negative">#CDCDCD</color>
+    <color name="common_white">#FFFFFFFF</color>
+    <color name="homemodel_slect_gray">#E7E4E4</color>
 </resources>

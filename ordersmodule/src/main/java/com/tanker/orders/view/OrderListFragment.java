@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tanker.basemodule.base.BaseFragment;
-import com.tanker.basemodule.model.home_model.BiddingOrderModel;
 import com.tanker.orders.R;
 import com.tanker.orders.contract.OrderListContract;
 import com.tanker.orders.presenter.OrderListPresenter;
@@ -13,7 +12,7 @@ import com.tanker.orders.presenter.OrderListPresenter;
  * Created by Administrator on 2018/3/27.
  */
 
-public class OrderListFragment extends BaseFragment<OrderListPresenter> implements OrderListContract.View<BiddingOrderModel> {
+public class OrderListFragment extends BaseFragment<OrderListPresenter> implements OrderListContract.View {
     private static final String TAG = OrderListFragment.class.getName();
 
     public static OrderListFragment newInstance(String type) {

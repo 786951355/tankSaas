@@ -11,4 +11,10 @@
     <string name="common_confirm">确认</string>
     <string name="loginmodule_hint_pwd">密码</string>
     <string name="loginmodule_switch_pwd_login">使用手机号密码登录</string>
+
+    //#----------------------------------------homemodule----------------------------------------#
+    <!--账单列表-->
+    <string name="homemodule_bills_title">账单</string>
+    <string name="homemodule_bills_noconfirm_money_txt">待确认  ￥</string>
+    <string name="homemodule_bills_confirm_money_txt">已确认  ￥</string>
 </resources>
