@@ -57,12 +57,13 @@ public class BillPresenter extends BillContract.Presenter {
         BillListModel model=new BillListModel();
         List<BillModel> billInfoList=new ArrayList<>();
         BillModel billModel;
-        for (int i = 1; i < 5; i++) {
+        for (int i = 7; i > 0; i--) {
             billModel=new BillModel();
             billModel.setBillId(i+"");
-            billModel.setBillTime("2018-07");
-            billModel.setBillNoConfirmMoney("2000.90");
-            billModel.setBillConfirmMoney("3000.50");
+            billModel.setBillTime("2018-0"+i);
+            billModel.setBillNoConfirmMoney("2000.0"+i);
+            billModel.setBillConfirmMoney("3000.0"+i);
+            billModel.setOrderNo("Y100716000"+i);
             billInfoList.add(billModel);
         }
         model.setTotal("1");

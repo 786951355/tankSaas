@@ -56,18 +56,18 @@ public class BillDetailPresenter extends BillDetailContract.Presenter {
         BillDetailListModel model=new BillDetailListModel();
         List<BillDetailModel> billInfoList=new ArrayList<>();
         BillDetailModel billModel;
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 15; i++) {
             billModel=new BillDetailModel();
             billModel.setBillId(i+"");
-            billModel.setBillno("Y100716000"+i);
+            billModel.setOrderNo("Y100716000"+i);
             if(i%2==0){
                 billModel.setBillstatus("1");
             }else{
                 billModel.setBillstatus("2");
             }
 
-            billModel.setBillloadingAreaName("河南马鞍山河口厂区（华翔）");
-            billModel.setBillunloadingAreaName("上海杨浦区五角场百联又一城（嘉联）");
+            billModel.setBillstartAreaName("河南马鞍山河口厂区（华翔）");
+            billModel.setBillendAreaName("上海杨浦区五角场百联又一城（嘉联）");
             billModel.setBillTime("2018-07-16 17:0"+i);
             billModel.setBillMoney("2000.0"+i);
             billInfoList.add(billModel);

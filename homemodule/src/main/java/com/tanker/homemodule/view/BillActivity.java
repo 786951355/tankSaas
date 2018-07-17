@@ -1,5 +1,6 @@
 package com.tanker.homemodule.view;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.tanker.basemodule.model.home_model.BillListModel;
 import com.tanker.basemodule.model.home_model.BillModel;
 import com.tanker.homemodule.R;
 import com.tanker.homemodule.adapter.BillAdapter;
+import com.tanker.homemodule.constants.HomeConstants;
 import com.tanker.homemodule.contract.BillContract;
 import com.tanker.homemodule.presenter.BillPresenter;
 
@@ -90,7 +92,9 @@ public class BillActivity extends BaseActivity<BillPresenter> implements BillCon
         adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-
+                Intent intent = new Intent(mContext, BillDetailActivity.class);
+                intent.putExtra(HomeConstants.ORDER_NO,datas.get(position).getBillTime());
+                navigationTo(intent);
             }
 
             @Override

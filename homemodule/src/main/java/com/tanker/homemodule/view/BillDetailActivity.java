@@ -1,5 +1,6 @@
 package com.tanker.homemodule.view;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.tanker.basemodule.model.home_model.BillDetailListModel;
 import com.tanker.basemodule.model.home_model.BillDetailModel;
 import com.tanker.homemodule.R;
 import com.tanker.homemodule.adapter.BillDetailAdapter;
+import com.tanker.homemodule.constants.HomeConstants;
 import com.tanker.homemodule.contract.BillDetailContract;
 import com.tanker.homemodule.presenter.BillDetailPresenter;
 
@@ -24,27 +26,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* @author lwj
-* @ClassName: BillDetailActivity
-* @Description:  账单详情
-* @date 2018/7/16 13:45
-*/
+ * @author lwj
+ * @ClassName: BillDetailActivity
+ * @Description: 账单详情
+ * @date 2018/7/16 13:45
+ */
 public class BillDetailActivity extends BaseActivity<BillDetailPresenter> implements BillDetailContract.View {
 
     private static final String TAG = BillDetailActivity.class.getName();
     //刷新控件
     private SwipeRefreshLayout srl_bills;
-    //账单列表的RecyclerView控件
+    //账单详情列表的RecyclerView控件
     private RecyclerView rv_bills;
-    //账单列表数据集合
-    private List<BillDetailModel> datas= new ArrayList<>();
-    //账单列表适配器
+    //账单详情列表数据集合
+    private List<BillDetailModel> datas = new ArrayList<>();
+    //账单详情列表适配器
     private BillDetailAdapter adapter;
     private int page = 1;
     private int totalCount;
     private LinearLayout ll_loaded;
     private ProgressBar pb_loading;
     private LoadMoreWrapper mLoadMoreWrapper;
+    //运单号
+    private String orderId;
 
     @Override
     protected void initView() {
@@ -58,13 +62,13 @@ public class BillDetailActivity extends BaseActivity<BillDetailPresenter> implem
                 mPresenter.getBillDetailInfoList(1);
             }
         });
-        //账单列表的RecyclerView控件
+        //账单详情列表的RecyclerView控件
         rv_bills = findViewById(R.id.rv_bills);
         final LinearLayoutManager lineLayoutManager = new LinearLayoutManager(mContext);
         rv_bills.setLayoutManager(lineLayoutManager);
 
-        //账单列表适配器
-        adapter = new BillDetailAdapter(mContext, R.layout.homemodul_recycle_bill_item, datas);
+        //账单详情列表适配器
+        adapter = new BillDetailAdapter(mContext, R.layout.homemodul_recycle_bill_detail_item, datas);
         mLoadMoreWrapper = new LoadMoreWrapper(adapter);
         mLoadMoreWrapper.setLoadMoreView(R.layout.default_loading);
         mLoadMoreWrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {
@@ -76,7 +80,7 @@ public class BillDetailActivity extends BaseActivity<BillDetailPresenter> implem
                 ll_loaded.setVisibility(View.GONE);
                 //上拉加载
                 if (page * AppConstants.ROWS < totalCount) {
-                    mPresenter.getBillDetailInfoList( ++page);
+                    mPresenter.getBillDetailInfoList(++page);
                 } else if (totalCount <= 0) {
                     ll_loaded.setVisibility(View.GONE);
                     pb_loading.setVisibility(View.GONE);
@@ -103,12 +107,14 @@ public class BillDetailActivity extends BaseActivity<BillDetailPresenter> implem
 
     @Override
     public int getContentView() {
-        return R.layout.homemodule_acticity_bill;
+        return R.layout.homemodule_acticity_bill_detail;
     }
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
-        rToolbar.setTitle("2018-07账单");
+        Intent intent = getIntent();
+        orderId = intent.getStringExtra(HomeConstants.ORDER_NO);
+        rToolbar.setTitle(orderId+mContext.getString(R.string.homemodule_bill_detail_title_str));
     }
 
     @Override
@@ -119,7 +125,7 @@ public class BillDetailActivity extends BaseActivity<BillDetailPresenter> implem
     }
 
     @Override
-    public void getBillDetailInfoList(int page,BillDetailListModel model) {
+    public void getBillDetailInfoList(int page, BillDetailListModel model) {
         if (page == 1) {
             totalCount = Integer.valueOf(model.getTotal());
             if (totalCount == 0) {

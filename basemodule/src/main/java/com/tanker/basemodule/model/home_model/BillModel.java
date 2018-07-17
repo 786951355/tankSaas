@@ -14,6 +14,7 @@ public class BillModel {
      * billNoConfirmMoney : 3000.50
      */
     private String billId;
+    private String orderNo;
     private String billTime;
     private String billConfirmMoney;
     private String billNoConfirmMoney;
@@ -24,6 +25,14 @@ public class BillModel {
 
     public void setBillId(String billId) {
         this.billId = billId;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     public String getBillTime() {
@@ -54,6 +63,7 @@ public class BillModel {
     public String toString() {
         return "BillModel{" +
                 "billId='" + billId + '\'' +
+                ", orderNo='" + orderNo + '\'' +
                 ", billTime='" + billTime + '\'' +
                 ", billConfirmMoney='" + billConfirmMoney + '\'' +
                 ", billNoConfirmMoney='" + billNoConfirmMoney + '\'' +

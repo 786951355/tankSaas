@@ -30,7 +30,8 @@ public class HttpParam {
         paramsMap.put(AppConstants.PARAM_EVENT_TIME, System.currentTimeMillis() + "");
         paramsMap.put(AppConstants.PARAM_TOKEN, SaasApp.getInstance().getToken());
         if (!isLogin) {
-            paramsMap.put(AppConstants.PARAM_UID, SaasApp.getInstance().getUserManager().getUserId());
+            paramsMap.put(AppConstants.PARAM_UID, "394");
+            //paramsMap.put(AppConstants.PARAM_UID, SaasApp.getInstance().getUserManager().getUserId());
         }
     }
 

@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="12dp"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context="com.tanker.homemodule.view.BillActivity">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl_bills"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_bills"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+           />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_write_bill_again"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:layout_weight="0"
+        android:background="@drawable/btn_radius_bg"
+        android:gravity="center"
+        android:text="再记一笔"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

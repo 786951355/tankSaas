@@ -9,6 +9,11 @@
     //#----------------------------------------homemodule----------------------------------------#
     <!--账单列表-->
     <string name="homemodule_bills_title">账单</string>
-    <string name="homemodule_bills_noconfirm_money_txt">待确认  ￥</string>
-    <string name="homemodule_bills_confirm_money_txt">已确认  ￥</string>
+    <string name="homemodule_bills_no_confirm_money_str">待确认  ￥</string>
+    <string name="homemodule_bills_confirm_money_str">已确认  ￥</string>
+    <!--账单详情-->
+    <string name="homemodule_bill_detail_title_str">账单</string>
+    <string name="homemodule_bill_detail_order_time_str">发单时间：</string>
+    <string name="homemodule_bill_detail_money_str">￥</string>
+
 </resources>
