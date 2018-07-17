@@ -35,7 +35,7 @@ public class BillPresenter extends BillContract.Presenter {
      */
     @Override
     public void getBillInfoList(int page) {
-        Observable<HttpResult<CarrierListModel>> resultObservable = HomeApi.getInstance().getBillInfoList(page+"");
+        Observable<HttpResult<BillListModel>> resultObservable = HomeApi.getInstance().getBillInfoList(page+"");
         toSubscribe(resultObservable, new CommonObserver<BillListModel>(mView.getContext(),false) {
             @Override
             public void onNext(BillListModel model) {

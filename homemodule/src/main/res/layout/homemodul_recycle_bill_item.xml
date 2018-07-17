@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="37dp"
-            android:layout_toLeftOf="@id/tv_go"
+            android:layout_toLeftOf="@id/iv_go"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
