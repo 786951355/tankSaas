@@ -12,16 +12,10 @@ import io.reactivex.Observable;
 
 public class RetrievePresenter extends RetrieveContract.Presenter {
 
-    public RetrievePresenter(RetrieveContract.View view, IretrieveCallBack callBack) {
+    public RetrievePresenter(RetrieveContract.View view) {
         super(view);
-        this.iretrieveCallBack = callBack;
     }
 
-    private IretrieveCallBack iretrieveCallBack;
-
-    public interface IretrieveCallBack {
-        void retrieve();
-    }
 
     @Override
     public void retrievePwd(String platform, String userPhone, String verficationCode, String oldPwd, String newPwd) {
@@ -30,8 +24,7 @@ public class RetrievePresenter extends RetrieveContract.Presenter {
         toSubscribe(register, new CommonObserver<String>(mView.getContext()) {
             @Override
             public void onNext(String s) {
-                if (iretrieveCallBack != null)
-                    iretrieveCallBack.retrieve();
+                mView.showMessage(mView.getContext().getString(R.string.toast_retrieve_pwd_success));
             }
 
             @Override
@@ -49,7 +42,6 @@ public class RetrievePresenter extends RetrieveContract.Presenter {
             @Override
             public void onNext(String string) {
                 mView.showMessage(mView.getContext().getString(R.string.tips_get_msg_success));
-                mView.startCountDown();
             }
 
             @Override

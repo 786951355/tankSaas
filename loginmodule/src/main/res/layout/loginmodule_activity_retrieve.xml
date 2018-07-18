@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-
-    <Button
-        android:id="@+id/btn_retrieve_confirm"
+    <View
+        android:id="@+id/space1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_45"
-        android:layout_below="@+id/ll_edit_area"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/loginmodule_btn_login_confirm_positive"
-        android:gravity="center"
-        android:text="@string/common_confirm"
-        android:textColor="@color/colorWhite"
-        android:textSize="20sp" />
+        android:layout_height="20dp"
+        />
 
     <LinearLayout
         android:id="@+id/ll_edit_area"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="240dp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-       android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <com.tanker.loginmodule.widget.XmTankerEditText
             android:id="@+id/et_retrieve_phone_num"
-            style="@style/et_login_register_style"
+            style="@style/et_retrieve_style"
             android:hint="@string/loginmodule_hint_phone_num"
             android:inputType="number"
             android:maxLength="11"
@@ -39,9 +30,8 @@
         <LinearLayout
             android:id="@+id/ll_login_send_code"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            style="@style/et_retrieve_style"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1.0"
             android:background="@drawable/et_bottom_border_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -49,7 +39,7 @@
 
             <com.tanker.loginmodule.widget.XmTankerEditText
                 android:id="@+id/et_login_code_or_pwd"
-                style="@style/et_register_style"
+                style="@style/et_login_register_style"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1.0"
                 android:drawablePadding="@dimen/dp_4"
@@ -69,7 +59,7 @@
                 android:background="@color/line_gray" />
 
             <TextView
-                android:id="@+id/tv_login_get_code_or_retrieve"
+                android:id="@+id/tv_get_code"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -82,7 +72,7 @@
 
         <com.tanker.loginmodule.widget.PasswordToggleEditText
             android:id="@+id/et_retrieve_pwd"
-            style="@style/et_login_register_style"
+            style="@style/et_retrieve_style"
             android:hint="@string/loginmodule_hint_new_pwd"
             android:inputType="textPassword"
             android:maxLength="20"
@@ -91,12 +81,30 @@
 
         <com.tanker.loginmodule.widget.PasswordToggleEditText
             android:id="@+id/et_retrieve_confirm_pwd"
-            style="@style/et_register_style"
+            style="@style/et_retrieve_style"
             android:hint="@string/loginmodule_hint_new_pwd_confirm"
             android:inputType="textPassword"
             android:maxLength="20"
             android:paddingLeft="@dimen/dp_4"
             android:paddingTop="@dimen/dp_8" />
     </LinearLayout>
+    <View
+        android:id="@+id/space2"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"/>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_retrieve_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_below="@+id/ll_edit_area"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
+        android:background="@drawable/loginmodule_selector_btn_login_confirm"
+        android:gravity="center"
+        android:text="@string/common_confirm"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
+</LinearLayout>

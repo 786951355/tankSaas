@@ -1,6 +1,7 @@
 package com.tanker.basemodule.base;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -21,6 +22,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -77,7 +79,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected View statusLine;
     protected ImageView errorImg;
     private TextView tvMessageNum;
-    private ArrayList<Disposable> disposables=new ArrayList<>();
+    private ArrayList<Disposable> disposables = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -128,31 +130,38 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void initData() {
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     protected void initEvent() {
-        leftAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mCustomToolbar != null && mCustomToolbar.getOnLeftClickListener() != null) {
-                    mCustomToolbar.getOnLeftClickListener().onClick(view);
-                } else {
-                    finish();
+        //点击空白处隐藏键盘
+        rootView.setOnTouchListener((v, motionEvent) -> {
+            InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                if (manager != null && getCurrentFocus() != null
+                        && getCurrentFocus().getWindowToken() != null) {
+                    if (isSoftShowing()){
+                        hideSoftKeybord();
+                    }
+//                    manager.hideSoftInputFromWindow(getCurrentFocus()
+//                                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 }
             }
+            return false;
         });
-        rightAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mCustomToolbar != null && mCustomToolbar.getOnRightClickListener() != null) {
-                    mCustomToolbar.getOnRightClickListener().onClick(view);
-                }
+        leftAction.setOnClickListener(view -> {
+            if (mCustomToolbar != null && mCustomToolbar.getOnLeftClickListener() != null) {
+                mCustomToolbar.getOnLeftClickListener().onClick(view);
+            } else {
+                finish();
             }
         });
-        rightIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mCustomToolbar != null && mCustomToolbar.getOnRightIconClickListener() != null) {
-                    mCustomToolbar.getOnRightIconClickListener().onClick(view);
-                }
+        rightAction.setOnClickListener(view -> {
+            if (mCustomToolbar != null && mCustomToolbar.getOnRightClickListener() != null) {
+                mCustomToolbar.getOnRightClickListener().onClick(view);
+            }
+        });
+        rightIcon.setOnClickListener(view -> {
+            if (mCustomToolbar != null && mCustomToolbar.getOnRightIconClickListener() != null) {
+                mCustomToolbar.getOnRightIconClickListener().onClick(view);
             }
         });
     }
@@ -340,8 +349,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (mPresenter != null) {
             mPresenter.onDestroy();
         }
-        for (Disposable disposable:disposables) {
-            if (disposable!=null&&disposable.isDisposed()){
+        for (Disposable disposable : disposables) {
+            if (disposable != null && disposable.isDisposed()) {
                 disposable.dispose();
             }
         }
@@ -516,8 +525,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void takePhoto() {
     }
 
-    protected void addDisposable(Disposable disposable){
-        if (disposable==null){
+    protected void addDisposable(Disposable disposable) {
+        if (disposable == null) {
             return;
         }
         disposables.add(disposable);
