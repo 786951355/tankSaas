@@ -37,7 +37,11 @@ public class StringUtils {
     }
 
     public static boolean checkMsgCode(String msgCode) {
-        return msgCode.length() >= 6;
+        return msgCode!=null&&msgCode.length() >= 6;
+    }
+
+    public static boolean checkPwd(String msgCode) {
+        return !EmptyUtils.isEmpty(msgCode) && (msgCode.length() >= 6 && msgCode.length() <= 20);
     }
 
     public static String formatErrorMsg(int errorCode, String errorMsg) {

@@ -2,30 +2,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".view.LoginActivity">
+    <View
+        android:id="@+id/space1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
+        android:layout_below="@+id/space1"
+        android:padding="6dp"
         android:id="@+id/iv_logo"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
         android:elevation="4dp"
-        android:src="@drawable/logo"
-        app:civ_border_color="@color/text_green"
-        app:civ_border_width="1dp" />
+        android:background="@drawable/loginmodule_bg_logo"
+        android:src="@drawable/common_icon_logo" />
+    <View
+        android:layout_below="@+id/iv_logo"
+        android:id="@+id/space2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
 
     <com.tanker.loginmodule.widget.XmTankerEditText
         android:id="@+id/et_login_username"
         style="@style/et_login_register_style"
-        android:layout_below="@+id/iv_logo"
+        android:layout_below="@+id/space2"
         android:layout_marginLeft="30dp"
+        android:textSize="15sp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="60dp"
         android:layout_weight="1.0"
         android:drawableLeft="@drawable/loginmodule_icon_phone"
         android:drawablePadding="12dp"
@@ -47,10 +58,9 @@
         android:layout_weight="1.0"
         android:background="@drawable/et_bottom_border_bg"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:visibility="visible">
 
-        <com.tanker.loginmodule.widget.XmTankerEditText
+        <com.tanker.loginmodule.widget.PasswordToggleEditText
             android:id="@+id/et_login_code_or_pwd"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -59,18 +69,21 @@
             android:background="@null"
             android:drawableLeft="@drawable/loginmodule_icon_password"
             android:drawablePadding="12dp"
+            android:drawableRight="@drawable/loginmodule_icon_hide_pwd"
             android:hint="@string/loginmodule_hint_pwd"
-            android:inputType="number"
+            android:inputType="textPassword"
             android:maxLength="6"
             android:paddingLeft="@dimen/dp_4"
-            android:paddingTop="@dimen/dp_8" />
+            android:paddingTop="@dimen/dp_8"
+            android:textSize="15sp" />
 
         <View
             android:layout_width="@dimen/dp_1"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="4dp"
             android:background="@color/line_gray" />
 
         <TextView
@@ -78,22 +91,29 @@
             android:layout_width="@dimen/dp_96"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
             android:gravity="center"
             android:text="@string/loginmodule_title_retrieve"
             android:textColor="@color/text_green"
             android:textSize="@dimen/sp_16" />
     </LinearLayout>
 
+    <View
+        android:layout_below="@+id/ll_login_send_code"
+        android:id="@+id/space3"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"/>
+
     <Button
+        android:clickable="false"
         android:id="@+id/btn_login"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_below="@+id/ll_login_send_code"
+        android:layout_below="@+id/space3"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/loginmodule_btn_login_confirm_negative"
+        android:background="@drawable/loginmodule_selector_btn_login_confirm"
         android:gravity="center"
         android:text="@string/btn_login"
         android:textColor="@color/colorWhite"

@@ -54,12 +54,9 @@ public abstract class BasePresenterImpl<T extends BaseView> implements BasePrese
         //数据预处理
         ObservableTransformer<HttpResult<Object>, Object> result = BaseApi.handleResult(event, lifecycleSubject);
         Observable observable = ob.compose(result)
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) {
-                        addDisposable(disposable);
+                .doOnSubscribe(disposable -> {
+                    addDisposable((Disposable) disposable);
 //                        subscriber.showProgress();
-                    }
                 });
         RetrofitCache.load(cacheKey, observable, isSave, forceRefresh).subscribe(subscriber);
     }

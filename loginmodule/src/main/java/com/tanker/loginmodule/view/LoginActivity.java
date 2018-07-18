@@ -1,17 +1,24 @@
 package com.tanker.loginmodule.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.v4.app.NotificationManagerCompat;
 import android.text.InputFilter;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.widget.RxTextView;
 import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
@@ -22,6 +29,7 @@ import com.tanker.basemodule.security.AesEncodeUtil;
 import com.tanker.basemodule.security.Md5Util;
 import com.tanker.basemodule.utils.EmptyUtils;
 import com.tanker.basemodule.utils.NetUtil;
+import com.tanker.basemodule.utils.StringUtils;
 import com.tanker.basemodule.utils.ViewUtils;
 import com.tanker.loginmodule.BuildConfig;
 import com.tanker.loginmodule.R;
@@ -29,6 +37,7 @@ import com.tanker.loginmodule.common.VerifyStrFormatUtils;
 import com.tanker.loginmodule.constants.LoginConstants;
 import com.tanker.loginmodule.contract.LoginContract;
 import com.tanker.loginmodule.presenter.LoginPresenter;
+import com.tanker.loginmodule.widget.PasswordToggleEditText;
 import com.tanker.resmodule.constants.RegexConstants;
 import com.tencent.bugly.beta.Beta;
 import com.umeng.analytics.MobclickAgent;
@@ -42,14 +51,26 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-
+/**
+ * @author ronnyluo
+ * @date 2018/7/17 下午5:57
+ * @desc 登录页面
+ */
 public class LoginActivity extends BaseActivity<LoginPresenter> implements View.OnClickListener, LoginContract.View {
 
     protected EditText mEtLoginUserName, mEtLoginPwd, mEtLoginVerifyCode;
     protected TextView mTvSwitchLoginWay;
     protected TextView mTvLoginGetCodeOrRetrieve, mBtnLogin, mTvLoginPhonePwd;
-    private boolean isPwdLogin = true;
+    private boolean isPwdLogin;
     private InputFilter[] pwdInputFilters;
+    private String TAG = "LoginActivity";
+    private int screenHeight;
+    private int keyHeight;
+    private ImageView mIvLogo;
+    private View space1;
+    private View space2;
+    private View space3;
+    private View mRlLogin;
 
 
     @Override
@@ -69,26 +90,29 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
     @Override
     protected void initView() {
         // 通知权限没有打开，打开设置通知界面
-        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
-            showMessage(getString(R.string.open_notification_tip));
-            Intent intent = new Intent();
-            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            Uri uri = Uri.fromParts("package", getPackageName(), null);
-            intent.setData(uri);
-            startActivity(intent);
-        }
+        checkNotificationPermission();
+        //获取屏幕高度
+        screenHeight = this.getWindowManager().getDefaultDisplay().getHeight();
+        //阀值设置为屏幕高度的1/3
+        keyHeight = screenHeight / 3;
         //检查更新
         Beta.checkUpgrade(false, false);
         //点击空白处隐藏软键盘
         mEtLoginUserName = findViewById(R.id.et_login_username);
+        mRlLogin = findViewById(R.id.rl_login);
         mEtLoginVerifyCode = findViewById(R.id.et_login_code_or_pwd);
-
         mTvLoginGetCodeOrRetrieve = findViewById(R.id.tv_login_get_code_or_retrieve);
         mBtnLogin = findViewById(R.id.btn_login);
         mTvSwitchLoginWay = findViewById(R.id.tv_switch_login_way);
+        mIvLogo = findViewById(R.id.iv_logo);
+        space1 = findViewById(R.id.space1);
+        space2 = findViewById(R.id.space2);
+        space3 = findViewById(R.id.space3);
+        switchLoginUI();
         pwdInputFilters = new InputFilter[]{
                 (charSequence, i, i1, spanned, i2, i3) -> {
-                    boolean isChinese = Pattern.matches(RegexConstants.REGEX_CHINESE_ONLY, charSequence.toString());
+                    boolean isChinese = Pattern.compile(RegexConstants.REGEX_CHINESE_ONLY)
+                            .matcher(charSequence.toString()).find();
                     if (isChinese) {
                         return "";
                     }
@@ -119,32 +143,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         }
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        //手动统计页面(页面名称可自定义)
-        MobclickAgent.onPageStart("登录界面");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        //手动统计页面(页面名称可自定义)
-        MobclickAgent.onPageEnd("登录界面");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (time_disposable != null) {
-            time_disposable.dispose();
-        }
-    }
-
     /**
      * 设置事件监听
      */
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initEvent() {
         //登录发送验证码
@@ -160,6 +162,18 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             }
             return false;
         });
+        //监听键盘弹起，避免遮挡登录按钮
+        rootView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            //现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起
+            space1.setVisibility(isSoftShowing() ? View.GONE : View.VISIBLE);
+            space2.setVisibility(isSoftShowing() ? View.GONE : View.VISIBLE);
+            space3.setVisibility(isSoftShowing() ? View.GONE : View.VISIBLE);
+            new Thread(() -> {
+                SystemClock.sleep(200);
+                runOnUiThread(() -> rootView.requestLayout());
+            }).start();
+
+        });
     }
 
     /**
@@ -173,7 +187,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         if (i == R.id.tv_login_get_code_or_retrieve) {
             if (isPwdLogin) {
                 //跳转找回密码
-                tvRetrievePwd();
+                navigationTo(RetrieveActivity.class);
             } else {
                 tvLoginSendCode();
             }
@@ -183,18 +197,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             ReflectUtils.navigationToHome(this, 0);
         } else if (i == R.id.tv_switch_login_way) {
             //用手机号密码或者手机号验证码登录
-//            switchLoginUI();
-            isPwdLogin = !isPwdLogin;
-            if (isPwdLogin&&!time_disposable.isDisposed()) {
-                time_disposable.dispose();
-            }
-            mTvLoginGetCodeOrRetrieve.setText(getString(isPwdLogin ?
-                    R.string.loginmodule_title_retrieve : R.string.loginmodule_send_code));
-            mEtLoginVerifyCode.setHint(getString(isPwdLogin ?
-                    R.string.loginmodule_hint_pwd : R.string.loginmodule_hint_msg_code));
-            mTvSwitchLoginWay.setText(getString(isPwdLogin ?
-                    R.string.loginmodule_switch_msg_code_login : R.string.loginmodule_switch_pwd_login));
-            mEtLoginVerifyCode.setFilters(isPwdLogin ? pwdInputFilters : new InputFilter[]{});
+            switchLoginUI();
         }
     }
 
@@ -277,10 +280,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         if (!phoneNumLoginInputVerity(true)) return;
 
         //发送验证码
-        mPresenter.getCode(mEtLoginUserName.getText().toString(),
-                LoginConstants.PLATFORM_VALUE,
-                LoginConstants.LOGIN_SMSTEMPLATETYPE);
+//        mPresenter.getCode(mEtLoginUserName.getText().toString(),
+//                LoginConstants.PLATFORM_VALUE,
+//                LoginConstants.LOGIN_SMSTEMPLATETYPE);
 
+        //开始倒计时
         final int count_time = 60;
         Observable.interval(0, 1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
@@ -291,6 +295,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
                 .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        addDisposable(d);
                         time_disposable = d;
                     }
 
@@ -347,6 +352,56 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
 //        }
     }
 
+
+
+    /**
+     * 切换密码登录和短信登录的登录方式
+     */
+    protected void switchLoginUI() {
+        isPwdLogin = !isPwdLogin;
+        mEtLoginVerifyCode.setText("");
+        if (isPwdLogin && time_disposable != null && !time_disposable.isDisposed()) {
+            time_disposable.dispose();
+        }
+        mTvLoginGetCodeOrRetrieve.setClickable(true);
+        mEtLoginVerifyCode.setInputType(isPwdLogin ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_NUMBER);
+        mEtLoginVerifyCode.setTransformationMethod(isPwdLogin ? PasswordTransformationMethod.getInstance() : null); //设置为密码输入框
+        mEtLoginVerifyCode.setFilters(new InputFilter[]{new InputFilter.LengthFilter(isPwdLogin ? 20 : 6)});
+
+        ((PasswordToggleEditText) mEtLoginVerifyCode).setToggleIconShow(isPwdLogin);
+
+        mTvLoginGetCodeOrRetrieve.setText(getString(isPwdLogin ?
+                R.string.loginmodule_title_retrieve : R.string.loginmodule_send_code));
+        mEtLoginVerifyCode.setHint(getString(isPwdLogin ?
+                R.string.loginmodule_hint_pwd : R.string.loginmodule_hint_msg_code));
+        mTvSwitchLoginWay.setText(getString(isPwdLogin ?
+                R.string.loginmodule_switch_msg_code_login : R.string.loginmodule_switch_pwd_login));
+
+        Observable<Boolean> userNameObservable = RxTextView.textChanges(mEtLoginUserName)
+                .map(CharSequence::toString)
+                .map(StringUtils::checkMobileNum);
+
+        Observable<Boolean> msgCodeObservable = RxTextView.textChanges(mEtLoginVerifyCode)
+                .map(CharSequence::toString)
+                .map(StringUtils::checkMsgCode);
+
+        Observable<Boolean> pwdObservable = RxTextView.textChanges(mEtLoginVerifyCode)
+                .map(CharSequence::toString)
+                .map(StringUtils::checkPwd);
+
+        addDisposable(userNameObservable
+                .map(b -> b ? Color.BLACK : getmColor(R.color.text_red))
+                .subscribe(mEtLoginUserName::setTextColor));
+        addDisposable((isPwdLogin ? pwdObservable : msgCodeObservable)
+                .map(b -> b ? Color.BLACK : getmColor(R.color.text_red))
+                .subscribe(mEtLoginVerifyCode::setTextColor));
+        addDisposable(Observable
+                .combineLatest(userNameObservable, isPwdLogin ? pwdObservable : msgCodeObservable
+                        , (nameIsAvailable, msgCodeIsAvailable) -> nameIsAvailable && msgCodeIsAvailable)
+                .subscribe(mBtnLogin::setEnabled));
+
+    }
+
     /**
      * 登录输入验证（手机号码、验证码、密码的格式验证）
      */
@@ -364,26 +419,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         return mTvLoginPhonePwd.getVisibility() == View.VISIBLE;
     }
 
-    /**
-     * 切换密码登录和短信登录
-     */
-    protected void switchLoginUI() {
-
-        //清空文本框内容
-        mEtLoginVerifyCode.setText("");
-        mEtLoginPwd.setText("");
-        boolean mEtLoginPwdShowHide = mEtLoginPwd.getVisibility() == View.VISIBLE;
-        mEtLoginPwd.setVisibility(mEtLoginPwdShowHide ? View.GONE : View.VISIBLE);
+    private void checkNotificationPermission() {
+        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            showMessage(getString(R.string.open_notification_tip));
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", getPackageName(), null);
+            intent.setData(uri);
+            startActivity(intent);
+        }
     }
 
-
-    /**
-     * 跳转找回密码
-     */
-    protected void tvRetrievePwd() {
-        //友盟事件监听
-        MobclickAgent.onEvent(mContext, "1118", "找回密码按键");
-        navigationTo(RetrieveActivity.class);
-    }
 
 }

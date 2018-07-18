@@ -31,6 +31,7 @@ public class PasswordToggleEditText extends AppCompatEditText implements
      * 是否密文
      */
     private boolean isCiphertext = false;
+    private boolean isShowToggle=true;
 
     public PasswordToggleEditText(Context context) {
         this(context, null);
@@ -50,7 +51,7 @@ public class PasswordToggleEditText extends AppCompatEditText implements
      */
     private void init() {
         //获取EditText的DrawableRight,主要是通过xml或者外部设置右边的按钮，如果没有设置就采用默认的
-        mToggleDrawable = ContextCompat.getDrawable(getContext(), R.drawable.icon_login_pwd_hide);
+        mToggleDrawable = ContextCompat.getDrawable(getContext(), R.drawable.loginmodule_icon_hide_pwd);
         mToggleDrawable.setBounds(0, 0, mToggleDrawable.getIntrinsicWidth(), mToggleDrawable.getIntrinsicHeight());
         setToggleIconVisible(false);
         setOnFocusChangeListener(this);
@@ -91,7 +92,7 @@ public class PasswordToggleEditText extends AppCompatEditText implements
     private void hideReturnsTransformationMethod() {
         //显示成密文
         isCiphertext = false;
-        mToggleDrawable = ContextCompat.getDrawable(getContext(), R.drawable.icon_login_pwd_hide);
+        mToggleDrawable = ContextCompat.getDrawable(getContext(), R.drawable.loginmodule_icon_hide_pwd);
         mToggleDrawable.setBounds(0, 0, mToggleDrawable.getIntrinsicWidth(), mToggleDrawable.getIntrinsicHeight());
         //隐藏密码明文
         setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -111,7 +112,7 @@ public class PasswordToggleEditText extends AppCompatEditText implements
                 - getPaddingRight() - mToggleDrawable.getIntrinsicWidth())
                 && (event.getX() < ((getWidth() - getPaddingRight())));
         if (touchable) {
-            mToggleDrawable = ContextCompat.getDrawable(getContext(), R.drawable.icon_login_pwd_show);
+            mToggleDrawable = ContextCompat.getDrawable(getContext(), R.drawable.loginmodule_icon_show_pwd);
             mToggleDrawable.setBounds(0, 0, mToggleDrawable.getIntrinsicWidth(), mToggleDrawable.getIntrinsicHeight());
             //显示密码明文
             setTransformationMethod(HideReturnsTransformationMethod.getInstance());
@@ -145,10 +146,14 @@ public class PasswordToggleEditText extends AppCompatEditText implements
      * @param visible
      */
     public void setToggleIconVisible(boolean visible) {
-//        Drawable right = visible ? mToggleDrawable : null;
+        Drawable right = visible ? mToggleDrawable : null;
         if (mToggleDrawable != null)
             setCompoundDrawables(getCompoundDrawables()[0],
-                    getCompoundDrawables()[1], mToggleDrawable, getCompoundDrawables()[3]);
+                    getCompoundDrawables()[1], right, getCompoundDrawables()[3]);
+    }
+
+    public void setToggleIconShow(boolean show){
+        isShowToggle=show;
     }
 
 
@@ -158,7 +163,7 @@ public class PasswordToggleEditText extends AppCompatEditText implements
     @Override
     public void onTextChanged(CharSequence s, int start, int count,
                               int after) {
-        setToggleIconVisible(s.length() > 0);
+        setToggleIconVisible(isShowToggle&&s.length()>0);
     }
 
     @Override
