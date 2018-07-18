@@ -2,12 +2,10 @@
 
     <style name="et_login_register_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:background">@drawable/et_bottom_border_bg</item>
-        <!--<item name="android:drawableRight">@drawable/icon_delete_login_username</item>-->
         <item name="android:drawablePadding">@dimen/dp_4</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textColorHint">@color/color_c7c7c7</item>
+        <item name="android:textColorHint">@color/text_hint</item>
     </style>
 
     <style name="et_register_style">
@@ -15,8 +13,7 @@
         <item name="android:layout_height">@dimen/dp_70</item>
         <item name="android:background">@drawable/et_bottom_border_bg</item>
         <item name="android:drawablePadding">@dimen/dp_4</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textColorHint">@color/color_c7c7c7</item>
+        <item name="android:textColorHint">@color/text_hint</item>
     </style>
 
 </resources>

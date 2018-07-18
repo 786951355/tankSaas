@@ -5,6 +5,25 @@
     <string name="settingmodule_exit">退出</string>
 
     <string name="sans_serif" translatable="false">sans-serif</string>
+    <string name="loginmodule_title_login">登录</string>
+    <string name="loginmodule_switch_msg_code_login">使用短信验证码登录</string>
+    <string name="loginmodule_title_retrieve">找回密码</string>
+    <string name="common_confirm">确认</string>
+    <string name="loginmodule_hint_pwd">密码</string>
+    <string name="loginmodule_switch_pwd_login">使用手机号密码登录</string>
+
+    //#----------------------------------------homemodule----------------------------------------#
+    <!--账单列表-->
+    <string name="homemodule_bills_title">账单</string>
+    <string name="homemodule_bills_no_confirm_money_str">待确认  ￥</string>
+    <string name="homemodule_bills_confirm_money_str">已确认  ￥</string>
+    <!--账单详情-->
+    <string name="homemodule_bill_detail_title_str">账单</string>
+    <string name="homemodule_bill_detail_order_time_str">发单时间：</string>
+    <string name="homemodule_bill_detail_money_str">￥</string>
+    <!--记账-->
+    <string name="homemodule_bill_add_title_str">记账</string>
+
 
     <string name="homemodule_title_fault">故障上报</string>
     <string name="homemodule_title_fault_add">故障上报</string>

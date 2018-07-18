@@ -77,9 +77,6 @@ public class LoginPresenter extends LoginContract.Presenter {
                     SaasApp.getInstance().updateToken(loginModel.getToken());
                     //存储最近一次登录的手机号
                     Hawk.put(AppConstants.HAWK_RECENT_ACCOUNT, userPhone);
-                    if (tankerUser.isHistoryUser()) {
-                        mView.showMessage(mView.getContext().getString(R.string.tips_old_user));
-                    }
                     //为极光设置别名（登陆手机号码）
                     JPushInterface.setAlias(mView.getContext(), 1, tankerUser.getMobilePhone());
                     ReflectUtils.navigationToHome(mView.getContext(), 0);

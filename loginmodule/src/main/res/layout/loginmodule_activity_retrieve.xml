@@ -2,85 +2,97 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login"
-    android:orientation="vertical">
+    android:background="@color/white">
 
-    <include
-        android:id="@+id/i_title"
-        layout="@layout/common_top_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tv_retrieve_pwd_comfire"
+    <Button
+        android:id="@+id/btn_retrieve_confirm"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_45"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="96dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:background="@drawable/btn_radius_bg"
+        android:layout_below="@+id/ll_edit_area"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/loginmodule_btn_login_confirm_positive"
         android:gravity="center"
-        android:text="@string/et_retrieve_comfire_pwd"
+        android:text="@string/common_confirm"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/sp_20" />
+        android:textSize="20sp" />
 
     <LinearLayout
+        android:id="@+id/ll_edit_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/tv_retrieve_pwd_comfire"
-        android:layout_marginBottom="27dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+       android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <com.tanker.loginmodule.widget.XmTankerEditText
             android:id="@+id/et_retrieve_phone_num"
             style="@style/et_login_register_style"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:hint="@string/et_register_phone_num"
+            android:hint="@string/loginmodule_hint_phone_num"
             android:inputType="number"
             android:maxLength="11"
             android:paddingLeft="@dimen/dp_4"
             android:paddingTop="@dimen/dp_8" />
 
-        <com.tanker.loginmodule.widget.XmTankerEditText
-            style="@style/et_login_register_style"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:hint="@string/et_retrieve_code"
-            android:inputType="number"
-            android:maxLength="6"
-            android:paddingLeft="@dimen/dp_4"
-            android:paddingTop="@dimen/dp_8"
-            android:visibility="gone" />
-
-        <include
-            layout="@layout/common_login_send_code"
+        <LinearLayout
+            android:id="@+id/ll_login_send_code"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_70"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:visibility="visible" />
+            android:layout_weight="1.0"
+            android:background="@drawable/et_bottom_border_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <com.tanker.loginmodule.widget.XmTankerEditText
+                android:id="@+id/et_login_code_or_pwd"
+                style="@style/et_register_style"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:drawablePadding="@dimen/dp_4"
+                android:hint="@string/loginmodule_hint_msg_code"
+                android:inputType="number"
+                android:maxLength="6"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingLeft="@dimen/dp_4"
+                android:paddingTop="24dp" />
+
+            <View
+                android:layout_width="@dimen/dp_1"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="9dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/line_gray" />
+
+            <TextView
+                android:id="@+id/tv_login_get_code_or_retrieve"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@string/loginmodule_send_code"
+                android:textColor="@color/text_green"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <com.tanker.loginmodule.widget.PasswordToggleEditText
             android:id="@+id/et_retrieve_pwd"
             style="@style/et_login_register_style"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:hint="@string/et_retrieve_input_pwd"
+            android:hint="@string/loginmodule_hint_new_pwd"
             android:inputType="textPassword"
             android:maxLength="20"
             android:paddingLeft="@dimen/dp_4"
             android:paddingTop="@dimen/dp_8" />
 
         <com.tanker.loginmodule.widget.PasswordToggleEditText
-            android:id="@+id/et_retrieve_comfire_pwd"
+            android:id="@+id/et_retrieve_confirm_pwd"
             style="@style/et_register_style"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:hint="@string/et_retrieve_comfire_pwd"
+            android:hint="@string/loginmodule_hint_new_pwd_confirm"
             android:inputType="textPassword"
             android:maxLength="20"
             android:paddingLeft="@dimen/dp_4"

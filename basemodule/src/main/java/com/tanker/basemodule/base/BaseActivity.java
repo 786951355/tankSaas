@@ -42,7 +42,9 @@ import com.tanker.basemodule.utils.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
+import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -63,20 +65,19 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     public final PublishSubject<ActivityLifeCycleEvent> lifecycleSubject = PublishSubject.create();
     protected InputMethodManager imm;
     protected static final int RESULT_CAMERA_IMAGE = 1, RESULT_LOAD_IMAGE = 2;
-
     protected ImageView leftAction;
     protected TextView tvTitle;
     protected AppCompatTextView rightAction;
     protected RelativeLayout toolbar;
     protected RelativeLayout viewContainer;
     protected CustomToolbar mCustomToolbar;
-
     private boolean tokenDialogIsShowed = false;
     protected ImageView rightIcon;
     protected RelativeLayout rootView;
     protected View statusLine;
     protected ImageView errorImg;
     private TextView tvMessageNum;
+    private ArrayList<Disposable> disposables=new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -339,6 +340,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (mPresenter != null) {
             mPresenter.onDestroy();
         }
+        for (Disposable disposable:disposables) {
+            if (disposable!=null&&disposable.isDisposed()){
+                disposable.dispose();
+            }
+        }
         fixInputMethodManagerLeak(this);
     }
 
@@ -425,7 +431,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
     }
 
-    private boolean isSoftShowing() {
+    protected boolean isSoftShowing() {
         //获取当前屏幕内容的高度
         int screenHeight = getWindow().getDecorView().getHeight();
         //获取View可见区域的bottom
@@ -508,6 +514,13 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
      * 调用相机的空实现
      */
     protected void takePhoto() {
+    }
+
+    protected void addDisposable(Disposable disposable){
+        if (disposable==null){
+            return;
+        }
+        disposables.add(disposable);
     }
 
     /**

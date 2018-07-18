@@ -1,28 +1,29 @@
 package com.tanker.loginmodule.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.v4.app.NotificationManagerCompat;
 import android.text.InputFilter;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.widget.RxTextView;
 import com.orhanobut.hawk.Hawk;
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.basemodule.common.Logger;
-import com.tanker.basemodule.common.SaasApp;
 import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.basemodule.security.AesEncodeUtil;
 import com.tanker.basemodule.security.Md5Util;
@@ -36,6 +37,8 @@ import com.tanker.loginmodule.common.VerifyStrFormatUtils;
 import com.tanker.loginmodule.constants.LoginConstants;
 import com.tanker.loginmodule.contract.LoginContract;
 import com.tanker.loginmodule.presenter.LoginPresenter;
+import com.tanker.loginmodule.widget.PasswordToggleEditText;
+import com.tanker.resmodule.constants.RegexConstants;
 import com.tencent.bugly.beta.Beta;
 import com.umeng.analytics.MobclickAgent;
 
@@ -49,19 +52,26 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by Administrator on 2018/3/23.
+ * @author ronnyluo
+ * @date 2018/7/17 下午5:57
+ * @desc 登录页面
  */
-
 public class LoginActivity extends BaseActivity<LoginPresenter> implements View.OnClickListener, LoginContract.View {
 
     protected EditText mEtLoginUserName, mEtLoginPwd, mEtLoginVerifyCode;
-    protected RelativeLayout mRlLoginPhonePwdCode;
-    protected LinearLayout mLlLoginSendCode;
-    protected TextView mTvLoginSendCode, mTvLogin, mTvRegister, mTvRetrievePwd,
-            mTvLoginPhonePwd, mTvLoginPhoneCode;
-    protected ImageView mIvLoginAgreementCheck, mIvLoginAgreementUncheck;
-    protected RelativeLayout rl_login_agreement_uncheck;
-    private TextView tv_agreement;
+    protected TextView mTvSwitchLoginWay;
+    protected TextView mTvLoginGetCodeOrRetrieve, mBtnLogin, mTvLoginPhonePwd;
+    private boolean isPwdLogin;
+    private InputFilter[] pwdInputFilters;
+    private String TAG = "LoginActivity";
+    private int screenHeight;
+    private int keyHeight;
+    private ImageView mIvLogo;
+    private View space1;
+    private View space2;
+    private View space3;
+    private View mRlLogin;
+
 
     @Override
     public int getContentView() {
@@ -70,56 +80,50 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
-        rToolbar.setToolbarVisible(false);
+        rToolbar.setTitle(getString(R.string.loginmodule_title_login)).setLeftIconVisible(false).setElevation(0);
         //友盟禁止默认的页面统计功能
         MobclickAgent.openActivityDurationTrack(false);
     }
-
 
     private Disposable time_disposable;
 
     @Override
     protected void initView() {
         // 通知权限没有打开，打开设置通知界面
-        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
-            showMessage(getString(R.string.open_notification_tip));
-            Intent intent = new Intent();
-            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            Uri uri = Uri.fromParts("package", getPackageName(), null);
-            intent.setData(uri);
-            startActivity(intent);
-        }
+        checkNotificationPermission();
+        //获取屏幕高度
+        screenHeight = this.getWindowManager().getDefaultDisplay().getHeight();
+        //阀值设置为屏幕高度的1/3
+        keyHeight = screenHeight / 3;
+        //检查更新
         Beta.checkUpgrade(false, false);
         //点击空白处隐藏软键盘
         mEtLoginUserName = findViewById(R.id.et_login_username);
-        mEtLoginPwd = findViewById(R.id.et_login_pwd);
-        mEtLoginPwd.setFilters(new InputFilter[]{
+        mRlLogin = findViewById(R.id.rl_login);
+        mEtLoginVerifyCode = findViewById(R.id.et_login_code_or_pwd);
+        mTvLoginGetCodeOrRetrieve = findViewById(R.id.tv_login_get_code_or_retrieve);
+        mBtnLogin = findViewById(R.id.btn_login);
+        mTvSwitchLoginWay = findViewById(R.id.tv_switch_login_way);
+        mIvLogo = findViewById(R.id.iv_logo);
+        space1 = findViewById(R.id.space1);
+        space2 = findViewById(R.id.space2);
+        space3 = findViewById(R.id.space3);
+        switchLoginUI();
+        pwdInputFilters = new InputFilter[]{
                 (charSequence, i, i1, spanned, i2, i3) -> {
-                    String regex = "^[\u4e00-\u9fa5]+$";
-                    boolean isChinese = Pattern.matches(regex, charSequence.toString());
+                    boolean isChinese = Pattern.compile(RegexConstants.REGEX_CHINESE_ONLY)
+                            .matcher(charSequence.toString()).find();
                     if (isChinese) {
                         return "";
                     }
                     return null;
                 }
-        });
+        };
+        mEtLoginVerifyCode.setFilters(pwdInputFilters);
 
-        mLlLoginSendCode = findViewById(R.id.ll_login_send_code);
-        rl_login_agreement_uncheck = findViewById(R.id.rl_login_agreement_uncheck);
-        mEtLoginVerifyCode = findViewById(R.id.et_login_verifi_code);
-        mTvLoginSendCode = findViewById(R.id.tv_login_send_code);
-        mTvLogin = findViewById(R.id.tv_login);
-        mRlLoginPhonePwdCode = findViewById(R.id.rl_login_phone_pwd_code);
-        mTvRegister = findViewById(R.id.tv_register);
-        mTvRetrievePwd = findViewById(R.id.tv_retrieve_pwd);
-        mTvLoginPhonePwd = findViewById(R.id.tv_login_phone_pwd);
-        mTvLoginPhoneCode = findViewById(R.id.tv_login_phone_code);
-        mIvLoginAgreementUncheck = findViewById(R.id.iv_login_agreement_uncheck);
-        mIvLoginAgreementCheck = findViewById(R.id.iv_login_agreement_check);
-        tv_agreement = findViewById(R.id.tv_agreement);
-        View llLogo = findViewById(R.id.ll_logo);
+        //测试时候的配置信息
         if (BuildConfig.DEBUG) {
-            llLogo.setOnLongClickListener(v -> {
+            findViewById(R.id.iv_logo).setOnLongClickListener(v -> {
                 navigationTo(DebugActivity.class);
                 return true;
             });
@@ -139,45 +143,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         }
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        //手动统计页面(页面名称可自定义)
-        MobclickAgent.onPageStart("登录界面");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        //手动统计页面(页面名称可自定义)
-        MobclickAgent.onPageEnd("登录界面");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (time_disposable != null) {
-            time_disposable.dispose();
-        }
-    }
-
     /**
      * 设置事件监听
      */
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initEvent() {
         //登录发送验证码
-        mTvLoginSendCode.setOnClickListener(this);
-        mTvLogin.setOnClickListener(this);//登录
-        mRlLoginPhonePwdCode.setOnClickListener(this);//用手机号密码或者手机号验证码登录
-        rl_login_agreement_uncheck.setOnClickListener(this);//点击切换协议
-        mTvRegister.setOnClickListener(this);//跳转注册
-        mTvRetrievePwd.setOnClickListener(this);//跳转找回密码
-        SpannableString spannableString = StringUtils.showProtocalLink(mContext, getString(R.string.tv_read_agreement));
-        tv_agreement.setText(spannableString);
-        tv_agreement.setMovementMethod(LinkMovementMethod.getInstance());
-
+        mTvLoginGetCodeOrRetrieve.setOnClickListener(this);
+        mBtnLogin.setOnClickListener(this);//登录
+        mTvSwitchLoginWay.setOnClickListener(this);//用手机号密码或者手机号验证码登录
         rootView.setOnTouchListener((view1, motionEvent) -> {
             InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
@@ -186,6 +161,18 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
                 }
             }
             return false;
+        });
+        //监听键盘弹起，避免遮挡登录按钮
+        rootView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            //现在认为只要控件将Activity向上推的高度超过了1/3屏幕高，就认为软键盘弹起
+            space1.setVisibility(isSoftShowing() ? View.GONE : View.VISIBLE);
+            space2.setVisibility(isSoftShowing() ? View.GONE : View.VISIBLE);
+            space3.setVisibility(isSoftShowing() ? View.GONE : View.VISIBLE);
+            new Thread(() -> {
+                SystemClock.sleep(200);
+                runOnUiThread(() -> rootView.requestLayout());
+            }).start();
+
         });
     }
 
@@ -197,26 +184,20 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
     @Override
     public void onClick(View view) {
         int i = view.getId();
-        if (i == R.id.tv_login_send_code) {
-            tvLoginSendCode();
-        } else if (i == R.id.tv_login) {
-            //登录
+        if (i == R.id.tv_login_get_code_or_retrieve) {
+            if (isPwdLogin) {
+                //跳转找回密码
+                navigationTo(RetrieveActivity.class);
+            } else {
+                tvLoginSendCode();
+            }
+        } else if (i == R.id.btn_login) {
+//            登录
 //            tvLogin();
             ReflectUtils.navigationToHome(this, 0);
-
-        } else if (i == R.id.rl_login_phone_pwd_code) {
+        } else if (i == R.id.tv_switch_login_way) {
             //用手机号密码或者手机号验证码登录
-            tvLoginPhonePwdCode();
-        } else if (i == R.id.rl_login_agreement_uncheck) {
-            //点击切换协议
-            llLoginAgreeMent();
-
-        } else if (i == R.id.tv_register) {
-            //点击跳转注册
-            tvRegister();
-        } else if (i == R.id.tv_retrieve_pwd) {
-            //跳转找回密码
-            tvRetrievePwd();
+            switchLoginUI();
         }
     }
 
@@ -297,30 +278,31 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             return;
         }
         if (!phoneNumLoginInputVerity(true)) return;
-        //点击启动发送验证码提示
-        /*TimeUtils.timeTask(mContext, LoginFragment.this);*/
-        //发送验证码
-        mPresenter.getCode(mEtLoginUserName.getText().toString(),
-                LoginConstants.PLATFORM_VALUE,
-                LoginConstants.LOGIN_SMSTEMPLATETYPE);
 
+        //发送验证码
+//        mPresenter.getCode(mEtLoginUserName.getText().toString(),
+//                LoginConstants.PLATFORM_VALUE,
+//                LoginConstants.LOGIN_SMSTEMPLATETYPE);
+
+        //开始倒计时
         final int count_time = 60;
         Observable.interval(0, 1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .take(count_time + 1)
                 .map(aLong -> count_time - aLong)
-                .doOnSubscribe(disposable -> mTvLoginSendCode.setClickable(false))
+                .doOnSubscribe(disposable -> mTvLoginGetCodeOrRetrieve.setClickable(false))
                 .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        addDisposable(d);
                         time_disposable = d;
                     }
 
                     @Override
                     public void onNext(Long aLong) {
                         Logger.d("onNext" + aLong);
-                        mTvLoginSendCode.setText("已发送" + aLong + "s");
+                        mTvLoginGetCodeOrRetrieve.setText("已发送" + aLong + "s");
                     }
 
                     @Override
@@ -339,8 +321,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         if (!time_disposable.isDisposed()) {
             time_disposable.dispose();
         }
-        mTvLoginSendCode.setClickable(true);
-        mTvLoginSendCode.setText("获取验证码");
+        mTvLoginGetCodeOrRetrieve.setClickable(true);
+        mTvLoginGetCodeOrRetrieve.setText("获取验证码");
     }
 
     /**
@@ -349,7 +331,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
     protected void tvLogin() {
         boolean tvLoginPhonePwdShowHide = tvLoginPhonePwdShowHide();
         //输入手机号密码或者验证码是否正确、是否勾选协议
-        if (!loginInputVerify() || !loginAgreementCheck())
+        if (!loginInputVerify())
             return;
         //登录用户名（手机号码）密码、验证码
         String userPhone = mEtLoginUserName.getText().toString();
@@ -361,19 +343,63 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             passwordOrCode = AesEncodeUtil.encrypt(passwordOrCode);
         }
         String loginType = tvLoginPhonePwdShowHide ? LoginConstants.TYPE_VERIFY_CODE_LOGIN : LoginConstants.TYPE_PHONE_NUM_PWD_LOGIN;
-        if (LoginConstants.TYPE_VERIFY_CODE_LOGIN.equals(loginType)) {//手机账号验证码登陆
-            //友盟事件监听
-            MobclickAgent.onEvent(mContext, "1118", "手机快捷方式登录按键");
-        } else if (LoginConstants.TYPE_PHONE_NUM_PWD_LOGIN.equals(loginType)) {//手机账号密码登录
-            //友盟事件监听
-            MobclickAgent.onEvent(mContext, "1118", "账号密码登录按键");
+
+//        if (SaasApp.getInstance().getConfigManager().getConfigInfo() == null || BuildConfig.DEBUG) {
+//            mPresenter.requestConfig(userPhone, passwordOrCode, loginType);
+//        } else {
+//            //网络请求登录
+//            mPresenter.login(userPhone, passwordOrCode, loginType);
+//        }
+    }
+
+
+
+    /**
+     * 切换密码登录和短信登录的登录方式
+     */
+    protected void switchLoginUI() {
+        isPwdLogin = !isPwdLogin;
+        mEtLoginVerifyCode.setText("");
+        if (isPwdLogin && time_disposable != null && !time_disposable.isDisposed()) {
+            time_disposable.dispose();
         }
-        if (SaasApp.getInstance().getConfigManager().getConfigInfo() == null || BuildConfig.DEBUG) {
-            mPresenter.requestConfig(userPhone, passwordOrCode, loginType);
-        } else {
-            //网络请求登录
-            mPresenter.login(userPhone, passwordOrCode, loginType);
-        }
+        mTvLoginGetCodeOrRetrieve.setClickable(true);
+        mEtLoginVerifyCode.setInputType(isPwdLogin ? InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_NUMBER);
+        mEtLoginVerifyCode.setTransformationMethod(isPwdLogin ? PasswordTransformationMethod.getInstance() : null); //设置为密码输入框
+        mEtLoginVerifyCode.setFilters(new InputFilter[]{new InputFilter.LengthFilter(isPwdLogin ? 20 : 6)});
+
+        ((PasswordToggleEditText) mEtLoginVerifyCode).setToggleIconShow(isPwdLogin);
+
+        mTvLoginGetCodeOrRetrieve.setText(getString(isPwdLogin ?
+                R.string.loginmodule_title_retrieve : R.string.loginmodule_send_code));
+        mEtLoginVerifyCode.setHint(getString(isPwdLogin ?
+                R.string.loginmodule_hint_pwd : R.string.loginmodule_hint_msg_code));
+        mTvSwitchLoginWay.setText(getString(isPwdLogin ?
+                R.string.loginmodule_switch_msg_code_login : R.string.loginmodule_switch_pwd_login));
+
+        Observable<Boolean> userNameObservable = RxTextView.textChanges(mEtLoginUserName)
+                .map(CharSequence::toString)
+                .map(StringUtils::checkMobileNum);
+
+        Observable<Boolean> msgCodeObservable = RxTextView.textChanges(mEtLoginVerifyCode)
+                .map(CharSequence::toString)
+                .map(StringUtils::checkMsgCode);
+
+        Observable<Boolean> pwdObservable = RxTextView.textChanges(mEtLoginVerifyCode)
+                .map(CharSequence::toString)
+                .map(StringUtils::checkPwd);
+
+        addDisposable(userNameObservable
+                .map(b -> b ? Color.BLACK : getmColor(R.color.text_red))
+                .subscribe(mEtLoginUserName::setTextColor));
+        addDisposable((isPwdLogin ? pwdObservable : msgCodeObservable)
+                .map(b -> b ? Color.BLACK : getmColor(R.color.text_red))
+                .subscribe(mEtLoginVerifyCode::setTextColor));
+        addDisposable(Observable
+                .combineLatest(userNameObservable, isPwdLogin ? pwdObservable : msgCodeObservable
+                        , (nameIsAvailable, msgCodeIsAvailable) -> nameIsAvailable && msgCodeIsAvailable)
+                .subscribe(mBtnLogin::setEnabled));
+
     }
 
     /**
@@ -388,68 +414,21 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         return phoneNumCodeInputCodeVerity(phonePwdShowHide);
     }
 
-    /**
-     * 登录是否勾选协议
-     *
-     * @return
-     */
-    private boolean loginAgreementCheck() {
-        if (!isLoginAgreementCheckShowHide()) {
-            com.tanker.loginmodule.common.ViewUtils.showToast(mContext, getString(R.string.toast_please_read_check_useragreement));
-            return false;
-        }
-        return true;
-    }
 
     private boolean tvLoginPhonePwdShowHide() {
         return mTvLoginPhonePwd.getVisibility() == View.VISIBLE;
     }
 
-    private boolean isLoginAgreementCheckShowHide() {
-        return mIvLoginAgreementCheck.getVisibility() == View.VISIBLE;
+    private void checkNotificationPermission() {
+        if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            showMessage(getString(R.string.open_notification_tip));
+            Intent intent = new Intent();
+            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", getPackageName(), null);
+            intent.setData(uri);
+            startActivity(intent);
+        }
     }
 
-    /**
-     * 点击手机密码登录
-     */
-    protected void tvLoginPhonePwdCode() {
-        //清空文本框内容
-        mEtLoginVerifyCode.setText("");
-        mEtLoginPwd.setText("");
-        boolean tvLoginPhonePwdShowHide = tvLoginPhonePwdShowHide();
-        mTvLoginPhonePwd.setVisibility(tvLoginPhonePwdShowHide ? View.GONE : View.VISIBLE);
-        mTvLoginPhoneCode.setVisibility(tvLoginPhonePwdShowHide ? View.VISIBLE : View.GONE);
-        boolean mEtLoginPwdShowHide = mEtLoginPwd.getVisibility() == View.VISIBLE;
-        mEtLoginPwd.setVisibility(mEtLoginPwdShowHide ? View.GONE : View.VISIBLE);
-        mLlLoginSendCode.setVisibility(mEtLoginPwdShowHide ? View.VISIBLE : View.GONE);
-
-    }
-
-    /**
-     * 点击跳转用户协议
-     */
-    protected void llLoginAgreeMent() {
-        boolean isLoginAgreementCheckShowHide = isLoginAgreementCheckShowHide();
-        mIvLoginAgreementCheck.setVisibility(isLoginAgreementCheckShowHide ? View.GONE : View.VISIBLE);
-        mIvLoginAgreementUncheck.setVisibility(isLoginAgreementCheckShowHide ? View.VISIBLE : View.GONE);
-    }
-
-    /**
-     * 跳转注册
-     */
-    protected void tvRegister() {
-        //友盟事件监听
-        MobclickAgent.onEvent(mContext, "1118", "注册按键");
-        navigationTo(RegisterActivity.class);
-    }
-
-    /**
-     * 跳转找回密码
-     */
-    protected void tvRetrievePwd() {
-        //友盟事件监听
-        MobclickAgent.onEvent(mContext, "1118", "找回密码按键");
-        navigationTo(RetrieveActivity.class);
-    }
 
 }

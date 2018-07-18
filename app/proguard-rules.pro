@@ -358,3 +358,4 @@ public static final int *;
 -keep class * {
     public private *;
 }
+-dontwarn java.lang.invoke.*

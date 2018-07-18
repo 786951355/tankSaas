@@ -23,25 +23,17 @@ public class BaseApi {
      * @return
      */
     public static <T> ObservableTransformer<HttpResult<T>, T> handleResult(final ActivityLifeCycleEvent event, final PublishSubject<ActivityLifeCycleEvent> lifecycleSubject) {
-        return new ObservableTransformer<HttpResult<T>, T>() {
-            @Override
-            public Observable<T> apply(Observable<HttpResult<T>> tObservable) {
-                Observable<ActivityLifeCycleEvent> compareLifecycleObservable =
-                        lifecycleSubject.filter(new Predicate<ActivityLifeCycleEvent>() {
-                            @Override
-                            public boolean test(ActivityLifeCycleEvent activityLifeCycleEvent) {
-                                return activityLifeCycleEvent.equals(event);
-                            }
-                        });
+        return tObservable -> {
+            Observable<ActivityLifeCycleEvent> compareLifecycleObservable =
+                    lifecycleSubject.filter(activityLifeCycleEvent -> activityLifeCycleEvent.equals(event));
 
-                return tObservable.map(new ServerResponseFunc<T>())
-                        .takeUntil(compareLifecycleObservable)
-                        .onErrorResumeNext(new HttpResponseFunc())
-                        .subscribeOn(Schedulers.io())
-                        .unsubscribeOn(Schedulers.io())
-                        .subscribeOn(AndroidSchedulers.mainThread())
-                        .observeOn(AndroidSchedulers.mainThread());
-            }
+            return tObservable.map(new ServerResponseFunc<T>())
+                    .takeUntil(compareLifecycleObservable)
+                    .onErrorResumeNext(new HttpResponseFunc())
+                    .subscribeOn(Schedulers.io())
+                    .unsubscribeOn(Schedulers.io())
+                    .subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread());
         };
     }
 
@@ -53,15 +45,12 @@ public class BaseApi {
      * @return
      */
     private static <T> Observable<T> createData(final T data) {
-        return Observable.create(new ObservableOnSubscribe<T>() {
-            @Override
-            public void subscribe(ObservableEmitter<T> e) {
-                try {
-                    e.onNext(data);
-                    e.onComplete();
-                } catch (Exception exception) {
-                    e.onError(exception);
-                }
+        return Observable.create(e -> {
+            try {
+                e.onNext(data);
+                e.onComplete();
+            } catch (Exception exception) {
+                e.onError(exception);
             }
         });
     }

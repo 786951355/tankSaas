@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/select_item_line_selector"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingBottom="9dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="15dp"
+        android:paddingTop="9dp">
+
+        <TextView
+            android:id="@+id/tv_bill_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="35dp"
+            android:textColor="#FF333333"
+            android:textSize="15sp"
+            tools:text="2018-07" />
+
+        <TextView
+            android:id="@+id/tv_vertical_line"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_bill_month"
+            android:background="#FFDDDDDD" />
+
+        <LinearLayout
+            android:id="@+id/ll_money_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="37dp"
+            android:layout_toLeftOf="@id/iv_go"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_bill_noconfirm_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:textColor="#FFFB861D"
+                android:textSize="15sp"
+                tools:text="待确认  ￥2000.9" />
+
+            <TextView
+                android:id="@+id/tv_bill_confirm_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF999999"
+                android:textSize="15sp"
+                tools:text="已确认  ￥2000.9" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/homemodule_bill_go_icon" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/bg_gray"
+        android:visibility="visible" />
+</LinearLayout>

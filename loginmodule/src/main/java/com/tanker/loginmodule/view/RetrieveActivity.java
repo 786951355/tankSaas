@@ -6,7 +6,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tanker.basemodule.base.BaseActivity;
@@ -50,22 +49,17 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
-        rToolbar.setToolbarVisible(false);
+        rToolbar.setTitle(getString(R.string.loginmodule_title_retrieve)).setElevation(0);
     }
 
     @Override
     protected void initView() {
-        mTvTitle = findViewById(R.id.i_title).findViewById(R.id.tv_title);
-        mIvBack = findViewById(R.id.iv_back);
-        mIvBack.setImageResource(R.drawable.icon_white_back);
         mEtRetrievePhoneNum = findViewById(R.id.et_retrieve_phone_num);
-        mEtRetrieveVerifyCode = findViewById(R.id.et_login_verifi_code);
-        mTvRetrieveComfire = findViewById(R.id.tv_retrieve_pwd_comfire);
-        mTvRetrieveSendCode = findViewById(R.id.tv_login_send_code);
+        mEtRetrieveVerifyCode = findViewById(R.id.et_login_code_or_pwd);
+        mTvRetrieveComfire = findViewById(R.id.btn_retrieve_confirm);
+        mTvRetrieveSendCode = findViewById(R.id.tv_login_get_code_or_retrieve);
         mEtRetrievePwd = findViewById(R.id.et_retrieve_pwd);
-        mEtRetrieveComfirePwd = findViewById(R.id.et_retrieve_comfire_pwd);
-        mTvTitle.setText(getString(R.string.et_retrieve_pwd));
-        mTvTitle.setTextColor(getResources().getColor(R.color.white));
+        mEtRetrieveComfirePwd = findViewById(R.id.et_retrieve_confirm_pwd);
         initEvent();
     }
 
@@ -76,7 +70,6 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
         super.initEvent();
         mTvRetrieveSendCode.setOnClickListener(this);
         mTvRetrieveComfire.setOnClickListener(this);
-        mIvBack.setOnClickListener(this);
     }
 
 
@@ -84,14 +77,11 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
     public void onClick(View view) {
         int id = view.getId();
         //确定
-        if (id == R.id.tv_retrieve_pwd_comfire)
+        if (id == R.id.btn_retrieve_confirm)
             tvRetrievePwdConfirm();
             //发送验证码
-        else if (id == R.id.tv_login_send_code)
+        else if (id == R.id.tv_login_get_code_or_retrieve)
             tvRetrieveSendCode();
-        else if (id == R.id.iv_back) {
-            finish();
-        }
     }
 
     /**
@@ -159,8 +149,7 @@ public class RetrieveActivity extends BaseActivity<RetrievePresenter> implements
     }
 
     protected int mGetCodeTime = 60;
-    protected TextView mTvTitle, mTvRetrieveComfire, mTvRetrieveSendCode;
-    protected ImageView mIvBack;
+    protected TextView mTvRetrieveComfire, mTvRetrieveSendCode;
     protected EditText mEtRetrievePhoneNum, mEtRetrieveVerifyCode, mEtRetrievePwd, mEtRetrieveComfirePwd;
 
 

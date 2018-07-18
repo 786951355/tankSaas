@@ -1,14 +1,22 @@
 package com.tanker.workbench.view;
 
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.tanker.basemodule.base.BaseFragment;
+import com.tanker.basemodule.common.SaasApp;
+import com.tanker.basemodule.dialog.TankerDialog;
 import com.tanker.basemodule.model.mine_model.UserInfoModel;
+import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.workbench.R;
 import com.tanker.workbench.contract.MineContract;
 import com.tanker.workbench.presenter.MinePresenter;
+import com.tencent.bugly.beta.Beta;
 import com.umeng.analytics.MobclickAgent;
 
 
@@ -16,7 +24,10 @@ import com.umeng.analytics.MobclickAgent;
  * A simple {@link Fragment} subclass.
  */
 public class MineFragment extends BaseFragment<MinePresenter> implements MineContract.View, View.OnClickListener {
-
+    //退出
+    private TextView exit;
+    //检查更新
+    private RelativeLayout rl_check_version;
 
     @Override
     protected int getLayoutId() {
@@ -25,7 +36,10 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
 
     @Override
     protected void initView(View parent) {
-
+       exit = parent.findViewById(R.id.tv_exit);
+       exit.setOnClickListener(this);
+       rl_check_version=parent.findViewById(R.id.rl_check_version);
+       rl_check_version.setOnClickListener(this);
     }
 
     @Override
@@ -58,7 +72,20 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
     @Override
     public void onClick(View view) {
         int id = view.getId();
-
+        if (id == R.id.tv_exit) {
+            TankerDialog.OptionListener optionListener = obDialog -> {
+                ReflectUtils.navigationToLogin(mContext);
+                SaasApp.getInstance().exit();
+                mContext.finish();
+            };
+            showAlertDialog("确认退出当前账号吗？", R.drawable.warning, optionListener);
+        }else if (id == R.id.rl_check_version) {
+            Intent i = ReflectUtils.getIntent(mContext, "com.tanker.homemodule.view.BillActivity");
+            navigationTo(i);
+            //ReflectUtils.startActivity(mContext, i);
+            //手动加测一次更新
+            //Beta.checkUpgrade();
+        }
     }
 
 

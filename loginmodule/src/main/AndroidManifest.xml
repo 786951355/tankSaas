@@ -10,21 +10,14 @@
         <activity
             android:name=".view.LoginActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustUnspecified"
+             />
         <!--找回密码-->
         <activity
             android:name=".view.RetrieveActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".view.DebugActivity" />
-
-        <activity
-            android:name=".view.RegisterActivity"
-            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity
-            android:name=".view.RegisterSuccessActivity"
-            android:launchMode="singleTask" />
+        <activity android:name=".view.DebugActivity" />
 
     </application>
 

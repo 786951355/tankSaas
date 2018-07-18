@@ -55,7 +55,7 @@ android {
             applicationIdSuffix '.inhouse'
             resValue "string", "app_name", "@string/app_name_debug"
             manifestPlaceholders = [
-                    app_icon     : "@drawable/logo_small",
+                    app_icon     : "@drawable/app_logo_debug",
                     JPUSH_PKGNAME: "com.tanker.saas.driver.inhouse",
                     JPUSH_APPKEY : "05ae49c91a6afd797af49b6d", //JPush上注册的包名对应的appkey(罐罐测试).
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
@@ -71,7 +71,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             manifestPlaceholders = [
-                    app_icon     : "@drawable/logo",
+                    app_icon     : "@drawable/app_logo",
                     JPUSH_PKGNAME: "com.tanker.saas.driver",
                     JPUSH_APPKEY : "eb9799e6d6ef8e7e6f257761", //JPush上注册的包名对应的appkey(罐罐).正式Key
                     JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
@@ -116,7 +116,6 @@ if (!isModuleRun.toBoolean()) {
         //判断task是编译期还是运行期
         if (upperName.contains("ASSEMBLE") || upperName.contains("INSTALL")) {
             dependencies.add("implementation", project.project(':' + 'homemodule'))
-            dependencies.add("implementation", project.project(':' + 'settingmodule'))
             dependencies.add("implementation", project.project(':' + 'loginmodule'))
             dependencies.add("implementation", project.project(":" + 'ordersmodule'))
             dependencies.add("implementation", project.project(":" + 'workbenchmodule'))
