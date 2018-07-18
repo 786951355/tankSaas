@@ -68,7 +68,7 @@ public class BillDetailActivity extends BaseActivity<BillDetailPresenter> implem
         rv_bills.setLayoutManager(lineLayoutManager);
 
         //账单详情列表适配器
-        adapter = new BillDetailAdapter(mContext, R.layout.homemodul_recycle_bill_detail_item, datas);
+        adapter = new BillDetailAdapter(mContext, R.layout.homemodule_recycle_bill_detail_item, datas);
         mLoadMoreWrapper = new LoadMoreWrapper(adapter);
         mLoadMoreWrapper.setLoadMoreView(R.layout.default_loading);
         mLoadMoreWrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {

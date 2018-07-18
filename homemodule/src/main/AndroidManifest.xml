@@ -3,8 +3,9 @@
     package="com.tanker.homemodule">
 
     <application>
-        <activity android:name=".view.BillActivity"></activity>
-        <activity android:name=".view.BillDetailActivity"></activity>
+        <activity android:name=".view.BillActivity" />
+        <activity android:name=".view.BillDetailActivity" />
+        <activity android:name=".view.AddBillActivity"></activity>
     </application>
 
 </manifest>
