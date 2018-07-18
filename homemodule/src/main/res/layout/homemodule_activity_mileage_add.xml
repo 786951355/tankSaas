@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/ll_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingTop="12dp">
+
+        <Button
+            android:id="@+id/bt_report"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="28dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_btn_green_stroke"
+            android:text="@string/homemodule_button_report_again"
+            android:textColor="@color/text_green"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bt_save"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="28dp"
+            android:layout_weight="1"
+            android:onClick="save"
+            android:background="@drawable/common_btn_confirm_positive"
+            android:text="@string/homemodule_button_save"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_buttons">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_label_select_order"
+                    style="@style/homemodule_label_mileage"
+                    tools:text="@string/homemodule_label_select_order" />
+
+                <TextView
+                    android:id="@+id/tv_select"
+                    style="@style/homemodule_text_fault_mileage"
+                    android:background="@drawable/common_edittext_grey_bg"
+                    android:hint="@string/homemodule_hint_select_order" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/homemodule_label_mileage"
+                    android:text="@string/homemodule_label_empty_mileage_unit" />
+
+                <EditText
+                    android:id="@+id/et_empty"
+                    style="@style/homemodule_text_fault_mileage"
+                    android:background="@drawable/common_edittext_grey_bg" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/homemodule_label_mileage"
+                    android:text="@string/homemodule_label_load_mileage_unit" />
+
+                <EditText
+                    android:id="@+id/et_load"
+                    style="@style/homemodule_text_fault_mileage"
+                    android:background="@drawable/common_edittext_grey_bg" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/homemodule_label_fault"
+                    android:text="@string/homemodule_label_certificate" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/homemodule_label_fault"
+                    android:text="@string/homemodule_label_remark" />
+
+                <EditText
+                    android:id="@+id/et_remark"
+                    style="@style/homemodule_remark_fault_mileage"
+                    android:background="@null"
+                    android:hint="@string/homemodule_hint_remark_300" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
