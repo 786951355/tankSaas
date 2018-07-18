@@ -8,10 +8,11 @@ package com.tanker.basemodule.model.home_model;
 */
 public class BillDetailModel {
     private String billId;
-    private String billno;
+    private String orderNo;
     private String billstatus;
-    private String billloadingAreaName;
-    private String billunloadingAreaName;
+    private String billstatusName;
+    private String billstartAreaName;
+    private String billendAreaName;
     private String billTime;
     private String billMoney;
 
@@ -23,12 +24,12 @@ public class BillDetailModel {
         this.billId = billId;
     }
 
-    public String getBillno() {
-        return billno;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setBillno(String billno) {
-        this.billno = billno;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
     public String getBillstatus() {
@@ -39,20 +40,40 @@ public class BillDetailModel {
         this.billstatus = billstatus;
     }
 
-    public String getBillloadingAreaName() {
-        return billloadingAreaName;
+    public String getBillstatusName() {
+        int type = Integer.valueOf(billstatus);
+        switch (type) {
+            case 1:
+                billstatusName = "已确认";
+                break;
+            case 2:
+                billstatusName = "待确认";
+                break;
+            default:
+                billstatusName = "";
+                break;
+        }
+        return billstatusName;
     }
 
-    public void setBillloadingAreaName(String billloadingAreaName) {
-        this.billloadingAreaName = billloadingAreaName;
+    public void setBillstatusName(String billstatusName) {
+        this.billstatusName = billstatusName;
     }
 
-    public String getBillunloadingAreaName() {
-        return billunloadingAreaName;
+    public String getBillstartAreaName() {
+        return billstartAreaName;
     }
 
-    public void setBillunloadingAreaName(String billunloadingAreaName) {
-        this.billunloadingAreaName = billunloadingAreaName;
+    public void setBillstartAreaName(String billstartAreaName) {
+        this.billstartAreaName = billstartAreaName;
+    }
+
+    public String getBillendAreaName() {
+        return billendAreaName;
+    }
+
+    public void setBillendAreaName(String billendAreaName) {
+        this.billendAreaName = billendAreaName;
     }
 
     public String getBillTime() {
@@ -75,10 +96,11 @@ public class BillDetailModel {
     public String toString() {
         return "BillDetailModel{" +
                 "billId='" + billId + '\'' +
-                ", billno='" + billno + '\'' +
+                ", orderNo='" + orderNo + '\'' +
                 ", billstatus='" + billstatus + '\'' +
-                ", billloadingAreaName='" + billloadingAreaName + '\'' +
-                ", billunloadingAreaName='" + billunloadingAreaName + '\'' +
+                ", billstatusName='" + billstatusName + '\'' +
+                ", billstartAreaName='" + billstartAreaName + '\'' +
+                ", billendAreaName='" + billendAreaName + '\'' +
                 ", billTime='" + billTime + '\'' +
                 ", billMoney='" + billMoney + '\'' +
                 '}';

@@ -104,7 +104,7 @@
 
         <TextView
             android:background="?android:attr/selectableItemBackground"
-            android:id="@+id/btn_exit"
+            android:id="@+id/tv_exit"
             android:paddingLeft="16dp"
             android:textSize="16sp"
             android:textColor="@color/text_green"
