@@ -21,5 +21,7 @@
     <string name="homemodule_bill_detail_title_str">账单</string>
     <string name="homemodule_bill_detail_order_time_str">发单时间：</string>
     <string name="homemodule_bill_detail_money_str">￥</string>
+    <!--记账-->
+    <string name="homemodule_bill_add_title_str">记账</string>
 
 </resources>

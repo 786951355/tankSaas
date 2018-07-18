@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.adapter.LoadMoreWrapper;
@@ -31,7 +32,7 @@ import java.util.List;
 * @Description:  账单列表
 * @date 2018/7/16 13:45
 */
-public class BillActivity extends BaseActivity<BillPresenter> implements BillContract.View {
+public class BillActivity extends BaseActivity<BillPresenter> implements BillContract.View,View.OnClickListener {
 
     private static final String TAG = BillActivity.class.getName();
     //刷新控件
@@ -47,9 +48,13 @@ public class BillActivity extends BaseActivity<BillPresenter> implements BillCon
     private LinearLayout ll_loaded;
     private ProgressBar pb_loading;
     private LoadMoreWrapper mLoadMoreWrapper;
+    //再记一笔
+    private TextView tv_write_bill_again;
 
     @Override
     protected void initView() {
+        tv_write_bill_again=findViewById(R.id.tv_write_bill_again);
+        tv_write_bill_again.setOnClickListener(this);
         //刷新控件
         srl_bills = findViewById(R.id.srl_bills);
         srl_bills.setColorSchemeResources(R.color.colorAccent, R.color.text_red, R.color.text_yellow);
@@ -66,7 +71,7 @@ public class BillActivity extends BaseActivity<BillPresenter> implements BillCon
         rv_bills.setLayoutManager(lineLayoutManager);
 
         //账单列表适配器
-        adapter = new BillAdapter(mContext, R.layout.homemodul_recycle_bill_item, datas);
+        adapter = new BillAdapter(mContext, R.layout.homemodule_recycle_bill_item, datas);
         mLoadMoreWrapper = new LoadMoreWrapper(adapter);
         mLoadMoreWrapper.setLoadMoreView(R.layout.default_loading);
         mLoadMoreWrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {
@@ -156,6 +161,16 @@ public class BillActivity extends BaseActivity<BillPresenter> implements BillCon
     public void dismissSwipeRefresh() {
         if (srl_bills.isRefreshing()) {
             srl_bills.setRefreshing(false);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        //再来一笔
+        if(id==R.id.tv_write_bill_again){
+            //账单添加界面
+            navigationTo(AddBillActivity.class);
         }
     }
 }
