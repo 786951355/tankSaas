@@ -24,9 +24,40 @@
     <!--记账-->
     <string name="homemodule_bill_add_title_str">记账</string>
 
-
+    <!-- 里程上报&故障上报 -->
     <string name="homemodule_title_fault">故障上报</string>
     <string name="homemodule_title_fault_add">故障上报</string>
     <string name="homemodule_title_fault_detail">故障详情</string>
-    <string name="homemodule_button_fault_report">再报一笔</string>
+    <string name="homemodule_title_mileage">里程上报</string>
+    <string name="homemodule_title_mileage_add">里程上报</string>
+    <string name="homemodule_title_mileage_detail">里程详情</string>
+    <string name="homemodule_button_report_again">再报一笔</string>
+    <string name="homemodule_button_save">保存</string>
+    <string name="homemodule_label_fault"><![CDATA[故障<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_address"><![CDATA[地址<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_fault_time"><![CDATA[故障时间<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_fault_pictures">故障图片</string>
+    <string name="homemodule_label_select_order"><![CDATA[选择订单<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_empty_mileage_unit">空车里程(公里)</string>
+    <string name="homemodule_label_load_mileage_unit">重车里程(公里)</string>
+    <string name="homemodule_label_certificate">凭证</string>
+    <string name="homemodule_label_remark">备注</string>
+    <string name="homemodule_label_reporter">上报人</string>
+    <string name="homemodule_label_report_time">上报时间</string>
+    <string name="homemodule_label_solve_method">解决方法</string>
+    <string name="homemodule_label_repair_branch">修理网点</string>
+    <string name="homemodule_label_solve_man">解决人</string>
+    <string name="homemodule_label_solve_time">解决时间</string>
+    <string name="homemodule_label_plate_number">车牌号</string>
+    <string name="homemodule_empty_mileage"><![CDATA[空车里程：<font color="#FF4081">%1$s</font>公里]]></string>
+    <string name="homemodule_load_mileage"><![CDATA[重车里程：<font color="#FF4081">%1$s</font>公里]]></string>
+    <string name="homemodule_order_time">发单时间：%1$s</string>
+    <string name="homemodule_hint_select_order">选择运单号</string>
+    <string name="homemodule_hint_remark_300">选择填写，300字以内</string>
+    <string name="homemodule_hint_search_order_time">搜索订单时间</string>
+    <string name="homemodule_hint_fault_description">请描述具体故障</string>
+    <string name="homemodule_change_vehicle">更换车辆</string>
+
+    <!-- 公用 -->
+    <string name="button_query">查询</string>
 </resources>

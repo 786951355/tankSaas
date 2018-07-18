@@ -1,5 +1,8 @@
 package com.tanker.homemodule.view;
 
+import android.text.Html;
+import android.widget.TextView;
+
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.homemodule.R;
@@ -8,7 +11,9 @@ import com.tanker.homemodule.presenter.FaultAddPresenter;
 public class FaultAddActivity extends BaseActivity<FaultAddPresenter> {
     @Override
     protected void initView() {
-
+        ((TextView) findViewById(R.id.tv_label_address)).setText(Html.fromHtml(getString(R.string.homemodule_label_address)));
+        ((TextView) findViewById(R.id.tv_label_fault)).setText(Html.fromHtml(getString(R.string.homemodule_label_fault)));
+        ((TextView) findViewById(R.id.tv_label_time)).setText(Html.fromHtml(getString(R.string.homemodule_label_fault_time)));
     }
 
     @Override
@@ -18,6 +23,6 @@ public class FaultAddActivity extends BaseActivity<FaultAddPresenter> {
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
-
+        rToolbar.setToolbarVisible(true).setTitle(getString(R.string.homemodule_title_fault_add));
     }
 }

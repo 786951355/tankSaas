@@ -6,12 +6,7 @@ import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
 import com.tanker.homemodule.R;
 
-/**
- * author zhanglei
- * date 2018/7/16
- * description 故障列表界面
- **/
-public class FaultActivity extends BaseActivity {
+public class MileageActivity extends BaseActivity {
     @Override
     protected void initView() {
 
@@ -19,15 +14,15 @@ public class FaultActivity extends BaseActivity {
 
     @Override
     public int getContentView() {
-        return R.layout.homemodule_activity_fault;
+        return R.layout.homemodule_activity_mileage;
     }
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
-        rToolbar.setToolbarVisible(true).setTitle(getString(R.string.homemodule_title_fault));
+        rToolbar.setToolbarVisible(true).setTitle(getString(R.string.homemodule_title_mileage));
     }
 
     public void report(View view) {
-        navigationTo(FaultDetailActivity.class);
+        navigationTo(MileageAddActivity.class);
     }
 }

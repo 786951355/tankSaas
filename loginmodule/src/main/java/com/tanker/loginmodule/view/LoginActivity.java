@@ -89,6 +89,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
 
     @Override
     protected void initView() {
+        ReflectUtils.startActivityWithName(this, "com.tanker.homemodule.view.MileageActivity");
         // 通知权限没有打开，打开设置通知界面
         checkNotificationPermission();
         //获取屏幕高度
@@ -194,7 +195,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
         } else if (i == R.id.btn_login) {
 //            登录
 //            tvLogin();
-            ReflectUtils.navigationToHome(this, 0);
+//            ReflectUtils.navigationToHome(this, 0);
         } else if (i == R.id.tv_switch_login_way) {
             //用手机号密码或者手机号验证码登录
             switchLoginUI();
