@@ -9,8 +9,6 @@ import com.tanker.basemodule.base.baseImpl.BasePresenterImpl;
 
 public interface RetrieveContract {
     interface View extends BaseView {
-
-        void startCountDown();
     }
 
     abstract class Presenter extends BasePresenterImpl<View> {
