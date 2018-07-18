@@ -10,8 +10,6 @@
         android:id="@+id/sl_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:background="@color/white"
         android:paddingLeft="15dp"
         android:paddingRight="15dp">
