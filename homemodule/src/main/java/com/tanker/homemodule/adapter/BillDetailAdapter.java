@@ -41,7 +41,7 @@ public class BillDetailAdapter extends CommonAdapter<BillDetailModel> {
         TextView tv_bill_detail_time = holder.getView(R.id.tv_bill_detail_time);
         String billTime=model.getBillTime();
         if(!TextUtils.isEmpty(billTime)){
-            tv_bill_detail_time.setText(mContext.getString(R.string.homemodule_bill_detail_order_time_str)+billTime);
+            tv_bill_detail_time.setText(mContext.getString(R.string.homemodule_label_bill_detail_order_time)+billTime);
         }
         //账单金额
         TextView tv_bill_detail_money = holder.getView(R.id.tv_bill_detail_money);

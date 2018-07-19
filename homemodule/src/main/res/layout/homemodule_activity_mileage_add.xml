@@ -139,6 +139,7 @@
                     android:background="@null"
                     android:hint="@string/homemodule_hint_remark_300" />
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

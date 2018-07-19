@@ -14,15 +14,61 @@
 
     //#----------------------------------------homemodule----------------------------------------#
     <!--账单列表-->
-    <string name="homemodule_bills_title">账单</string>
+    <string name="homemodule_title_bills">账单</string>
     <string name="homemodule_bills_no_confirm_money_str">待确认  ￥</string>
     <string name="homemodule_bills_confirm_money_str">已确认  ￥</string>
+    <string name="homemodule_button_bills_write_bill_again">再记一账</string>
     <!--账单详情-->
-    <string name="homemodule_bill_detail_title_str">账单</string>
-    <string name="homemodule_bill_detail_order_time_str">发单时间：</string>
+    <string name="homemodule_title_bill_detail">账单</string>
+    <string name="homemodule_label_bill_detail_order_time">发单时间：</string>
     <string name="homemodule_bill_detail_money_str">￥</string>
     <!--记账-->
-    <string name="homemodule_bill_add_title_str">记账</string>
+    <string name="homemodule_title_bill_add">记账</string>
+    <string name="homemodule_label_bill_add_plate_number">车牌号</string>
+    <string name="homemodule_label_bill_add_select_order_no">选择运单</string>
+    <string name="homemodule_hint_bill_add_select_order_no">选择运单号</string>
+    <string name="homemodule_label_bill_add_cost_type">类别</string>
+    <string name="homemodule_label_bill_add_remark">备注</string>
+    <string name="homemodule_label_bill_add_picture">单据照片</string>
+    <string name="homemodule_hint_bill_add_remark">选择填写，100字以内</string>
+    <string name="homemodule_button_bill_add_report_bill_again">再报一笔</string>
+    <string name="homemodule_button_bill_add_save">保存</string>
+    //过路费
+    <string name="homemodule_label_bill_add_cost_road">过路费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_road">请输入过路费</string>
+    <string name="homemodule_label_bill_add_pass_road">经过路段</string>
+    <string name="homemodule_hint_bill_add_pass_road">请输入路段名称</string>
+    //加油费
+    <string name="homemodule_label_bill_add_cost_type_oil">油费类型</string>
+    <string name="homemodule_label_bill_add_position_oil">定点加油</string>
+    <string name="homemodule_label_bill_add_card_oil">卡加油</string>
+    <string name="homemodule_label_bill_add_cash_oil">现金加油</string>
+    <string name="homemodule_label_bill_add_num_oil">加油数量(升)</string>
+    <string name="homemodule_hint_bill_add_num_oil">请输入加油数量</string>
+    <string name="homemodule_label_bill_add_price_oil">油费单价(元/升)</string>
+    <string name="homemodule_hint_bill_add_price_oil">请输入油费单价</string>
+    <string name="homemodule_label_bill_add_total_price_oil">油费总额(元)</string>
+    //维修费
+    <string name="homemodule_label_bill_add_cost_repair">维修费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_repair">请输入维修费</string>
+    <string name="homemodule_label_bill_add_project_repair">维修条目</string>
+    <string name="homemodule_hint_bill_add_project_repair">请填写维修内容</string>
+    //罚款费
+    <string name="homemodule_label_bill_add_cost_mistake">罚款费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_mistake">请输入罚款费用</string>
+    <string name="homemodule_label_bill_add_reason_mistake">罚款原因</string>
+    <string name="homemodule_hint_bill_add_reason_mistake">请填写罚款原因</string>
+    //住宿费
+    <string name="homemodule_label_bill_add_cost_room">住宿费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_room">请输入住宿费</string>
+    <string name="homemodule_label_bill_add_time_room">住宿时间</string>
+    <string name="homemodule_hint_bill_add_start_time_room">起止时间</string>
+    <string name="homemodule_hint_bill_add_end_time_room">截止时间</string>
+    //其它费用
+    <string name="homemodule_label_bill_add_cost_other">花费金额(元)</string>
+    <string name="homemodule_hint_bill_add_cost_other">请输入花费金额</string>
+    <string name="homemodule_label_bill_add_project_other">其它费用名目</string>
+    <string name="homemodule_hint_bill_add_project_other">请填写费用名称</string>
 
     <!-- 里程上报&故障上报 -->
     <string name="homemodule_title_fault">故障上报</string>

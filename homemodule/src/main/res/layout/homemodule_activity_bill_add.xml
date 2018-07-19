@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
     tools:context=".view.AddBillActivity">
 
     <ScrollView
-        android:id="@+id/sl_content"
+        android:id="@+id/sv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:layout_above="@id/ll_btn">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,18 +27,38 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="17dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:paddingTop="17dp">
 
-                <TextView
-                    android:layout_width="85dp"
+                <LinearLayout
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:text="车牌号*:"
-                    android:textColor="#FF333333"
-                    android:textSize="15sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_plate_number_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/homemodule_label_bill_add_plate_number"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_star"
+                        android:layout_width="9dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="*"
+                        android:textColor="#FFFB861D"
+                        android:textSize="15sp" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="皖Q23456"
                     android:textColor="#FF666666"
                     android:textSize="15sp"
                     tools:text="皖Q23456" />
@@ -47,6 +67,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:background="#DDDDDD" />
 
             <LinearLayout
@@ -55,23 +77,1039 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="17dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:paddingTop="17dp">
 
-                <TextView
-                    android:layout_width="85dp"
+                <LinearLayout
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:text="选择运单*："
-                    android:textColor="#FF333333"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/homemodule_label_bill_add_select_order_no"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="9dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="*"
+                        android:textColor="#FFFB861D"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_bill_add_choose_order_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/homemodule_select_order_no_bg"
+                    android:hint="@string/homemodule_hint_bill_add_select_order_no"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="#FFBBBBBB"
                     android:textSize="15sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="14dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="30dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/homemodule_label_bill_add_cost_type"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="9dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="*"
+                        android:textColor="#FFFB861D"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!--过路费-->
+            <LinearLayout
+                android:id="@+id/ll_cost_road"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <LinearLayout
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_cost_road"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_cost_road"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_cost_road"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_pass_road"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:src="@drawable/common_oval_dot_green" />
+
+                            <EditText
+                                android:id="@+id/et_pass_road_start"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:background="@null"
+                                android:hint="@string/homemodule_hint_bill_add_pass_road"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:textColor="#FF666666"
+                                android:textColorHint="#FFBBBBBB"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:src="@drawable/common_oval_dot_green" />
+
+                            <EditText
+                                android:id="@+id/et_pass_road_end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:background="@null"
+                                android:hint="@string/homemodule_hint_bill_add_pass_road"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:textColor="#FF666666"
+                                android:textColorHint="#FFBBBBBB"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+            </LinearLayout>
+            <!--加油费-->
+            <LinearLayout
+                android:id="@+id/ll_cost_oil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <LinearLayout
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_cost_type_oil"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_position_oil"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/homemodule_oil_type_btn_shape_normal"
+                            android:gravity="center"
+                            android:text="@string/homemodule_label_bill_add_position_oil"
+                            android:textColor="#FF999999"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:id="@+id/btn_card_oil"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/homemodule_oil_type_btn_shape_normal"
+                            android:gravity="center"
+                            android:text="@string/homemodule_label_bill_add_card_oil"
+                            android:textColor="#FF999999"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:id="@+id/btn_cash_oil"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/homemodule_oil_type_btn_shape_normal"
+                            android:gravity="center"
+                            android:text="@string/homemodule_label_bill_add_cash_oil"
+                            android:textColor="#FF999999"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_num_oil"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_num_oil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_num_oil"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_price_oil"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_price_oil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_price_oil"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_total_price_oil"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_total_price_oil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FF666666"
+                        android:textSize="15sp"
+                        tools:text="100" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+            </LinearLayout>
+            <!--维修费-->
+            <LinearLayout
+                android:id="@+id/ll_cost_repair"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_cost_repair"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_cost_repair"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_cost_repair"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_project_repair"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_project_repair"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_project_repair"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+            </LinearLayout>
+            <!--罚款-->
+            <LinearLayout
+                android:id="@+id/ll_cost_mistake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_cost_mistake"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_cost_mistake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_cost_mistake"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_reason_mistake"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_reason_mistake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_reason_mistake"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+            </LinearLayout>
+            <!--住宿费-->
+            <LinearLayout
+                android:id="@+id/ll_cost_room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <LinearLayout
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_cost_room"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_cost_room"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_cost_room"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_time_room"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:src="@drawable/common_oval_dot_green" />
+
+                            <TextView
+                                android:id="@+id/tv_room_time_start"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:background="@null"
+                                android:hint="@string/homemodule_hint_bill_add_start_time_room"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:textColor="#FF666666"
+                                android:textColorHint="#FFBBBBBB"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="5dp"
+                                android:src="@drawable/common_oval_dot_green" />
+
+                            <TextView
+                                android:id="@+id/tv_room_time_end"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:background="@null"
+                                android:hint="@string/homemodule_hint_bill_add_end_time_room"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp"
+                                android:textColor="#FF666666"
+                                android:textColorHint="#FFBBBBBB"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+            </LinearLayout>
+            <!--其它费用-->
+            <LinearLayout
+                android:id="@+id/ll_cost_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_cost_other"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_cost_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_cost_other"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="17dp">
+
+                    <LinearLayout
+                        android:layout_width="131dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/homemodule_label_bill_add_project_other"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="9dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="*"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/et_project_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/homemodule_hint_bill_add_project_other"
+                        android:textColor="#FF666666"
+                        android:textColorHint="#FFBBBBBB"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#DDDDDD" />
+
+            </LinearLayout>
+            <!--单据照片-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="90dp"
+                    android:paddingBottom="16dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="16dp"
+                    android:text="@string/homemodule_label_bill_add_picture"
                     android:textColor="#FF666666"
-                    android:textSize="15sp"
-                    tools:text="皖Q23456" />
+                    android:textSize="15sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#DDDDDD" />
+            <!--备注-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="17dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="17dp">
+
+                <LinearLayout
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/homemodule_label_bill_add_remark"
+                        android:textColor="#FF666666"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/homemodule_hint_bill_add_remark"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:textColor="#FF666666"
+                    android:textColorHint="#FFBBBBBB"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingBottom="30dp"
+        android:paddingTop="10dp"
+        android:elevation="6dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <Button
+            android:id="@+id/btn_report_bill_again"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/homemodule_btn_report_bill_again_bg"
+            android:gravity="center"
+            android:text="@string/homemodule_button_bill_add_report_bill_again"
+            android:textColor="#FF88B349"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_report_bill_save"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:background="@drawable/loginmodule_selector_btn_login_confirm"
+            android:gravity="center"
+            android:text="@string/homemodule_button_bill_add_save"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 </RelativeLayout>
