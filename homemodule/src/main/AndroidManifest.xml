@@ -11,7 +11,8 @@
             android:name=".view.FaultAddActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity android:name=".view.FaultDetailActivity" />
-        <activity android:name=".view.MileageActivity" />
+        <activity
+            android:name=".view.MileageActivity" />
         <activity
             android:name=".view.MileageAddActivity"
             android:windowSoftInputMode="stateHidden|adjustPan" />
