@@ -8,4 +8,6 @@
         android:dashWidth="2dp" />
 
     <solid android:color="@color/white" />
+
+    <corners android:radius="4dp" />
 </shape>

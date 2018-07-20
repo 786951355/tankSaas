@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="24dp"
+    android:paddingTop="10dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_label_plate"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:layout_marginLeft="15dp"
+            android:text="@string/homemodule_label_plate_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view1"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintEnd_toEndOf="@+id/tv_label_plate"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_plate" />
+
+        <TextView
+            android:id="@+id/tv_label_fault"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="故障*"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+        <View
+            android:id="@+id/view2"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fault" />
+
+        <TextView
+            android:id="@+id/tv_label_address"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="地址*"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <View
+            android:id="@+id/view3"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+        <TextView
+            android:id="@+id/tv_label_time"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="故障时间*"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <View
+            android:id="@+id/view4"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_time" />
+
+        <TextView
+            android:id="@+id/tv_label_picture"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_fault_pictures"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <View
+            android:id="@+id/view5"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_picture" />
+
+        <TextView
+            android:id="@+id/tv_label_remark"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_remark"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+        <View
+            android:id="@+id/view6"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_remark" />
+
+        <TextView
+            android:id="@+id/tv_label_reporter"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_reporter"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+        <View
+            android:id="@+id/view7"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reporter" />
+
+        <TextView
+            android:id="@+id/tv_label_report_time"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_report_time"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/bg_gray"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_report_time" />
+
+        <TextView
+            android:id="@+id/tv_label_method"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_solve_method"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view8" />
+
+        <View
+            android:id="@+id/view9"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_method" />
+
+        <TextView
+            android:id="@+id/tv_label_branch"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_repair_branch"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view9" />
+
+        <View
+            android:id="@+id/view10"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_branch" />
+
+        <TextView
+            android:id="@+id/tv_label_solve_man"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_solve_man"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view10" />
+
+        <View
+            android:id="@+id/view11"
+            style="@style/homemodule_line_fault_mileage"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_solve_man" />
+
+        <TextView
+            android:id="@+id/tv_label_solve_time"
+            style="@style/homemodule_label_fault_mileage_constraint"
+            android:text="@string/homemodule_label_solve_time"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_plate"
+            app:layout_constraintTop_toBottomOf="@+id/view11" />
+
+
+        <android.support.constraint.Barrier
+            android:id="@+id/barrier1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="tv_label_plate,tv_label_fault,tv_label_address,
+            tv_label_time,tv_label_picture,tv_label_remark,tv_label_reporter,
+            tv_label_report_time,tv_label_method,tv_label_branch,tv_label_solve_man,tv_label_solve_time" />
+
+        <TextView
+            android:id="@+id/tv_plate"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="皖Q23456ertyujiouytrewqertyuiytrecd,lf,dlf,dl,fdl,fldfdfdffmdfmifrijtrintireneirnwienwinfidsnwqertyytrfdslfmsfmdsmfdlkfmdlmflskewertyutredsxdcsedwewewewrerertrytryttr"
+            app:layout_constraintBottom_toTopOf="@+id/view1"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_plate" />
+
+        <TextView
+            android:id="@+id/tv_fault"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="故障描述"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_fault" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="手机定位地址"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_address" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="2018-07-18 13:40"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_time" />
+
+        <TextView
+            android:id="@+id/tv_remark"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="备注"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_remark" />
+
+        <TextView
+            android:id="@+id/tv_reporter"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="张三"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_reporter" />
+
+        <TextView
+            android:id="@+id/tv_report_time"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="2018-07-18 13:40"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_report_time" />
+
+        <TextView
+            android:id="@+id/tv_method"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="解决方法"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_method" />
+
+        <TextView
+            android:id="@+id/tv_branch"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="网点"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_branch" />
+
+        <TextView
+            android:id="@+id/tv_solve_man"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="解决人"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_solve_man" />
+
+        <TextView
+            android:id="@+id/tv_solve_time"
+            style="@style/homemodule_text_fault_mileage_constraint"
+            android:text="解决时间"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_solve_time" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/view5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/barrier1"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_picture" />
+
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/homemodule_icon_resolved" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
