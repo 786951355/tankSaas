@@ -24,8 +24,10 @@ import com.umeng.analytics.MobclickAgent;
  * A simple {@link Fragment} subclass.
  */
 public class MineFragment extends BaseFragment<MinePresenter> implements MineContract.View, View.OnClickListener {
+    //车辆备用金
+    private RelativeLayout rl_reserve_money;
     //退出
-    private TextView exit;
+    private RelativeLayout rl_exit;
     //检查更新
     private RelativeLayout rl_check_version;
 
@@ -36,10 +38,12 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
 
     @Override
     protected void initView(View parent) {
-       exit = parent.findViewById(R.id.tv_exit);
-       exit.setOnClickListener(this);
-       rl_check_version=parent.findViewById(R.id.rl_check_version);
-       rl_check_version.setOnClickListener(this);
+        rl_reserve_money = parent.findViewById(R.id.rl_reserve_money);
+        rl_reserve_money.setOnClickListener(this);
+        rl_exit = parent.findViewById(R.id.rl_exit);
+        rl_exit.setOnClickListener(this);
+        rl_check_version = parent.findViewById(R.id.rl_check_version);
+        rl_check_version.setOnClickListener(this);
     }
 
     @Override
@@ -72,19 +76,18 @@ public class MineFragment extends BaseFragment<MinePresenter> implements MineCon
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.tv_exit) {
+        if (id == R.id.rl_exit) {
             TankerDialog.OptionListener optionListener = obDialog -> {
                 ReflectUtils.navigationToLogin(mContext);
                 SaasApp.getInstance().exit();
                 mContext.finish();
             };
             showAlertDialog("确认退出当前账号吗？", R.drawable.warning, optionListener);
-        }else if (id == R.id.rl_check_version) {
-            Intent i = ReflectUtils.getIntent(mContext, "com.tanker.homemodule.view.BillActivity");
-            navigationTo(i);
-            //ReflectUtils.startActivity(mContext, i);
+        } else if (id == R.id.rl_check_version) {
             //手动加测一次更新
-            //Beta.checkUpgrade();
+            Beta.checkUpgrade();
+        } else if (id == R.id.rl_reserve_money) {
+            showMessage("车辆备用金");
         }
     }
 
