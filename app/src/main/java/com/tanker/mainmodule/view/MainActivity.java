@@ -23,6 +23,7 @@ import com.tanker.basemodule.event.RxBus;
 import com.tanker.basemodule.model.app_model.StatisticalHeadModel;
 import com.tanker.basemodule.router.ReflectUtils;
 import com.tanker.basemodule.utils.CommonUtils;
+import com.tanker.basemodule.utils.DensityUtils;
 import com.tanker.basemodule.utils.StatusBarUtil;
 import com.tanker.mainmodule.R;
 import com.tanker.mainmodule.contract.MainContract;
@@ -57,19 +58,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 "订单",
                 "我的");
         List<Integer> iconUnselectedIds = Arrays.asList(
-                R.drawable.order_normal,
-                R.drawable.grab_order_normal,
-                R.drawable.mine_normal);
+                R.drawable.homemodule_icon_home_normal,
+                R.drawable.homemodule_icon_order_normal,
+                R.drawable.homemodule_icon_mine_normal);
         List<Integer> iconSelectIds = Arrays.asList(
-                R.drawable.order_selected,
-                R.drawable.grab_order_selected,
-                R.drawable.mine_selected);
+                R.drawable.homemodule_icon_home_selected,
+        R.drawable.homemodule_icon_order_selected,
+                R.drawable.homemodule_icon_mine_selected);
         mTitles = new ArrayList<>(titles);
         mIconSelectIds = new ArrayList<>(iconSelectIds);
         mIconUnselectedIds = new ArrayList<>(iconUnselectedIds);
-//        mTitles.add(0, "订单");
-//        mIconUnselectedIds.add(0, R.drawable.grab_order_normal);
-//        mIconSelectIds.add(0, R.drawable.grab_order_selected);
         index = index >= mTitles.size() ? mTitles.size() - 1 : index; //防止数组溢出
         mTabEntities = new ArrayList<>();
         mFragments = new ArrayList<>();
@@ -91,6 +89,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         }
         commonTab.setTabData(mTabEntities, this, R.id.main, mFragments);
         commonTab.setCurrentTab(index);
+        commonTab.setIconHeight(28);
+        commonTab.setIconWidth(28);
+        commonTab.setIconMargin(0);
         if (index == mTitles.size() - 1) {
             mCustomToolbar.setToolbarVisible(false);
         }
@@ -139,16 +140,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     private void initToolBar(String title) {
         mCustomToolbar.setTitle(title)
-//                .setRightIcon(R.drawable.setting)
-                .setElevation(0).setToolbarVisible(true)
+                .setElevation(1).setToolbarVisible(true)
                 .setLeftIconVisible(false);
-//                .setOnRightIconClickListener(v -> {
-//                    // 点击消息图标，同步更新我的界面消息数量
-//                    RxBus.getInstanceBus().post(new InformMsg<StatisticalHeadModel>("refresh"));
-//                    mPresenter.clearIsRead();
-//                    mCustomToolbar.setMessageNum(0);
-//                    ReflectUtils.startActivityWithName(mContext, "com.zhaoguanche.setting.view.SettingActivity");
-//                });
+
     }
 
     @Override

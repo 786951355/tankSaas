@@ -93,7 +93,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         space1 = findViewById(R.id.space1);
         space2 = findViewById(R.id.space2);
         space3 = findViewById(R.id.space3);
-        switchLoginUI();
+//        switchLoginUI();
         //测试时候的配置信息
         if (BuildConfig.DEBUG) {
             findViewById(R.id.iv_logo).setOnLongClickListener(v -> {

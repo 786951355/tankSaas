@@ -55,27 +55,4 @@ public class MinePresenter extends MineContract.Presenter {
         });
     }
 
-    /**
-     * @author lwj
-     * @Description: 添加车主
-     * @date 2018/5/25 16:26
-     */
-    @Override
-    public void addCarrierUser(String carrierCompanyName) {
-        Observable<HttpResult<String>> resultObservable = MineApi.getInstance().addCarrierUser(carrierCompanyName);
-        toSubscribe(resultObservable, new CommonObserver<String>(mView.getContext()) {
-            @Override
-            public void onNext(String s) {
-                mView.addCarrierUserSuccess();
-                mView.showMessage(s);
-            }
-
-            @Override
-            public void onError(ExceptionEngine.ResponseThrowable t) {
-                mView.showMessage(t.message);
-            }
-        });
-
-    }
-
 }

@@ -46,17 +46,4 @@ public class MineApi {
         return mineService.logout(paramMap);
     }
 
-
-    /**
-     * @author lwj
-     * @Description: 添加车主接口
-     * @date 2018/5/25 16:20
-     */
-    public Observable<HttpResult<String>> addCarrierUser(String carrierCompanyName) {
-        HashMap<String, String> paramMap = HttpParam.createParams()
-                .putParam("carrierCompanyName", carrierCompanyName)
-                .end();
-        return mineService.addCarrierUser(paramMap);
-    }
-
 }

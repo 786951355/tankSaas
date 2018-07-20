@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.tanker.basemodule.dialog.TankerDialog;
 
+import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -166,6 +167,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void showNoLinesTip() {
         mContext.showNoLinesTip();
+    }
+
+    protected void addDisposable(Disposable disposable) {
+        if (disposable == null) {
+            return;
+        }
+        mContext.addDisposable(disposable);
     }
 
 

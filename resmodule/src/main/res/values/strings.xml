@@ -29,4 +29,12 @@
     <string name="homemodule_title_fault_add">故障上报</string>
     <string name="homemodule_title_fault_detail">故障详情</string>
     <string name="homemodule_button_fault_report">再报一笔</string>
+    <string name="homemodule_item_order_finished_count">已完成：1%$s单</string>
+    <string name="homemodule_item_order_cancel_count">已取消：1%$s单</string>
+    <string name="homemodule_item_order_unfinished_count">未完成：1%$s单</string>
+    <string name="homemodule_item_order_bill_costs">累计账单费用：1%$s元</string>
+    <string name="homemodule_item_sys_fault_count">累计故障：1%$s笔</string>
+    <string name="homemodule_item_sys_last_fault_state_off"><![CDATA[最新一笔故障：<font color="#88B349">已解决</font>]]></string>
+    <string name="homemodule_item_sys_last_fault_state_on">最新一笔故障：<font color="#333333">未解决</font></string>
+    <string name="homemodule_item_mileage_count">累计里程：1%$s公里</string>
 </resources>

@@ -351,8 +351,18 @@ public static final int *;
 }
 -dontnote rx.internal.util.PlatformDependent
 
+# glide 的混淆代码
 #不混淆glide的https配置类
 -keep class com.tanker.basemodule.https.**{*;}
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+# banner 的混淆代码
+-keep class com.youth.banner.** {
+    *;
+ }
 
 -ignorewarnings
 -keep class * {

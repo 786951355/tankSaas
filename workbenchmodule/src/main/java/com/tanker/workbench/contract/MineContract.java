@@ -24,12 +24,6 @@ public interface MineContract {
 
         public abstract void LoginOut();
 
-        /**
-         * @author lwj
-         * @Description: 添加车主
-         * @date 2018/5/25 16:25
-         */
-        public abstract void addCarrierUser(String carrierCompanyName);
     }
 
 }

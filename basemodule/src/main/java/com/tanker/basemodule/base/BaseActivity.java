@@ -139,7 +139,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                 if (manager != null && getCurrentFocus() != null
                         && getCurrentFocus().getWindowToken() != null) {
                     if (isSoftShowing()){
-                        hideSoftKeybord();
+                        hideSoftKeyboard();
                     }
 //                    manager.hideSoftInputFromWindow(getCurrentFocus()
 //                                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -432,7 +432,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         return getResources().getColor(resColor);
     }
 
-    public void hideSoftKeybord() {
+    public void hideSoftKeyboard() {
         boolean isOpen = isSoftShowing();
         if (isOpen) {//打开则执行下面方法进行关闭
             // 隐藏软键盘
@@ -450,7 +450,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         return screenHeight - rect.bottom > DensityUtils.dip2px(70);
     }
 
-    protected void hideSoftKeybord(View view) {
+    protected void hideSoftKeyboard(View view) {
         boolean isOpen = imm.isActive(view);
         if (isOpen) {//打开则执行下面方法进行关闭
             // 隐藏软键盘

@@ -19,7 +19,7 @@
         android:id="@+id/toolbar"
         android:elevation="4dp"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
+        android:layout_height="72dp"
         android:paddingTop="24dp">
 
         <ImageView
@@ -56,7 +56,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textColor="@color/text_green"
             android:textSize="20sp"
             tools:text="Title" />
 
@@ -70,7 +69,7 @@
             android:layout_toLeftOf="@+id/right_action"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            tools:src="@drawable/leak_canary_icon" />
+            tools:src="@drawable/back_arrow" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/right_action"
@@ -81,7 +80,6 @@
             android:gravity="center"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:textColor="@color/colorAccent"
             android:textSize="18sp"
             tools:text="退出" />
     </RelativeLayout>

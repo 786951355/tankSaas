@@ -1,8 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:scrollbars="none"
     android:orientation="vertical">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/text_gray" />
+
+        <!--订单-->
+
+        <View
+            android:id="@+id/v_orders"
+            style="@style/homemodule_item_bg_style"
+            app:layout_constraintTop_toBottomOf="@+id/banner" />
+
+        <View
+            android:id="@+id/v_item_header"
+            style="@style/homemodule_item_header_bg"
+            android:background="@color/homemodule_color_item_green"
+            app:layout_constraintBottom_toBottomOf="@+id/v_orders"
+            app:layout_constraintTop_toTopOf="@+id/v_orders" />
+
+        <ImageView
+            style="@style/homemodule_item_icon_style"
+            android:src="@drawable/homemodule_item_order"
+            app:layout_constraintBottom_toBottomOf="@+id/v_item_header"
+            app:layout_constraintEnd_toEndOf="@+id/v_item_header"
+            app:layout_constraintStart_toStartOf="@+id/v_item_header"
+            app:layout_constraintTop_toTopOf="@+id/v_item_header" />
+
+        <TextView
+            android:id="@+id/tv_title_order"
+            style="@style/homemodule_item_title_style"
+            app:layout_constraintStart_toEndOf="@+id/v_item_header"
+            app:layout_constraintTop_toTopOf="@+id/v_orders"
+            android:text="订单" />
+
+        <TextView
+            android:id="@+id/tv_unfinished"
+            style="@style/homemodule_item_content_style"
+            android:text="@string/homemodule_item_order_unfinished_count"
+            app:layout_constraintStart_toEndOf="@+id/v_item_header"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_order" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/homemodule_item_content_style"
+            android:text="@string/homemodule_item_order_cancel_count"
+            app:layout_constraintStart_toEndOf="@+id/v_item_header"
+            app:layout_constraintTop_toBottomOf="@+id/tv_unfinished" />
+
+        <TextView
+            android:id="@+id/tv_finished"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:text="@string/homemodule_item_order_finished_count"
+            android:textColor="@color/text_gray"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_unfinished"
+            app:layout_constraintStart_toEndOf="@+id/tv_unfinished"
+            app:layout_constraintTop_toTopOf="@+id/tv_unfinished" />
+
+        <!--系统故障-->
+
+        <View
+            android:id="@+id/v_bills"
+            style="@style/homemodule_item_bg_style"
+            app:layout_constraintTop_toBottomOf="@+id/v_orders" />
+
+        <View
+            android:id="@+id/v_item_bill_header"
+            style="@style/homemodule_item_header_bg"
+            android:background="@color/homemodule_color_item_bill"
+            app:layout_constraintBottom_toBottomOf="@+id/v_bills"
+            app:layout_constraintTop_toTopOf="@+id/v_bills" />
+
+        <ImageView
+            style="@style/homemodule_item_icon_style"
+            android:src="@drawable/homemodule_item_bill"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/v_item_bill_header"
+            app:layout_constraintEnd_toEndOf="@+id/v_item_bill_header"
+            app:layout_constraintStart_toStartOf="@+id/v_item_bill_header"
+            app:layout_constraintTop_toTopOf="@+id/v_item_bill_header" />
+
+        <TextView
+            android:id="@+id/tv_title_bill"
+            style="@style/homemodule_item_title_style"
+            app:layout_constraintStart_toEndOf="@+id/v_item_bill_header"
+            app:layout_constraintTop_toTopOf="@+id/v_bills"
+            android:text="账单" />
+
+        <TextView
+            android:id="@+id/tv_bill_costs"
+            style="@style/homemodule_item_content_style"
+            android:text="@string/homemodule_item_order_bill_costs"
+            app:layout_constraintStart_toEndOf="@+id/v_item_bill_header"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_bill" />
+
+        <TextView
+            android:id="@+id/tv_last_bill_costs"
+            style="@style/homemodule_item_content_style"
+            android:text="@string/homemodule_item_order_cancel_count"
+            app:layout_constraintStart_toEndOf="@+id/v_item_bill_header"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bill_costs" />
+
+        <View
+            android:id="@+id/v_sys_failure"
+            style="@style/homemodule_item_bg_style"
+            app:layout_constraintTop_toBottomOf="@+id/v_bills" />
+
+        <View
+            android:id="@+id/v_item_sys_header"
+            style="@style/homemodule_item_header_bg"
+            android:background="@color/homemodule_color_item_sys_failure"
+            app:layout_constraintBottom_toBottomOf="@+id/v_sys_failure"
+            app:layout_constraintTop_toTopOf="@+id/v_sys_failure" />
+
+        <ImageView
+            style="@style/homemodule_item_icon_style"
+            android:src="@drawable/homemodule_item_system_failure"
+            app:layout_constraintBottom_toBottomOf="@+id/v_item_sys_header"
+            app:layout_constraintEnd_toEndOf="@+id/v_item_sys_header"
+            app:layout_constraintStart_toStartOf="@+id/v_item_sys_header"
+            app:layout_constraintTop_toTopOf="@+id/v_item_sys_header" />
+
+        <TextView
+            android:id="@+id/tv_title_sys_failure"
+            style="@style/homemodule_item_title_style"
+            app:layout_constraintStart_toEndOf="@+id/v_item_sys_header"
+            app:layout_constraintTop_toTopOf="@+id/v_sys_failure"
+            android:text="系统故障" />
+
+        <TextView
+            android:id="@+id/tv_fault_counts"
+            style="@style/homemodule_item_content_style"
+            android:text="@string/homemodule_item_sys_fault_count"
+            app:layout_constraintStart_toEndOf="@+id/v_item_sys_header"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_sys_failure" />
+
+        <TextView
+            android:id="@+id/tv_last_fault"
+            style="@style/homemodule_item_content_style"
+            android:text="@string/homemodule_item_sys_last_fault_state_off"
+            app:layout_constraintStart_toEndOf="@+id/v_item_sys_header"
+            app:layout_constraintTop_toBottomOf="@+id/tv_fault_counts" />
+
+        <!-- 里程Item-->
+
+        <View
+            android:layout_marginBottom="10dp"
+            android:id="@+id/v_mileage"
+            style="@style/homemodule_item_bg_style"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_sys_failure" />
+
+        <View
+            android:id="@+id/v_item_v_mileage_header"
+            style="@style/homemodule_item_header_bg"
+            android:background="@color/homemodule_color_item_green"
+            app:layout_constraintBottom_toBottomOf="@+id/v_mileage"
+            app:layout_constraintTop_toTopOf="@+id/v_mileage" />
+
+        <ImageView
+            style="@style/homemodule_item_icon_style"
+            android:src="@drawable/homemodule_item_dashboard"
+            app:layout_constraintBottom_toBottomOf="@+id/v_item_v_mileage_header"
+            app:layout_constraintEnd_toEndOf="@+id/v_item_v_mileage_header"
+            app:layout_constraintStart_toStartOf="@+id/v_item_v_mileage_header"
+            app:layout_constraintTop_toTopOf="@+id/v_item_v_mileage_header" />
+
+        <TextView
+            android:id="@+id/tv_title_mileage"
+            style="@style/homemodule_item_title_style"
+            app:layout_constraintStart_toEndOf="@+id/v_item_v_mileage_header"
+            app:layout_constraintTop_toTopOf="@+id/v_mileage"
+            android:text="@string/homemodule_item_title_mileage" />
+
+        <TextView
+            android:id="@+id/tv_mileage_counts"
+            style="@style/homemodule_item_content_style"
+            android:text="@string/homemodule_item_mileage_count"
+            app:layout_constraintStart_toEndOf="@+id/v_item_v_mileage_header"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_mileage" />
+
+        <Button
+            android:id="@+id/btn_record_bill"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/text_green"
+            android:background="@drawable/btn_bg_4rd_line_normal_green"
+            android:text="我要记账"
+            app:layout_constraintEnd_toEndOf="@+id/v_bills"
+            app:layout_constraintTop_toTopOf="@+id/v_bills" />
+
+        <Button
+            android:textColor="@color/text_green"
+            android:id="@+id/btn_record_fault"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_bg_4rd_line_normal_green"
+            android:text="我要记故障"
+            app:layout_constraintEnd_toEndOf="@+id/v_sys_failure"
+            app:layout_constraintTop_toTopOf="@+id/v_sys_failure" />
+
+        <Button
+            android:textColor="@color/text_green"
+            android:id="@+id/btn_record_mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_bg_4rd_line_normal_green"
+            android:text="我要记里程"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/v_mileage" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

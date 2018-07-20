@@ -1,11 +1,7 @@
 package com.tanker.orders.view;
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -16,8 +12,6 @@ import com.tanker.orders.R;
 
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * author zhanglei
@@ -60,11 +54,11 @@ public class OrdersQueryActivity extends BaseActivity implements OnTabSelectList
 //                if (editText != null && !TextUtils.isEmpty(editText.getText().toString()) && editText.getText().toString().length() > 1) {
 //                    showSoftKeybordAsyn();
 //                } else {
-//                    hideSoftKeybord();
+//                    hideSoftKeyboard();
 //                }
 //                break;
 //            case 2:
-                hideSoftKeybord();
+                hideSoftKeyboard();
                 break;
         }
     }
