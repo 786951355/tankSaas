@@ -10,109 +10,192 @@
         android:layout_height="1dp"
         android:background="@color/bg_gray" />
 
-    <LinearLayout
-        android:gravity="center_horizontal"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:layout_height="240dp"
+        android:background="@drawable/workbenchmodule_icon_my_bg">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_logo"
-            android:src="@drawable/common_icon_logo"
-            android:layout_marginTop="32dp"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
-
-        <TextView
-            android:id="@+id/tv_userName"
-            tools:text="马云"
-            android:elevation="4dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-
-        <TextView
-            android:id="@+id/tv_phone_num"
-            tools:text="18267918080"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:orientation="vertical">
 
-        <View
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/bg_gray"
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-
-        <RelativeLayout
-            android:id="@+id/rl_check_version"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="?android:attr/selectableItemBackground">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_logo"
+                android:layout_width="95dp"
+                android:layout_height="95dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/workbenchmodule_icon_my_header" />
 
             <TextView
-                android:id="@+id/tv_version"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="16dp"
-                android:gravity="center"
-                android:text="@string/settingmodule_version_info"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp" />
-
-            <TextView
+                android:id="@+id/tv_userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:layout_toEndOf="@+id/tv_version"
-                android:layout_toRightOf="@+id/tv_version"
-                android:paddingTop="4dp"
-                android:text="(点击检查更新)"
-                android:textColor="@color/text_gray"
-                android:textSize="10sp" />
+                android:layout_marginTop="9dp"
+                android:elevation="4dp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:text="马云"
+                tools:text="马云" />
 
             <TextView
-                android:id="@+id/tv_version_num"
+                android:id="@+id/tv_phone_num"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="12dp"
-                android:drawablePadding="8dp"
-                android:gravity="center"
-                android:textColor="@color/text_gray"
-                android:textSize="14sp"
-                tools:text="V2.02" />
-        </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="18267918080"
+                tools:text="18267918080" />
+        </LinearLayout>
+    </FrameLayout>
 
-        <View
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/bg_gray" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@color/bg_gray" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:background="?android:attr/selectableItemBackground"
-            android:id="@+id/tv_exit"
-            android:paddingLeft="16dp"
-            android:textSize="16sp"
-            android:textColor="@color/text_green"
-            android:gravity="center_vertical"
-            android:text="@string/settingmodule_exit"
-            android:layout_height="50dp"
-            android:layout_width="match_parent" />
-    </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/rl_reserve_money"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
 
+                <TextView
+                    android:id="@+id/tv_money_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/workbenchmodule_icon_my_money"
+                    android:drawablePadding="15dp"
+                    android:gravity="center"
+                    android:text="@string/workbenchmodule_label_reserve_money"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
 
+                <TextView
+                    android:id="@+id/tv_plate_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toEndOf="@+id/tv_money_txt"
+                    android:layout_toRightOf="@+id/tv_money_txt"
+                    android:text="(皖A23456)"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp"
+                    tools:text="(皖A23456)" />
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:text="@string/workbenchmodule_label_reserve_money_unit"
+                    android:textColor="#FFFB861D"
+                    android:textSize="15sp"
+                    tools:text="2000元" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="@color/bg_gray" />
+
+            <RelativeLayout
+                android:id="@+id/rl_check_version"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/tv_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/workbenchmodule_icon_my_version"
+                    android:drawablePadding="15dp"
+                    android:gravity="center"
+                    android:text="@string/workbenchmodule_label_version"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <!--  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerVertical="true"
+                      android:layout_marginLeft="8dp"
+                      android:layout_toEndOf="@+id/tv_version"
+                      android:layout_toRightOf="@+id/tv_version"
+                      android:paddingTop="4dp"
+                      android:text="(点击检查更新)"
+                      android:textColor="@color/text_gray"
+                      android:textSize="10sp" />-->
+
+                <TextView
+                    android:id="@+id/tv_version_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp"
+                    tools:text="V2.02" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="@color/bg_gray" />
+
+            <RelativeLayout
+                android:id="@+id/rl_exit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/tv_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/workbenchmodule_icon_my_exit"
+                    android:drawablePadding="15dp"
+                    android:gravity="center"
+                    android:text="@string/workbenchmodule_label_exit"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="@color/bg_gray" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
