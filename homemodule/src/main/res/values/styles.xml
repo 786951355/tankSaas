@@ -64,22 +64,47 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">#333333</item>
         <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <!-- 故障上报&里程上报Base label style -->
+    <style name="homemodule_label_fault_mileage_constraint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#333333</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
     </style>
 
     <!-- 故障上报&里程上报Base text style -->
     <style name="homemodule_text_fault_mileage">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#666666</item>
         <item name="android:textSize">15sp</item>
         <item name="android:layout_marginRight">15dp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+    </style>
+
+    <!-- 故障上报&里程上报Base text style -->
+    <style name="homemodule_text_fault_mileage_constraint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
     </style>
 
     <!-- 故障上报&里程上报Base text style -->
@@ -92,6 +117,7 @@
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
+        <item name="android:layout_marginTop">4dp</item>
     </style>
 
     <!-- 故障上报label style -->

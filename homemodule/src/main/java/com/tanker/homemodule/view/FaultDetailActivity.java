@@ -18,7 +18,7 @@ public class FaultDetailActivity extends BaseActivity<FaultDetailPresenter> {
 
     @Override
     public int getContentView() {
-        return R.layout.homemodule_activity_fault_detail;
+        return R.layout.homemodule_activity_fault_detail_copy;
     }
 
     @Override
