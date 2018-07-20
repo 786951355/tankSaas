@@ -5,7 +5,6 @@ import com.tanker.basemodule.http.ExceptionEngine;
 import com.tanker.basemodule.http.api.HttpResult;
 import com.tanker.basemodule.model.home_model.BillListModel;
 import com.tanker.basemodule.model.home_model.BillModel;
-import com.tanker.basemodule.model.mine_model.CarrierListModel;
 import com.tanker.homemodule.api.HomeApi;
 import com.tanker.homemodule.contract.BillContract;
 

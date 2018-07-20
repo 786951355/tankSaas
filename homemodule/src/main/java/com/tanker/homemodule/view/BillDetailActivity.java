@@ -114,7 +114,7 @@ public class BillDetailActivity extends BaseActivity<BillDetailPresenter> implem
     public void configToolbar(CustomToolbar rToolbar) {
         Intent intent = getIntent();
         orderId = intent.getStringExtra(HomeConstants.ORDER_NO);
-        rToolbar.setTitle(orderId+mContext.getString(R.string.homemodule_bill_detail_title_str));
+        rToolbar.setTitle(orderId+mContext.getString(R.string.homemodule_title_bill_detail));
     }
 
     @Override

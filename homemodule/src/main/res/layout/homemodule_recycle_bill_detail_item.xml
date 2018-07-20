@@ -50,7 +50,7 @@
         android:paddingBottom="11dp"
         android:paddingTop="11dp">
 
-        <com.tanker.basemodule.widget.MarqueeText
+       <!-- <com.tanker.basemodule.widget.MarqueeText
             android:id="@+id/tv_bill_detail_startAreaName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -65,6 +65,18 @@
             android:paddingLeft="15dp"
             android:textColor="#FF333333"
             android:textSize="15sp"
+            tools:text="河南马鞍山河口厂区（华翔）" />-->
+
+        <TextView
+            android:id="@+id/tv_bill_detail_startAreaName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="#FF333333"
+            android:textSize="15sp"
             tools:text="河南马鞍山河口厂区（华翔）" />
 
         <ImageView
@@ -76,7 +88,7 @@
             android:visibility="visible"
             android:src="@drawable/homemodule_bill_to_icon" />
 
-        <com.tanker.basemodule.widget.MarqueeText
+      <!--  <com.tanker.basemodule.widget.MarqueeText
             android:id="@+id/tv_bill_detail_endAreaName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -91,7 +103,20 @@
             android:paddingRight="15dp"
             android:textColor="#FFFB861D"
             android:textSize="15sp"
+            tools:text="上海杨浦区五角场百联又一城（嘉联）" />-->
+
+        <TextView
+            android:id="@+id/tv_bill_detail_endAreaName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingRight="15dp"
+            android:textColor="#FFFB861D"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="15sp"
             tools:text="上海杨浦区五角场百联又一城（嘉联）" />
+
     </LinearLayout>
 
     <RelativeLayout

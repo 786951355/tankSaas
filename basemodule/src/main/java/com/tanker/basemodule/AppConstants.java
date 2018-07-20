@@ -126,8 +126,14 @@ public class AppConstants {
      * 缓存 健
      */
     public interface CACHE_KEY {
-        String ORDER_LIST = "order_list";
-        String INFORM_LIST = "inform_list";
+        /**
+         * 故障列表
+         */
+        String FAULT_LIST = "fault_list";
+        /**
+         * 里程列表
+         */
+        String MILEAGE_LIST = "mileage_list";
     }
 
     /**

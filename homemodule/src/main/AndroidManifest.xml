@@ -5,7 +5,17 @@
     <application>
         <activity android:name=".view.BillActivity" />
         <activity android:name=".view.BillDetailActivity" />
-        <activity android:name=".view.AddBillActivity"></activity>
+        <activity android:name=".view.AddBillActivity" />
+        <activity android:name=".view.FaultActivity" />
+        <activity
+            android:name=".view.FaultAddActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".view.FaultDetailActivity" />
+        <activity
+            android:name=".view.MileageActivity" />
+        <activity
+            android:name=".view.MileageAddActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
     </application>
 
 </manifest>

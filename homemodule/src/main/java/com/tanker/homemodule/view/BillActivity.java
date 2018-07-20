@@ -5,9 +5,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.tanker.basemodule.AppConstants;
 import com.tanker.basemodule.adapter.LoadMoreWrapper;
@@ -49,12 +49,12 @@ public class BillActivity extends BaseActivity<BillPresenter> implements BillCon
     private ProgressBar pb_loading;
     private LoadMoreWrapper mLoadMoreWrapper;
     //再记一笔
-    private TextView tv_write_bill_again;
+    private Button btn_write_bill_again;
 
     @Override
     protected void initView() {
-        tv_write_bill_again=findViewById(R.id.tv_write_bill_again);
-        tv_write_bill_again.setOnClickListener(this);
+        btn_write_bill_again=findViewById(R.id.btn_write_bill_again);
+        btn_write_bill_again.setOnClickListener(this);
         //刷新控件
         srl_bills = findViewById(R.id.srl_bills);
         srl_bills.setColorSchemeResources(R.color.colorAccent, R.color.text_red, R.color.text_yellow);
@@ -117,7 +117,7 @@ public class BillActivity extends BaseActivity<BillPresenter> implements BillCon
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
-        rToolbar.setTitle(getString(R.string.homemodule_bills_title));
+        rToolbar.setTitle(getString(R.string.homemodule_title_bills));
     }
 
     @Override
@@ -168,7 +168,7 @@ public class BillActivity extends BaseActivity<BillPresenter> implements BillCon
     public void onClick(View v) {
         int id = v.getId();
         //再来一笔
-        if(id==R.id.tv_write_bill_again){
+        if(id==R.id.btn_write_bill_again){
             //账单添加界面
             navigationTo(AddBillActivity.class);
         }

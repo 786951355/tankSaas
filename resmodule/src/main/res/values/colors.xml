@@ -9,4 +9,6 @@
     <color name="text_black">#333333</color>
     <color name="homemodule_color_item_bill">#69C7E4</color>
     <color name="homemodule_color_item_sys_failure">#5FA0F2</color>
+
+    <color name="text_orange">#FB861D</color>
 </resources>

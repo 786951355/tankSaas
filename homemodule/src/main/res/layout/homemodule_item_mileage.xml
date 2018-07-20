@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp"
+        android:text="Y1234567890"
+        android:textColor="#333333"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/tv_order"
+        android:layout_marginRight="15dp"
+        android:text="已确认"
+        android:textColor="@color/homemodule_gray_orange_selector" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_order"
+        android:layout_marginTop="11dp" />
+
+    <ImageView
+        android:id="@+id/iv_arrive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/homemodule_icon_arrive" />
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="13dp"
+        android:layout_toLeftOf="@id/iv_arrive"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="河南马鞍山河口厂区（华翔）"
+        android:textColor="#333333"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/line"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="13dp"
+        android:layout_toRightOf="@id/iv_arrive"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="安徽阜阳双台子厂区（嘉联）"
+        android:textColor="#333333"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_start"
+        android:layout_alignRight="@id/tv_start"
+        android:layout_below="@id/tv_start"
+        android:layout_marginTop="20dp"
+        android:text="空车里程：345公里"
+        android:textColor="#555555"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_load"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_end"
+        android:layout_alignRight="@id/tv_end"
+        android:layout_alignTop="@id/tv_empty"
+        android:text="重车里程：345公里"
+        android:textColor="#555555"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_empty"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:text="发单时间：2018-07-19 14:28" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@id/tv_time"
+        android:background="@color/bg_gray" />
+</RelativeLayout>

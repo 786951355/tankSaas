@@ -14,20 +14,95 @@
 
     //#----------------------------------------homemodule----------------------------------------#
     <!--账单列表-->
-    <string name="homemodule_bills_title">账单</string>
+    <string name="homemodule_title_bills">账单</string>
     <string name="homemodule_bills_no_confirm_money_str">待确认  ￥</string>
     <string name="homemodule_bills_confirm_money_str">已确认  ￥</string>
+    <string name="homemodule_button_bills_write_bill_again">再记一账</string>
     <!--账单详情-->
-    <string name="homemodule_bill_detail_title_str">账单</string>
-    <string name="homemodule_bill_detail_order_time_str">发单时间：</string>
+    <string name="homemodule_title_bill_detail">账单</string>
+    <string name="homemodule_label_bill_detail_order_time">发单时间：</string>
     <string name="homemodule_bill_detail_money_str">￥</string>
     <!--记账-->
-    <string name="homemodule_bill_add_title_str">记账</string>
+    <string name="homemodule_title_bill_add">记账</string>
+    <string name="homemodule_label_bill_add_plate_number">车牌号</string>
+    <string name="homemodule_label_bill_add_select_order_no">选择运单</string>
+    <string name="homemodule_hint_bill_add_select_order_no">选择运单号</string>
+    <string name="homemodule_label_bill_add_cost_type">类别</string>
+    <string name="homemodule_label_bill_add_remark">备注</string>
+    <string name="homemodule_label_bill_add_picture">单据照片</string>
+    <string name="homemodule_hint_bill_add_remark">选择填写，100字以内</string>
+    <string name="homemodule_button_bill_add_report_bill_again">再报一笔</string>
+    <string name="homemodule_button_bill_add_save">保存</string>
+    //过路费
+    <string name="homemodule_label_bill_add_cost_road">过路费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_road">请输入过路费</string>
+    <string name="homemodule_label_bill_add_pass_road">经过路段</string>
+    <string name="homemodule_hint_bill_add_pass_road">请输入路段名称</string>
+    //加油费
+    <string name="homemodule_label_bill_add_cost_type_oil">油费类型</string>
+    <string name="homemodule_label_bill_add_position_oil">定点加油</string>
+    <string name="homemodule_label_bill_add_card_oil">卡加油</string>
+    <string name="homemodule_label_bill_add_cash_oil">现金加油</string>
+    <string name="homemodule_label_bill_add_num_oil">加油数量(升)</string>
+    <string name="homemodule_hint_bill_add_num_oil">请输入加油数量</string>
+    <string name="homemodule_label_bill_add_price_oil">油费单价(元/升)</string>
+    <string name="homemodule_hint_bill_add_price_oil">请输入油费单价</string>
+    <string name="homemodule_label_bill_add_total_price_oil">油费总额(元)</string>
+    //维修费
+    <string name="homemodule_label_bill_add_cost_repair">维修费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_repair">请输入维修费</string>
+    <string name="homemodule_label_bill_add_project_repair">维修条目</string>
+    <string name="homemodule_hint_bill_add_project_repair">请填写维修内容</string>
+    //罚款费
+    <string name="homemodule_label_bill_add_cost_mistake">罚款费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_mistake">请输入罚款费用</string>
+    <string name="homemodule_label_bill_add_reason_mistake">罚款原因</string>
+    <string name="homemodule_hint_bill_add_reason_mistake">请填写罚款原因</string>
+    //住宿费
+    <string name="homemodule_label_bill_add_cost_room">住宿费(元)</string>
+    <string name="homemodule_hint_bill_add_cost_room">请输入住宿费</string>
+    <string name="homemodule_label_bill_add_time_room">住宿时间</string>
+    <string name="homemodule_hint_bill_add_start_time_room">起止时间</string>
+    <string name="homemodule_hint_bill_add_end_time_room">截止时间</string>
+    //其它费用
+    <string name="homemodule_label_bill_add_cost_other">花费金额(元)</string>
+    <string name="homemodule_hint_bill_add_cost_other">请输入花费金额</string>
+    <string name="homemodule_label_bill_add_project_other">其它费用名目</string>
+    <string name="homemodule_hint_bill_add_project_other">请填写费用名称</string>
 
-
+    <!-- 里程上报&故障上报 -->
     <string name="homemodule_title_fault">故障上报</string>
     <string name="homemodule_title_fault_add">故障上报</string>
     <string name="homemodule_title_fault_detail">故障详情</string>
+    <string name="homemodule_title_mileage">里程上报</string>
+    <string name="homemodule_title_mileage_add">里程上报</string>
+    <string name="homemodule_title_mileage_detail">里程详情</string>
+    <string name="homemodule_button_report_again">再报一笔</string>
+    <string name="homemodule_button_save">保存</string>
+    <string name="homemodule_label_fault"><![CDATA[故障<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_address"><![CDATA[地址<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_fault_time"><![CDATA[故障时间<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_fault_pictures">故障图片</string>
+    <string name="homemodule_label_select_order"><![CDATA[选择订单<font color="#FB861D">*</font>]]></string>
+    <string name="homemodule_label_empty_mileage_unit">空车里程(公里)</string>
+    <string name="homemodule_label_load_mileage_unit">重车里程(公里)</string>
+    <string name="homemodule_label_certificate">凭证</string>
+    <string name="homemodule_label_remark">备注</string>
+    <string name="homemodule_label_reporter">上报人</string>
+    <string name="homemodule_label_report_time">上报时间</string>
+    <string name="homemodule_label_solve_method">解决方法</string>
+    <string name="homemodule_label_repair_branch">修理网点</string>
+    <string name="homemodule_label_solve_man">解决人</string>
+    <string name="homemodule_label_solve_time">解决时间</string>
+    <string name="homemodule_label_plate_number">车牌号</string>
+    <string name="homemodule_empty_mileage"><![CDATA[空车里程：<font color="#FF4081">%1$s</font>公里]]></string>
+    <string name="homemodule_load_mileage"><![CDATA[重车里程：<font color="#FF4081">%1$s</font>公里]]></string>
+    <string name="homemodule_order_time">发单时间：%1$s</string>
+    <string name="homemodule_hint_select_order">选择运单号</string>
+    <string name="homemodule_hint_remark_300">选择填写，300字以内</string>
+    <string name="homemodule_hint_search_order_time">搜索订单时间</string>
+    <string name="homemodule_hint_fault_description">请描述具体故障</string>
+    <string name="homemodule_change_vehicle">更换车辆</string>
     <string name="homemodule_button_fault_report">再报一笔</string>
     <string name="homemodule_item_order_finished_count">已完成：1%$s单</string>
     <string name="homemodule_item_order_cancel_count">已取消：1%$s单</string>
@@ -37,4 +112,7 @@
     <string name="homemodule_item_sys_last_fault_state_off"><![CDATA[最新一笔故障：<font color="#88B349">已解决</font>]]></string>
     <string name="homemodule_item_sys_last_fault_state_on">最新一笔故障：<font color="#333333">未解决</font></string>
     <string name="homemodule_item_mileage_count">累计里程：1%$s公里</string>
+
+    <!-- 公用 -->
+    <string name="button_query">查询</string>
 </resources>

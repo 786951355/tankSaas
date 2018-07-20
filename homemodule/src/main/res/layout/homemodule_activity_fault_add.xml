@@ -1,6 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingBottom="28dp"
+        android:paddingTop="12dp">
+
+        <Button
+            android:id="@+id/bt_report"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_btn_green_stroke"
+            android:text="@string/homemodule_button_report_again"
+            android:textColor="@color/text_green"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bt_save"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/common_btn_confirm_positive"
+            android:text="@string/homemodule_button_save"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_buttons">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_plate_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    tools:text="皖Q23456" />
+
+                <TextView
+                    android:id="@+id/tv_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:text="@string/homemodule_change_vehicle"
+                    android:textColor="@color/text_orange"
+                    android:textSize="16sp" />
+            </FrameLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_label_fault"
+                    style="@style/homemodule_label_fault"
+                    tools:text="@string/homemodule_label_fault" />
+
+                <EditText
+                    android:id="@+id/et_fault"
+                    style="@style/homemodule_text_fault_mileage"
+                    android:background="@drawable/common_edittext_grey_bg"
+                    android:hint="@string/homemodule_hint_fault_description" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_label_address"
+                    style="@style/homemodule_label_fault"
+                    android:text="@string/homemodule_label_address" />
+
+                <EditText
+                    android:id="@+id/et_address"
+                    style="@style/homemodule_text_fault_mileage"
+                    android:background="@drawable/common_edittext_grey_bg"
+                    tools:text="手机定位地址" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_label_time"
+                    style="@style/homemodule_label_fault"
+                    android:text="@string/homemodule_label_fault_time" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    style="@style/homemodule_text_fault_mileage"
+                    tools:text="2018-07-18 13:40" />
+
+                <ImageView
+                    android:id="@+id/iv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/homemodule_icon_edit" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/homemodule_label_fault"
+                    android:text="@string/homemodule_label_fault_pictures" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <View style="@style/homemodule_line_fault_mileage" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/homemodule_label_fault"
+                    android:text="@string/homemodule_label_remark" />
+
+                <EditText
+                    android:id="@+id/et_remark"
+                    style="@style/homemodule_remark_fault_mileage"
+                    android:background="@null"
+                    android:hint="@string/homemodule_hint_remark_300" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

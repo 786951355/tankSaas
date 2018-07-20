@@ -21,19 +21,28 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <TextView
-        android:id="@+id/tv_write_bill_again"
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingBottom="30dp"
+        android:paddingTop="10dp"
+        android:elevation="6dp"
+        android:orientation="horizontal"
+        android:paddingLeft="29dp"
+        android:paddingRight="29dp">
+
+    <Button
+        android:id="@+id/btn_write_bill_again"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_weight="0"
-        android:background="@drawable/btn_radius_bg"
+        android:elevation="6dp"
+        android:background="@drawable/loginmodule_selector_btn_login_confirm"
         android:gravity="center"
-        android:text="再记一笔"
+        android:text="@string/homemodule_button_bills_write_bill_again"
         android:textColor="@color/white"
         android:textSize="20sp" />
-
+    </LinearLayout>
 </LinearLayout>
