@@ -129,6 +129,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         addDisposable(RxView.clicks(mBtnRecordFault)
                 .subscribe(view -> navigationTo(FaultAddActivity.class)));
 
+        addDisposable(RxView.clicks(mBtnRecordMileage)
+                .subscribe(view->navigationTo(MileageAddActivity.class)));
+
         addDisposable(RxView.clicks(mVBill)
                 .subscribe(view -> navigationTo(BillActivity.class)));
 
@@ -138,7 +141,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         addDisposable(RxView.clicks(mVSysFailure)
                 .subscribe(view -> navigationTo(FaultActivity.class)));
 
-
+        addDisposable(RxView.clicks(mVBill)
+                .subscribe(view->navigationTo(BillActivity.class)));
     }
 
 

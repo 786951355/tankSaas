@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:calendar="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.flyco.tablayout.SlidingTabLayout
-        android:id="@+id/tab_types"
+    <com.tanker.resmodule.widget.DayPickerView
+        android:id="@+id/pickerView"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        tl:tl_indicator_color="@color/text_green"
-        tl:tl_indicator_corner_radius="4dp"
-        tl:tl_indicator_height="4dp"
-        tl:tl_indicator_margin_bottom="1dp"
-        tl:tl_indicator_width_equal_title="true"
-        tl:tl_tab_padding="12dp"
-        tl:tl_tab_space_equal="true"
-        tl:tl_textSelectColor="@color/text_green"
-        tl:tl_textUnselectColor="#444444" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_gray" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_gray"
+        calendar:colorAbnormalDay="#979797"
+        calendar:colorCurrentDay="@color/white"
+        calendar:colorDayName="@color/text_green"
+        calendar:colorMonthName="#686868"
+        calendar:colorNormalDay="@color/text_green"
+        calendar:colorSelectedDayBackground="@color/picker_item_day_selected"
+        calendar:colorRangeSelectedDayBackground="@color/picker_item_range_day_selected"
+        calendar:colorSelectedDayText="@color/white"
+        calendar:colorRangeSelectedDayText="@color/white"
+        calendar:drawRoundRect="false"
+        calendar:enableLaterDay="false"
+        calendar:textSizeMonth="14sp" />
 
 </LinearLayout>

@@ -29,11 +29,9 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
     private static final String TAG = OrdersFragment.class.getName();
     private ArrayList<OrderListFragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {"未完成", "已完成", "已取消"};
-    protected OrderListFragment waitGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.WAITTING);
-    protected OrderListFragment quotedGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.QUOTED);
-    protected OrderListFragment biddingSuccessGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.SUCCESS);
-//    protected OrderListFragment biddingFailGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.FAILED);
-//    protected OrderListFragment accountBookFragment = new OrderListFragment().newInstance(OrderStateType.ACCOUNT_BOOK);
+    protected OrderListFragment waitGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.UNFINISHED);
+    protected OrderListFragment quotedGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.FINISHED);
+    protected OrderListFragment biddingSuccessGrabOrderFragment = new OrderListFragment().newInstance(OrderStateType.CANCELED);
     private ViewPager viewPager;
     private SlidingTabLayout stb;
     private Disposable disposable;
@@ -48,8 +46,6 @@ public class OrdersFragment extends BaseFragment<OrdersPresenter> implements Ord
         mFragments.add(waitGrabOrderFragment);
         mFragments.add(quotedGrabOrderFragment);
         mFragments.add(biddingSuccessGrabOrderFragment);
-//        mFragments.add(biddingFailGrabOrderFragment);
-//        mFragments.add(accountBookFragment);
         stb = parent.findViewById(R.id.stb);
         viewPager = parent.findViewById(R.id.vp_grab_order);
         OrdersPagerAdapter grabViewPagerAdapter = new OrdersPagerAdapter(getChildFragmentManager(), mTitles, mFragments);

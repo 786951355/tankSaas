@@ -2,8 +2,8 @@
     <string name="app_name">GrabOrder</string>
 
     <string name="loading">正在加载...</string>
-    <string name="ordersmodule_query_plate_order_hint">请输入订单/车牌号</string>
-    <string name="ordersmodule_title_quickly_query">快速搜索</string>
+    <string name="ordersmodule_query_plate_order_hint">时间</string>
+    <string name="ordersmodule_title_quickly_query">按日期搜索</string>
     <string name="ordersmodule_title_query_result">搜索结果</string>
     <string name="ordersmodule_btn_commit">提交</string>
 

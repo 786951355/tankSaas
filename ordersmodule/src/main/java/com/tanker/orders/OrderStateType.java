@@ -1,9 +1,7 @@
 package com.tanker.orders;
 
 public interface OrderStateType {
-    String WAITTING = "1";
-    String QUOTED = "2";
-    String SUCCESS = "3";
-    String FAILED = "4";
-    String ACCOUNT_BOOK = "5";
+    String UNFINISHED = "1";
+    String FINISHED = "2";
+    String CANCELED = "3";
 }

@@ -1,36 +1,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <com.tanker.orders.LineView
+            app:showLeftLine="true"
+            app:tipText="装"
+            app:text="河南马鞍山河口厂区（华翔）"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
+        </com.tanker.orders.LineView>
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/rc_order_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bg_gray" />
+
     </android.support.v4.widget.SwipeRefreshLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/no_search_result_img"
-        android:visibility="gone" />
-
-
-    <Button
-        android:elevation="6dp"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="118dp"
-        android:background="@drawable/btn_bg_4rd_line_normal_green"
-        android:text="去关注线路"
-        android:textColor="@color/text_green"
-        android:visibility="gone" />
-
 
 </RelativeLayout>

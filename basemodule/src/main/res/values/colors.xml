@@ -12,6 +12,7 @@
     <color name="text_yellow">#fcbd0f</color>
     <color name="text_red">#fc785d</color>
     <color name="text_gray">#666666</color>
+    <color name="text_gray_light">#999999</color>
     <color name="text_orange">#FBC367</color>
     <color name="text_watermark">#ffffff</color>
 

@@ -1,5 +1,7 @@
 package com.tanker.orders.view;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
@@ -8,63 +10,39 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.tanker.basemodule.adapter.TabPagerAdapter;
 import com.tanker.basemodule.base.BaseActivity;
 import com.tanker.basemodule.base.CustomToolbar;
+import com.tanker.basemodule.utils.DateUtils;
 import com.tanker.orders.R;
+import com.tanker.resmodule.adpter.SimpleMonthAdapter;
+import com.tanker.resmodule.widget.DatePickerController;
+import com.tanker.resmodule.widget.DayPickerView;
 
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
- * author zhanglei
- * date 2018/4/26 16:23
- * description 快速搜索
+ * @author ronnyluo
+ * @date 2018/7/20 上午11:20
+ * @desc 按日期查询订单
  */
-public class OrdersQueryActivity extends BaseActivity implements OnTabSelectListener {
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private int position = 0;
+public class OrdersQueryActivity extends BaseActivity implements DatePickerController {
+    private String startDate;
+    private String endDate;
 
     @Override
     protected void initView() {
-        String[] mTitles = getResources().getStringArray(R.array.ordersmodule_query_type_tabs);
-//        mFragments.add(PlateOrOrderFragment.getInstance(CommonConstants.QUERY_TYPE.TYPE_PLATE));
-//        mFragments.add(PlateOrOrderFragment.getInstance(CommonConstants.QUERY_TYPE.TYPE_ORDER));
-        mFragments.add(DateQueryFragment.getInstance());
-
-        ViewPager viewPager = findViewById(R.id.viewpager);
-        viewPager.setAdapter(new TabPagerAdapter(mContext.getSupportFragmentManager(), mFragments, mTitles));
-        SlidingTabLayout tabLayout = findViewById(R.id.tab_types);
-        tabLayout.setViewPager(viewPager);
-        tabLayout.setOnTabSelectListener(this);
-
-//        if (RolesConst.isDriver()) {
-            tabLayout.setCurrentTab(0);
-//        } else {
-//            showSoftKeybordAsyn();
-//        }
+        DayPickerView dayPickerView = findViewById(R.id.pickerView);
+        dayPickerView.setController(this);
+        initDate();
     }
 
-    @Override
-    public void onTabSelect(int position) {
-        this.position = position;
-        switch (position) {
-            case 0:
-//                showSoftKeybordAsyn();
-//                break;
-//            case 1:
-//                EditText editText = ((PlateOrOrderFragment) mFragments.get(1)).etQuery;
-//                if (editText != null && !TextUtils.isEmpty(editText.getText().toString()) && editText.getText().toString().length() > 1) {
-//                    showSoftKeybordAsyn();
-//                } else {
-//                    hideSoftKeyboard();
-//                }
-//                break;
-//            case 2:
-                hideSoftKeyboard();
-                break;
-        }
-    }
-
-    @Override
-    public void onTabReselect(int position) {
+    private void initDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        Date date = new Date();
+        startDate = sdf.format(date);
+        endDate = startDate;
     }
 
     @Override
@@ -74,31 +52,53 @@ public class OrdersQueryActivity extends BaseActivity implements OnTabSelectList
 
     @Override
     public void configToolbar(CustomToolbar rToolbar) {
-        rToolbar.setTitle(getResources().getString(R.string.ordersmodule_title_quickly_query));
+        rToolbar.setTitle(getString(R.string.ordersmodule_title_quickly_query))
+                .setRightText(getString(R.string.common_confirm))
+                .setRightTextColor(getmColor(R.color.text_green))
+                .setOnRightIconClickListener(v -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("startDate", startDate);
+                    bundle.putString("endDate", endDate);
+                    navigationTo(new Intent(mContext, QueryResultActivity.class)
+                            .putExtra("data", bundle));
+                });
     }
 
-    // 延迟弹出为了解决fragment界面完成初始化之前etQuery为空的情况
-    public void showSoftKeybordAsyn() {
-//        if (position == 2) {
-//            return;
-//        }
-//        Timer timer = new Timer();
-//        timer.schedule(new TimerTask() {
-//            public void run() {
-//                if (!(mFragments.get(position) instanceof PlateOrOrderFragment)) {
-//                    return;
-//                }
-//                EditText editText = ((PlateOrOrderFragment) mFragments.get(position)).etQuery;
-//                if ((position == 1 && RolesConst.isDriver() && TextUtils.isEmpty(editText.getText().toString()))
-//                        || editText == null || editText.getContext() == null) {
-//                    return;
-//                }
-//                InputMethodManager inputManager =
-//                        (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-//                if (inputManager != null)
-//                    inputManager.showSoftInput(editText, 0);
-//            }
-//        }, 500);
+
+
+    @Override
+    public Date getMaxDate() {
+        return new Date();
     }
+
+    @Override
+    public Date getMinDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        try {
+            String START_DATE = "2017-01-01";
+            return sdf.parse(START_DATE);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void onDayOfMonthSelected(int year, int month, int day) {
+        startDate = String.format(Locale.CHINA, "%d-%d-%d", year, month, day);
+        endDate = startDate;
+    }
+
+    @Override
+    public void onDateRangeSelected(SimpleMonthAdapter.SelectedDays<SimpleMonthAdapter.CalendarDay> selectedDays) {
+        if (DateUtils.compareDate(selectedDays.getFirst().toString(), selectedDays.getLast().toString()) > 0) {
+            startDate = selectedDays.getLast().toString();
+            endDate = selectedDays.getFirst().toString();
+        } else {
+            startDate = selectedDays.getFirst().toString();
+            endDate = selectedDays.getLast().toString();
+        }
+    }
+
 
 }
