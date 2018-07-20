@@ -48,10 +48,11 @@ public class LineView extends RelativeLayout {
         dashLine = new View(mContext);
         dashLine.setId(R.id.id_dash_line);
 
-        mainText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+        mainText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        mainText.setPadding(0,0,0,-4);
         tipText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
         tipText.setTextColor(mContext.getResources().getColor(R.color.white));
-        tipText.setBackground(mContext.getResources().getDrawable(R.drawable.btn_radius_bg));
+        tipText.setBackground(mContext.getResources().getDrawable(R.drawable.btn_radius_bg_green));
 
         dashLine.setVisibility(showLine ? VISIBLE : GONE);
         dashLine.setBackground(mContext.getResources().getDrawable(R.drawable.common_line_draw_dash_vertical));

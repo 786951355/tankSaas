@@ -3,16 +3,46 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <com.tanker.orders.LineView
+            app:showLeftLine="false"
+            app:tipText="装"
+            app:text="河南马鞍山河口厂区（华翔）"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </com.tanker.orders.LineView>
+
         <com.tanker.orders.LineView
             app:showLeftLine="true"
             app:tipText="装"
             app:text="河南马鞍山河口厂区（华翔）"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
+        </com.tanker.orders.LineView>
+        <com.tanker.orders.LineView
+            app:showLeftLine="true"
+            app:tipText="装"
+            app:text="河南马鞍山河口厂区（华翔）"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </com.tanker.orders.LineView>
+        <com.tanker.orders.LineView
+            app:showLeftLine="true"
+            app:tipText="装"
+            app:text="河南马鞍山河口厂区（华翔）"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </com.tanker.orders.LineView>
+        <com.tanker.orders.LineView
+            app:showLeftLine="true"
+            app:tipText="装"
+            app:text="河南马鞍山河口厂区（华翔）"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         </com.tanker.orders.LineView>
 
         <android.support.v7.widget.RecyclerView
@@ -21,6 +51,6 @@
             android:layout_height="match_parent"
             android:background="@color/bg_gray" />
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 
 </RelativeLayout>
